@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ukraine Analysis — LISA</title>
+
+<meta name="description"
+content="Independent LISA analysis of the Russo-Ukrainian War, military operations, territorial control, capabilities, strategic developments and the wider security environment.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --bg: #05080d;
+    --bg-secondary: #080d14;
+    --panel: #0b1119;
+
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.14);
+
+    --text: #e7edf5;
+    --muted: #8793a4;
+    --muted-light: #aeb8c7;
+
+    --accent: #3c8cff;
+    --accent-soft: rgba(60,140,255,0.12);
+
+    --positive: #62c792;
+    --negative: #d87979;
+
+    --max-width: 1200px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+}
+
+
+body {
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+
+    z-index: -2;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+::selection {
+
+    background: var(--accent);
+
+    color: white;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container {
+
+    width:
+        min(
+            var(--max-width),
+            calc(100% - 48px)
+        );
+
+    margin: auto;
+}
+
+
+.mono {
+    font-family: "JetBrains Mono", monospace;
+}
+
+
+.eyebrow {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+}
+
+
+.section {
+
+    padding: 110px 0;
+
+    position: relative;
+
+    scroll-margin-top: 96px;
+}
+
+
+.section-title {
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            55px
+        );
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+
+    margin-top: 14px;
+
+    max-width: 760px;
+}
+
+
+.section-description {
+
+    color: var(--muted);
+
+    max-width: 650px;
+
+    margin-top: 22px;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   PAGE TOP
+========================================================= */
+
+#top {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 1px;
+
+    height: 1px;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    background:
+        rgba(5,8,13,0.72);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.05);
+
+    transition:
+        background 0.3s ease;
+}
+
+
+nav {
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.logo-mark {
+
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        1px solid
+        var(--accent);
+
+    display: grid;
+
+    place-items: center;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 13px;
+
+    color: var(--accent);
+
+    position: relative;
+}
+
+
+.logo-mark::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.3);
+}
+
+
+.logo-text {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+
+.logo-sub {
+
+    font-size: 8px;
+
+    color: var(--muted);
+
+    letter-spacing: 0.11em;
+
+    margin-top: -2px;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+.nav-links a {
+
+    font-size: 13px;
+
+    color: var(--muted-light);
+
+    transition: 0.25s ease;
+}
+
+
+.nav-links a:hover {
+
+    color: white;
+}
+
+
+.nav-button {
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    padding:
+        9px 16px;
+}
+
+
+.nav-button:hover {
+
+    border-color:
+        var(--accent) !important;
+
+    background:
+        var(--accent-soft);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding-top: 76px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 800px;
+
+    height: 800px;
+
+    right: -400px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(38,107,210,0.14),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+
+.hero-content {
+
+    max-width: 850px;
+
+    padding:
+        62px 0 58px;
+}
+
+
+.hero-title {
+
+    font-size:
+        clamp(
+            55px,
+            8vw,
+            92px
+        );
+
+    line-height: 0.98;
+
+    letter-spacing:
+        -0.065em;
+
+    margin:
+        10px 0 20px;
+}
+
+
+.hero-title span {
+
+    color: var(--accent);
+}
+
+
+.hero-description {
+
+    max-width: 700px;
+
+    font-size: 18px;
+
+    color: var(--muted-light);
+
+    line-height: 1.75;
+}
+
+
+.hero-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+
+.hero-tag {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(255,255,255,0.015);
+
+    padding:
+        8px 11px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing:
+        0.08em;
+
+    color:
+        var(--muted);
+}
+
+
+/* =========================================================
+   ANALYSIS HEADER
+========================================================= */
+
+.analysis-header-section {
+
+    padding:
+        45px 0 50px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.analysis-header-grid {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        flex-end;
+
+    gap: 35px;
+}
+
+
+.analysis-header-title {
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            36px
+        );
+
+    line-height: 1.15;
+
+    letter-spacing:
+        -0.035em;
+
+    margin-top: 10px;
+}
+
+
+.analysis-header-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    max-width:
+        650px;
+
+    margin-top:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   FEATURED ANALYSIS
+========================================================= */
+
+.featured-section {
+
+    padding:
+        52px 0 60px;
+}
+
+
+.featured-card {
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    background:
+        var(--panel);
+
+    padding:
+        30px 34px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.featured-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 3px;
+
+    height: 100%;
+
+    background:
+        var(--accent);
+}
+
+
+.featured-content {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0,1fr) auto;
+
+    align-items:
+        end;
+
+    gap:
+        40px;
+}
+
+
+.featured-label {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.14em;
+
+    color:
+        var(--accent);
+
+    text-transform:
+        uppercase;
+}
+
+
+.featured-title {
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            36px
+        );
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.035em;
+
+    margin-top:
+        10px;
+}
+
+
+.featured-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    max-width:
+        760px;
+
+    margin-top:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+.featured-meta {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        18px;
+
+    margin-top:
+        18px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    color:
+        #687587;
+
+    letter-spacing:
+        0.04em;
+}
+
+
+.featured-action {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    white-space:
+        nowrap;
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    padding:
+        12px 17px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.08em;
+
+    transition:
+        0.2s ease;
+}
+
+
+.featured-action:hover {
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+}
+
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+.archive {
+
+    padding:
+        70px 0 110px;
+}
+
+
+.archive-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        flex-end;
+
+    gap:
+        30px;
+
+    margin-bottom:
+        35px;
+}
+
+
+.archive-title {
+
+    font-size:
+        25px;
+
+    letter-spacing:
+        -0.025em;
+}
+
+
+.archive-filters {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+}
+
+
+.filter-button {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    padding:
+        8px 12px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.06em;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.filter-button:hover,
+.filter-button.active {
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    color:
+        var(--text);
+}
+
+
+/* =========================================================
+   ARTICLE GRID
+========================================================= */
+
+.article-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        16px;
+}
+
+
+.article-card {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding:
+        28px;
+
+    min-height:
+        280px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        space-between;
+
+    transition:
+        0.3s ease;
+}
+
+
+.article-card:hover {
+
+    border-color:
+        rgba(60,140,255,0.4);
+
+    transform:
+        translateY(-4px);
+}
+
+
+.article-top {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    color:
+        var(--muted);
+
+    letter-spacing:
+        0.06em;
+}
+
+
+.article-number {
+
+    color:
+        var(--accent);
+}
+
+
+.article-type {
+
+    text-transform:
+        uppercase;
+}
+
+
+.article-title {
+
+    font-size:
+        24px;
+
+    line-height:
+        1.2;
+
+    letter-spacing:
+        -0.025em;
+
+    margin-top:
+        40px;
+}
+
+
+.article-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+    margin-top:
+        12px;
+}
+
+
+.article-meta {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        15px;
+
+    margin-top:
+        25px;
+
+    padding-top:
+        18px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        8px;
+
+    color:
+        #687587;
+
+    letter-spacing:
+        0.04em;
+}
+
+
+.article-link {
+
+    display:
+        inline-block;
+
+    margin-top:
+        22px;
+
+    color:
+        var(--accent);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.06em;
+}
+
+
+.article-link:hover {
+
+    color:
+        white;
+}
+
+
+/* =========================================================
+   CONFLICT MONITOR
+========================================================= */
+
+.monitor-section {
+
+    padding:
+        80px 0 100px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(28,73,136,0.10),
+            transparent 38%
+        );
+}
+
+
+.monitor-box {
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    background:
+        var(--panel);
+
+    padding:
+        30px 34px;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    gap:
+        35px;
+}
+
+
+.monitor-label {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.14em;
+
+    color:
+        var(--accent);
+
+    text-transform:
+        uppercase;
+}
+
+
+.monitor-title {
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            36px
+        );
+
+    letter-spacing:
+        -0.035em;
+
+    margin-top:
+        9px;
+}
+
+
+.monitor-description {
+
+    max-width:
+        680px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+    margin-top:
+        10px;
+}
+
+
+.map-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        10px;
+
+    flex-shrink:
+        0;
+
+    justify-content:
+        flex-end;
+}
+
+
+.monitor-link {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-width:
+        145px;
+
+    padding:
+        12px 17px;
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    background:
+        transparent;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+
+    transition:
+        all .2s ease;
+}
+
+
+.monitor-link:hover {
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    color:
+        var(--text);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    text-align:
+        center;
+
+    padding:
+        100px 20px;
+}
+
+
+.cta h2 {
+
+    font-size:
+        clamp(
+            36px,
+            5vw,
+            65px
+        );
+
+    letter-spacing:
+        -0.05em;
+
+    line-height:
+        1.05;
+
+    margin-bottom:
+        30px;
+}
+
+
+.button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        13px 21px;
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    font-size:
+        13px;
+
+    font-weight:
+        500;
+
+    transition:
+        0.25s ease;
+}
+
+
+.button-primary {
+
+    background:
+        #e7edf5;
+
+    color:
+        #05080d;
+
+    border-color:
+        #e7edf5;
+}
+
+
+.button-primary:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        white;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding:
+        45px 0;
+}
+
+
+.footer-grid {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    align-items:
+        flex-start;
+}
+
+
+.footer-description {
+
+    color:
+        var(--muted);
+
+    max-width:
+        400px;
+
+    font-size:
+        12px;
+
+    margin-top:
+        12px;
+}
+
+
+.footer-links {
+
+    display:
+        flex;
+
+    gap:
+        25px;
+
+    font-size:
+        12px;
+
+    color:
+        var(--muted);
+}
+
+
+.footer-links a:hover {
+
+    color:
+        white;
+}
+
+
+.footer-bottom {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    margin-top:
+        35px;
+
+    padding-top:
+        20px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #4d5867;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+.fade-up {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.fade-up.visible {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .monitor-box {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .map-buttons {
+
+        width:
+            100%;
+
+        justify-content:
+            flex-start;
+    }
+
+
+    .monitor-link {
+
+        flex:
+            1;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .container {
+
+        width:
+            min(
+                100% - 30px,
+                var(--max-width)
+            );
+    }
+
+
+    .nav-links {
+
+        display:
+            none;
+    }
+
+
+    .hero {
+
+        min-height:
+            auto;
+
+        padding-top:
+            76px;
+    }
+
+
+    .hero-content {
+
+        padding:
+            58px 0 55px;
+    }
+
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                47px,
+                13vw,
+                75px
+            );
+    }
+
+
+    .analysis-header-grid {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .featured-content {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            25px;
+    }
+
+
+    .featured-action {
+
+        justify-self:
+            start;
+    }
+
+
+    .article-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .archive-header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .section {
+
+        padding:
+            85px 0;
+    }
+
+
+    .footer-grid,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .map-buttons {
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+    }
+
+
+    .monitor-link {
+
+        width:
+            100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-meta {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .featured-card {
+
+        padding:
+            26px 24px;
+    }
+
+
+    .monitor-box {
+
+        padding:
+            26px 24px;
+    }
+
+
+    .article-card {
+
+        padding:
+            25px;
+    }
+
+
+    .article-title {
+
+        font-size:
+            21px;
+    }
+
+
+    .footer-links {
+
+        flex-wrap:
+            wrap;
+
+        gap:
+            15px 22px;
+    }
+
+
+    .footer-bottom {
+
+        gap:
+            15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="top"></div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<a href="#top" class="logo">
+
+<div class="logo-mark">
+L
+</div>
+
+<div>
+
+<div class="logo-text">
+LISA
+</div>
+
+<div class="logo-sub">
+LATITUDE INSTITUTE FOR SECURITY ANALYSIS
+</div>
+
+</div>
+
+</a>
+
+
+<div class="nav-links">
+
+<a href="https://www.lisaorg.ca/#mission">
+Mission
+</a>
+
+<a href="https://www.lisaorg.ca/#research">
+Research
+</a>
+
+<a href="https://www.lisaorg.ca/#projects">
+Projects
+</a>
+
+<a href="https://www.lisaorg.ca/#methodology">
+Methodology
+</a>
+
+<a href="https://www.lisaorg.ca/#researchers">
+Researchers
+</a>
+
+<a
+href="https://www.lisaorg.ca/#contact"
+class="nav-button">
+
+Contact
+
+</a>
+
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content fade-up">
+
+
+<div class="eyebrow">
+Ukraine / Conflict Analysis
+</div>
+
+
+<h1 class="hero-title">
+
+Ukraine<br>
+
+<span>Analysis</span>
+
+</h1>
+
+
+<p class="hero-description">
+
+Independent analysis of the Russo-Ukrainian War,
+military operations, territorial control,
+capabilities, strategic developments and the
+wider security environment.
+
+</p>
+
+
+<div class="hero-meta">
+
+<div class="hero-tag">
+RUSSO-UKRAINIAN WAR
+</div>
+
+<div class="hero-tag">
+MILITARY ANALYSIS
+</div>
+
+<div class="hero-tag">
+OSINT
+</div>
+
+<div class="hero-tag">
+STRATEGY
+</div>
+
+<div class="hero-tag">
+GEOPOLITICS
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ANALYSIS HEADER
+========================================================= -->
+
+<section class="analysis-header-section">
+
+<div class="container">
+
+<div class="analysis-header-grid">
+
+<div class="fade-up">
+
+<div class="eyebrow">
+LISA / Ukraine
+</div>
+
+<h2 class="analysis-header-title">
+Independent analysis of the war in Ukraine.
+</h2>
+
+<p class="analysis-header-description">
+
+LISA tracks military developments, territorial
+changes, strategic adaptation, weapons systems,
+information warfare and the broader implications
+of the conflict.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURED ANALYSIS
+========================================================= -->
+
+<section class="featured-section">
+
+<div class="container">
+
+<div class="featured-card fade-up">
+
+<div class="featured-content">
+
+
+<div>
+
+<div class="featured-label">
+Latest Analysis / Featured
+</div>
+
+
+<h2 class="featured-title">
+What Is Actually Happening in Ukraine?
+The August 2026 Update
+</h2>
+
+
+<p class="featured-description">
+
+An assessment of Russia's summer offensive,
+Ukraine's deep-strike campaign, Russia's manpower
+and economic pressures, North Korean involvement,
+air-defence shortages and the growing risk of
+escalation beyond Ukraine.
+
+</p>
+
+
+<div class="featured-meta">
+
+<span>
+AUSTIN BURGESS
+</span>
+
+<span>
+CHIEF ANALYST — UKRAINE
+</span>
+
+<span>
+06 SEP 2026
+</span>
+
+<span>
+9 MIN READ
+</span>
+
+</div>
+
+</div>
+
+
+<a
+href="https://www.lisaorg.ca/ukraine-aug2026"
+target="_blank"
+rel="noopener noreferrer"
+class="featured-action">
+
+READ ANALYSIS →
+
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ARTICLE ARCHIVE
+========================================================= -->
+
+<section class="archive">
+
+<div class="container">
+
+
+<div class="archive-header fade-up">
+
+<div>
+
+<div class="eyebrow">
+Ukraine Analysis / Archive
+</div>
+
+<h2 class="archive-title">
+Analysis archive.
+</h2>
+
+</div>
+
+
+<div class="archive-filters">
+
+<button
+class="filter-button active"
+data-filter="all">
+
+ALL
+
+</button>
+
+<button
+class="filter-button"
+data-filter="war-update">
+
+WAR UPDATE
+
+</button>
+
+<button
+class="filter-button"
+data-filter="military">
+
+MILITARY
+
+</button>
+
+<button
+class="filter-button"
+data-filter="strategy">
+
+STRATEGY
+
+</button>
+
+<button
+class="filter-button"
+data-filter="canada">
+
+CANADA
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="article-grid">
+
+
+<!-- ARTICLE 02 -->
+
+<article
+class="article-card fade-up"
+data-category="war-update military strategy">
+
+<div>
+
+<div class="article-top">
+
+<span class="article-number">
+ARTICLE / 002
+</span>
+
+<span class="article-type">
+WAR UPDATE
+</span>
+
+</div>
+
+
+<h3 class="article-title">
+
+What Is Actually Happening in Ukraine?
+The August 2026 Update
+
+</h3>
+
+
+<p class="article-description">
+
+An assessment of Russia's summer offensive,
+Ukraine's deep-strike campaign, manpower and
+economic pressures, North Korean involvement,
+air-defence shortages and escalation risks.
+
+</p>
+
+</div>
+
+
+<div>
+
+<div class="article-meta">
+
+<span>
+AUSTIN BURGESS
+</span>
+
+<span>
+06 SEP 2026
+</span>
+
+<span>
+9 MIN READ
+</span>
+
+</div>
+
+
+<a
+href="https://www.lisaorg.ca/ukraine-aug2026"
+target="_blank"
+rel="noopener noreferrer"
+class="article-link">
+
+READ ANALYSIS →
+
+</a>
+
+</div>
+
+</article>
+
+
+<!-- ARTICLE 01 -->
+
+<article
+class="article-card fade-up"
+data-category="canada strategy">
+
+<div>
+
+<div class="article-top">
+
+<span class="article-number">
+ARTICLE / 001
+</span>
+
+<span class="article-type">
+CANADA
+</span>
+
+</div>
+
+
+<h3 class="article-title">
+
+The War in Ukraine Is Closer to
+Canada Than It Seems
+
+</h3>
+
+
+<p class="article-description">
+
+What Canada's involvement in the war means
+for taxpayers, the Canadian Armed Forces,
+defence policy, NATO, Arctic security and
+the future of Canadian national security.
+
+</p>
+
+</div>
+
+
+<div>
+
+<div class="article-meta">
+
+<span>
+AUSTIN BURGESS
+</span>
+
+<span>
+31 AUG 2026
+</span>
+
+<span>
+9 MIN READ
+</span>
+
+</div>
+
+
+<a
+href="#"
+class="article-link">
+
+READ ANALYSIS →
+
+</a>
+
+</div>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONFLICT MONITOR
+========================================================= -->
+
+<section class="monitor-section">
+
+<div class="container">
+
+<div class="monitor-box fade-up">
+
+
+<div>
+
+<div class="monitor-label">
+Conflict Monitor / Ukraine
+</div>
+
+
+<h2 class="monitor-title">
+Ukraine Conflict Monitor
+</h2>
+
+
+<p class="monitor-description">
+
+Follow ongoing developments through
+independent open-source mapping and
+specialized conflict-monitoring platforms.
+
+</p>
+
+</div>
+
+
+<div class="map-buttons">
+
+
+<a
+href="https://deepstatemap.live/en"
+class="monitor-link"
+target="_blank"
+rel="noopener noreferrer">
+
+DEEPSTATE MAP
+
+</a>
+
+
+<a
+href="https://www.blackbirdgroup.fi/map"
+class="monitor-link"
+target="_blank"
+rel="noopener noreferrer">
+
+BLACKBIRD MAP
+
+</a>
+
+
+<a
+href="https://liveuamap.com"
+class="monitor-link"
+target="_blank"
+rel="noopener noreferrer">
+
+LIVEUA MAP
+
+</a>
+
+
+<a
+href="https://understandingwar.org/analysis/russia-ukraine/"
+class="monitor-link"
+target="_blank"
+rel="noopener noreferrer">
+
+ISW
+
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta" id="contact">
+
+<div class="container fade-up">
+
+
+<div class="eyebrow">
+Latitude Institute for Security Analysis
+</div>
+
+
+<h2>
+SECURITY DESERVES<br>
+SERIOUS ANALYSIS.
+</h2>
+
+
+<a
+href="mailto:austin@lisaorg.ca"
+class="button button-primary">
+
+Contact LISA
+
+</a>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+<div>
+
+<a href="#top" class="logo-text">
+LISA
+</a>
+
+
+<p class="footer-description">
+
+Latitude Institute for Security Analysis.
+Independent Canadian research and analysis
+on conflict, defence, geopolitics and
+national security.
+
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="https://www.lisaorg.ca/#mission">
+Mission
+</a>
+
+<a href="https://www.lisaorg.ca/#research">
+Research
+</a>
+
+<a href="https://www.lisaorg.ca/#projects">
+Projects
+</a>
+
+<a href="https://www.lisaorg.ca/#methodology">
+Methodology
+</a>
+
+<a href="https://www.lisaorg.ca/#researchers">
+Researchers
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 LISA
+</span>
+
+
+<div class="footer-links">
+
+<a href="#top">
+LISA
+</a>
+
+<a href="#top">
+ANALYTICAL NOTE
+</a>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const fadeElements =
+    document.querySelectorAll(".fade-up");
+
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+fadeElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   TOP-OF-PAGE LINKS
+========================================================= */
+
+document.querySelectorAll(
+    'a[href="#top"]'
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ARCHIVE FILTERS
+========================================================= */
+
+const filterButtons =
+    document.querySelectorAll(
+        ".filter-button"
+    );
+
+
+const articleCards =
+    document.querySelectorAll(
+        ".article-card"
+    );
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            const filter =
+                this.dataset.filter;
+
+
+            filterButtons.forEach(
+                item => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            this.classList.add(
+                "active"
+            );
+
+
+            articleCards.forEach(
+                card => {
+
+                    const categories =
+                        card.dataset.category
+                            .split(" ");
+
+
+                    if (
+                        filter === "all" ||
+                        categories.includes(filter)
+                    ) {
+
+                        card.style.display =
+                            "flex";
+
+                    }
+
+                    else {
+
+                        card.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SECTION NAVIGATION
+========================================================= */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
+
+    const targetId =
+        link.getAttribute("href");
+
+
+    if (
+        targetId === "#top" ||
+        targetId === "#"
+    ) {
+        return;
+    }
+
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            const target =
+                document.querySelector(
+                    targetId
+                );
+
+
+            if (!target) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            const header =
+                document.querySelector(
+                    "header"
+                );
+
+
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 76;
+
+
+            const targetPosition =
+                target.getBoundingClientRect().top
+                +
+                window.pageYOffset
+                -
+                headerHeight
+                -
+                20;
+
+
+            window.scrollTo({
+
+                top:
+                    Math.max(
+                        0,
+                        targetPosition
+                    ),
+
+                behavior:
+                    "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   NAVIGATION BACKGROUND
+========================================================= */
+
+const header =
+    document.querySelector(
+        "header"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (
+            window.scrollY > 40
+        ) {
+
+            header.style.background =
+                "rgba(5,8,13,0.92)";
+
+        }
+
+        else {
+
+            header.style.background =
+                "rgba(5,8,13,0.72)";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>

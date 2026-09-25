@@ -1,0 +1,4023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LISA — Latitude Institute for Security Analysis</title>
+
+<meta name="description"
+content="LISA is an independent Canadian security analysis organization focused on conflict, defence, geopolitics, national security and open-source intelligence.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --bg: #05080d;
+    --bg-secondary: #080d14;
+    --panel: #0b1119;
+
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.14);
+
+    --text: #e7edf5;
+    --muted: #8793a4;
+    --muted-light: #aeb8c7;
+
+    --accent: #3c8cff;
+    --accent-soft: rgba(60,140,255,0.12);
+
+    --positive: #62c792;
+    --negative: #d87979;
+
+    --max-width: 1200px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+}
+
+
+body {
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+
+    z-index: -2;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+::selection {
+
+    background: var(--accent);
+
+    color: white;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container {
+
+    width:
+        min(
+            var(--max-width),
+            calc(100% - 48px)
+        );
+
+    margin: auto;
+}
+
+
+.mono {
+    font-family: "JetBrains Mono", monospace;
+}
+
+
+.eyebrow {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+}
+
+
+.section {
+
+    padding: 120px 0;
+
+    position: relative;
+
+    scroll-margin-top: 96px;
+}
+
+
+.section-title {
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            55px
+        );
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+
+    margin-top: 14px;
+
+    max-width: 760px;
+}
+
+
+.section-description {
+
+    color: var(--muted);
+
+    max-width: 650px;
+
+    margin-top: 22px;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   PAGE TOP
+========================================================= */
+
+#top {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 1px;
+
+    height: 1px;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    background:
+        rgba(5,8,13,0.72);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.05);
+
+    transition:
+        background 0.3s ease;
+}
+
+
+nav {
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+.logo,
+.logo-text,
+.logo-sub,
+.logo-text * {
+    text-decoration: none;
+}
+
+
+.logo-mark {
+
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        1px solid
+        var(--accent);
+
+    display: grid;
+
+    place-items: center;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 13px;
+
+    color: var(--accent);
+
+    position: relative;
+}
+
+
+.logo-mark::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.3);
+}
+
+
+.logo-text {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+
+.logo-sub {
+
+    font-size: 8px;
+
+    color: var(--muted);
+
+    letter-spacing: 0.11em;
+
+    margin-top: -2px;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+.nav-links a {
+
+    font-size: 13px;
+
+    color: var(--muted-light);
+
+    transition: 0.25s ease;
+}
+
+
+.nav-links a:hover {
+
+    color: white;
+}
+
+
+.nav-button {
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    padding:
+        9px 16px;
+}
+
+
+.nav-button:hover {
+
+    border-color:
+        var(--accent) !important;
+
+    background:
+        var(--accent-soft);
+}
+
+
+/* RESEARCH DROPDOWN */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    right: -20px;
+    height: 18px;
+}
+
+.nav-dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--muted-light);
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.nav-dropdown-toggle:hover {
+    color: white;
+}
+
+.nav-dropdown-arrow {
+    font-size: 9px;
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown:hover .nav-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+
+    width: 150px;
+    padding: 6px;
+
+    background: var(--panel);
+    border: 1px solid var(--border-bright);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 11px 13px;
+    color: var(--muted-light);
+    font-size: 12px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.nav-dropdown-menu a:hover {
+    color: white;
+    background: var(--accent-soft);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding-top: 76px;
+}
+
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 800px;
+
+    height: 800px;
+
+    right: -400px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(38,107,210,0.16),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+
+.hero-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr 0.75fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+.hero-title {
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            92px
+        );
+
+    line-height: 0.98;
+
+    letter-spacing:
+        -0.065em;
+
+    margin:
+        22px 0 28px;
+
+    max-width: 900px;
+}
+
+
+.hero-title span {
+
+    color: var(--accent);
+}
+
+
+.hero-description {
+
+    max-width: 620px;
+
+    font-size: 19px;
+
+    color: var(--muted-light);
+
+    line-height: 1.7;
+}
+
+
+.hero-actions {
+
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 38px;
+
+    flex-wrap: wrap;
+}
+
+
+.button {
+
+    padding:
+        13px 21px;
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    transition:
+        0.25s ease;
+}
+
+
+.button-primary {
+
+    background: #e7edf5;
+
+    color: #05080d;
+
+    border-color: #e7edf5;
+}
+
+
+.button-primary:hover {
+
+    transform:
+        translateY(-2px);
+
+    background: white;
+}
+
+
+.button-secondary:hover {
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual {
+
+    position: relative;
+
+    height: 390px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.hero-circle {
+
+    width: 310px;
+
+    height: 310px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.20);
+
+    border-radius: 50%;
+
+    position: relative;
+
+    animation:
+        slowRotate 35s linear infinite;
+}
+
+
+.hero-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 32px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.14);
+
+    border-radius: 50%;
+}
+
+
+.hero-circle::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 78px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.12);
+
+    border-radius: 50%;
+}
+
+
+.hero-crosshair {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 1px;
+
+    background:
+        rgba(60,140,255,0.15);
+
+    top: 50%;
+}
+
+
+.hero-crosshair.vertical {
+
+    width: 1px;
+
+    height: 100%;
+
+    left: 50%;
+
+    top: 0;
+}
+
+
+.hero-center {
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        var(--accent);
+
+    box-shadow:
+        0 0 25px
+        rgba(60,140,255,0.65);
+}
+
+
+.hero-coordinate {
+
+    position: absolute;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    color: #4e5b6c;
+
+    letter-spacing: 0.08em;
+}
+
+
+.coordinate-top {
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.coordinate-bottom {
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.coordinate-left {
+    left: 15px;
+    top: 50%;
+    transform:
+        translateY(-50%)
+        rotate(-90deg);
+}
+
+
+.coordinate-right {
+    right: 15px;
+    top: 50%;
+    transform:
+        translateY(-50%)
+        rotate(90deg);
+}
+
+
+.hero-scan {
+
+    position: absolute;
+
+    width: 145px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+
+    top: 50%;
+
+    left: 50%;
+
+    transform-origin:
+        left center;
+
+    animation:
+        scan 6s linear infinite;
+}
+
+
+@keyframes slowRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+@keyframes scan {
+
+    from {
+        transform:
+            rotate(0deg)
+            translateX(0);
+    }
+
+    to {
+        transform:
+            rotate(360deg)
+            translateX(0);
+    }
+
+}
+
+
+/* =========================================================
+   TICKER
+========================================================= */
+
+.ticker {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(255,255,255,0.015);
+
+    overflow: hidden;
+}
+
+
+.ticker-inner {
+
+    display: flex;
+
+    width: max-content;
+
+    white-space: nowrap;
+
+    animation:
+        ticker 28s linear infinite;
+}
+
+
+.ticker-item {
+
+    padding:
+        17px 35px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+    letter-spacing:
+        0.1em;
+}
+
+
+.ticker-item span {
+
+    color:
+        var(--accent);
+
+    margin-right: 10px;
+}
+
+
+@keyframes ticker {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   MISSION
+========================================================= */
+
+.mission-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+
+.mission-statement {
+
+    font-size:
+        clamp(
+            27px,
+            3vw,
+            39px
+        );
+
+    line-height: 1.25;
+
+    letter-spacing:
+        -0.03em;
+}
+
+
+.mission-statement strong {
+
+    color: white;
+
+    font-weight: 500;
+}
+
+
+.mission-text {
+
+    color: var(--muted);
+
+    margin-top: 24px;
+
+    max-width: 600px;
+}
+
+
+.principles {
+
+    display: grid;
+
+    gap: 12px;
+}
+
+
+.principle {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding: 21px;
+
+    display: flex;
+
+    gap: 17px;
+
+    align-items: flex-start;
+
+    transition:
+        0.3s ease;
+}
+
+
+.principle:hover {
+
+    transform:
+        translateX(5px);
+
+    border-color:
+        rgba(60,140,255,0.35);
+}
+
+
+.principle-number {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    color:
+        var(--accent);
+
+    font-size: 11px;
+}
+
+
+.principle h4 {
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+
+.principle p {
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESEARCH
+========================================================= */
+
+.research-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+
+    margin-top: 55px;
+}
+
+
+.research-card {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding: 29px;
+
+    min-height: 240px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        0.3s ease;
+}
+
+
+.research-card:hover {
+
+    border-color:
+        rgba(60,140,255,0.4);
+
+    transform:
+        translateY(-5px);
+}
+
+
+.research-number {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    color:
+        var(--accent);
+}
+
+
+.research-card h3 {
+
+    margin-top: 50px;
+
+    font-size: 20px;
+
+    letter-spacing:
+        -0.02em;
+}
+
+
+.research-card p {
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   UKRAINE DATA
+========================================================= */
+
+.territory-section {
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(28,73,136,0.10),
+            transparent 35%
+        );
+}
+
+
+.territory-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 30px;
+}
+
+
+.territory-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 16px;
+
+    margin-top: 55px;
+}
+
+
+.territory-card {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding: 35px;
+
+    min-height: 330px;
+
+    position: relative;
+
+    transition:
+        0.3s ease;
+}
+
+
+.territory-card:hover {
+
+    border-color:
+        rgba(60,140,255,0.35);
+}
+
+
+.territory-card-label {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--accent);
+}
+
+
+.territory-card-title {
+
+    margin-top: 55px;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            42px
+        );
+
+    letter-spacing:
+        -0.04em;
+}
+
+
+.territory-card-number {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            76px
+        );
+
+    letter-spacing:
+        -0.07em;
+
+    line-height: 1;
+
+    margin-top: 8px;
+}
+
+
+.territory-card-unit {
+
+    color:
+        var(--muted);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 12px;
+
+    margin-left: 4px;
+}
+
+
+.territory-card-divider {
+
+    height: 1px;
+
+    background:
+        var(--border);
+
+    margin:
+        35px 0 18px;
+}
+
+
+.territory-card-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.snapshot {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    color:
+        #5f6b7b;
+}
+
+
+.change {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+}
+
+
+.change.increase {
+
+    color:
+        var(--positive);
+
+    background:
+        rgba(98,199,146,0.06);
+}
+
+
+.change.neutral {
+
+    color:
+        var(--muted);
+
+    background:
+        rgba(255,255,255,0.02);
+}
+
+
+.change-arrow {
+
+    font-size: 12px;
+}
+
+
+.territory-card-primary,
+.territory-card-secondary {
+    min-height: 0;
+    padding: 28px;
+}
+
+.territory-card-primary .territory-card-title {
+    margin-top: 30px;
+    font-size: clamp(24px, 3vw, 34px);
+}
+
+.territory-card-primary .territory-card-number {
+    font-size: clamp(42px, 5vw, 62px);
+}
+
+.territory-snapshot-heading {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 15px;
+}
+
+.territory-snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.territory-snapshot-stat {
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.018);
+    padding: 15px;
+}
+
+.territory-snapshot-number {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 17px;
+    letter-spacing: -0.04em;
+    color: var(--text);
+}
+
+.territory-snapshot-label {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+.territory-source-link {
+    margin-top: 14px;
+}
+
+.territory-source-link a {
+    color: var(--muted);
+    transition: color 0.25s ease;
+}
+
+.territory-source-link a:hover {
+    color: var(--accent);
+}
+
+.territory-source {
+
+    margin-top: 18px;
+
+    font-size: 10px;
+
+    color:
+        #4f5b6b;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects {
+
+    background:
+        #070b11;
+}
+
+
+.project-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 16px;
+
+    margin-top: 55px;
+}
+
+
+.project {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding: 30px;
+
+    min-height: 270px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    transition:
+        0.3s ease;
+}
+
+
+.project:hover {
+
+    border-color:
+        rgba(60,140,255,0.35);
+}
+
+
+.project-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    color:
+        var(--muted);
+}
+
+
+.project h3 {
+
+    font-size: 25px;
+
+    max-width: 500px;
+
+    line-height: 1.2;
+}
+
+
+.project p {
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+    max-width: 550px;
+
+    margin-top: 12px;
+}
+
+
+.project-link {
+
+    margin-top: 25px;
+
+    color:
+        var(--accent);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing:
+        0.04em;
+}
+
+
+.project-link:hover {
+
+    color: white;
+}
+
+
+/* =========================================================
+   METHODOLOGY
+========================================================= */
+
+.osint-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.method-list {
+
+    margin-top: 35px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+.method {
+
+    display: flex;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.method-number {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    color:
+        var(--accent);
+
+    font-size: 11px;
+}
+
+
+.method h4 {
+
+    font-size: 14px;
+}
+
+
+.method p {
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   ANALYTICAL FRAMEWORK
+========================================================= */
+
+.analysis-panel {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding: 32px;
+
+    position: relative;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.25);
+}
+
+
+.analysis-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+}
+
+
+.analysis-label {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        #d5dce6;
+}
+
+
+.analysis-subtitle {
+
+    font-size: 11px;
+
+    color:
+        var(--muted);
+
+    margin-top: 5px;
+}
+
+
+.analysis-status {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    color:
+        var(--accent);
+
+    border:
+        1px solid
+        rgba(60,140,255,0.25);
+
+    padding:
+        6px 9px;
+}
+
+
+.analysis-divider {
+
+    height: 1px;
+
+    background:
+        var(--border);
+
+    margin:
+        27px 0 5px;
+}
+
+
+.analysis-row {
+
+    display: grid;
+
+    grid-template-columns:
+        45px 1fr;
+
+    gap: 10px;
+
+    padding: 22px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.055);
+}
+
+
+.analysis-index {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    color:
+        var(--accent);
+
+    padding-top: 2px;
+}
+
+
+.analysis-content h4 {
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.analysis-content p {
+
+    font-size: 12px;
+
+    color:
+        var(--muted);
+
+    margin-top: 5px;
+
+    max-width: 450px;
+}
+
+
+.analysis-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 22px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 8px;
+
+    letter-spacing:
+        0.08em;
+
+    color:
+        #596575;
+}
+
+
+/* =========================================================
+   RESEARCHERS
+========================================================= */
+
+.researchers {
+
+    background:
+        #060a10;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.researchers-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin-top: 55px;
+}
+
+
+.researcher {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel);
+
+    padding: 32px;
+
+    display: grid;
+
+    grid-template-columns:
+        135px 1fr;
+
+    gap: 30px;
+
+    align-items: start;
+
+    transition:
+        0.3s ease;
+}
+
+
+.researcher:hover {
+
+    border-color:
+        rgba(60,140,255,0.35);
+
+    transform:
+        translateY(-4px);
+}
+
+
+.researcher-photo {
+
+    width: 135px;
+
+    height: 135px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.25);
+
+    filter:
+        grayscale(15%);
+}
+
+
+.researcher-info {
+
+    min-width: 0;
+}
+
+
+.researcher-name {
+
+    font-size: 23px;
+
+    letter-spacing:
+        -0.025em;
+
+    line-height: 1.15;
+}
+
+
+.researcher-role {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing:
+        0.1em;
+
+    text-transform: uppercase;
+
+    color:
+        var(--accent);
+
+    margin-top: 8px;
+}
+
+
+.researcher-bio {
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+
+    margin-top: 18px;
+}
+
+
+.researcher-bio p {
+
+    margin-bottom: 16px;
+}
+
+
+.researcher-bio p:last-child {
+
+    margin-bottom: 0;
+}
+
+
+.researcher-focus {
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+
+    color:
+        #687587;
+
+    text-transform: uppercase;
+
+    letter-spacing:
+        0.04em;
+}
+
+
+.researcher-contact {
+
+    margin-top: 18px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    color:
+        var(--muted);
+
+    display: inline-block;
+
+    transition:
+        0.25s ease;
+}
+
+
+.researcher-contact:hover {
+
+    color:
+        var(--accent);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    text-align: center;
+
+    padding:
+        100px 20px;
+}
+
+
+.cta h2 {
+
+    font-size:
+        clamp(
+            36px,
+            5vw,
+            65px
+        );
+
+    letter-spacing:
+        -0.05em;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding:
+        45px 0;
+}
+
+
+.footer-grid {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+
+    align-items:
+        flex-start;
+}
+
+
+.footer-description {
+
+    color:
+        var(--muted);
+
+    max-width: 400px;
+
+    font-size: 12px;
+
+    margin-top: 12px;
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    gap: 25px;
+
+    font-size: 12px;
+
+    color:
+        var(--muted);
+}
+
+
+.footer-links a:hover {
+
+    color: white;
+}
+
+
+.footer-bottom {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #4d5867;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+.fade-up {
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.fade-up.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .container {
+
+        width:
+            min(
+                100% - 30px,
+                var(--max-width)
+            );
+    }
+
+
+    .nav-links {
+        display: none;
+    }
+
+
+    .hero {
+
+        min-height: auto;
+
+        padding-top: 150px;
+
+        padding-bottom: 100px;
+    }
+
+
+    .hero-grid,
+    .mission-grid,
+    .territory-grid,
+    .osint-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                47px,
+                13vw,
+                75px
+            );
+    }
+
+
+    .hero-visual {
+
+        height: 330px;
+    }
+
+
+    .research-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .project-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .researchers-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .researcher {
+
+        grid-template-columns:
+            100px 1fr;
+
+        gap: 22px;
+
+        padding: 25px;
+    }
+
+
+    .researcher-photo {
+
+        width: 100px;
+
+        height: 100px;
+    }
+
+
+    .section {
+
+        padding:
+            85px 0;
+    }
+
+
+    .footer-grid,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .territory-snapshot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .territory-card-primary,
+    .territory-card-secondary {
+        padding: 24px;
+    }
+
+    .analysis-header {
+
+        flex-direction:
+            column;
+    }
+
+
+    .analysis-footer {
+
+        flex-direction:
+            column;
+
+        gap: 8px;
+    }
+
+
+    .territory-card {
+
+        min-height:
+            300px;
+
+        padding:
+            27px;
+    }
+
+
+    .territory-card-bottom {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap: 15px;
+    }
+
+
+    .researcher {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 20px;
+    }
+
+
+    .researcher-photo {
+
+        width: 105px;
+
+        height: 105px;
+    }
+
+
+    .footer-links {
+
+        flex-wrap: wrap;
+
+        gap: 15px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     ABSOLUTE PAGE TOP
+========================================================= -->
+
+<div id="top"></div>
+
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header>
+
+<div class="container">
+
+<nav>
+
+
+<!-- Clicking the LISA logo returns to the absolute top -->
+
+<a href="#top" class="logo">
+
+<div class="logo-mark">
+L
+</div>
+
+<div>
+
+<div class="logo-text">
+LISA
+</div>
+
+<div class="logo-sub">
+LATITUDE INSTITUTE FOR SECURITY ANALYSIS
+</div>
+
+</div>
+
+</a>
+
+
+<div class="nav-links">
+
+<a href="#mission">
+Mission
+</a>
+
+<!-- RESEARCH DROPDOWN -->
+
+<div class="nav-dropdown">
+
+<button class="nav-dropdown-toggle">
+Research
+<span class="nav-dropdown-arrow">▾</span>
+</button>
+
+<div class="nav-dropdown-menu">
+
+<a href="ukraine.html">
+Ukraine
+</a>
+
+</div>
+
+</div>
+
+<a href="#projects">
+Projects
+</a>
+
+<a href="#methodology">
+Methodology
+</a>
+
+<a href="#researchers">
+Researchers
+</a>
+
+<a href="#contact" class="nav-button">
+Contact
+</a>
+
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-grid">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+Latitude Institute for Security Analysis
+</div>
+
+
+<h1 class="hero-title">
+
+Understanding Conflict.<br>
+
+<span>Analyzing Security.</span>
+
+</h1>
+
+
+<p class="hero-description">
+
+Independent Canadian analysis of war, defence,
+geopolitics and national security.
+
+</p>
+
+
+<div class="hero-actions">
+
+<a href="#mission"
+class="button button-primary">
+Explore LISA
+</a>
+
+<a href="#research"
+class="button button-secondary">
+Research Areas
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="hero-visual fade-up">
+
+<div class="hero-circle">
+
+<div class="hero-crosshair">
+</div>
+
+<div class="hero-crosshair vertical">
+</div>
+
+<div class="hero-center">
+</div>
+
+<div class="hero-scan">
+</div>
+
+<div class="hero-coordinate coordinate-top">
+52.9399° N
+</div>
+
+<div class="hero-coordinate coordinate-bottom">
+106.4509° W
+</div>
+
+<div class="hero-coordinate coordinate-left">
+CANADA
+</div>
+
+<div class="hero-coordinate coordinate-right">
+LISA
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TICKER
+========================================================= -->
+
+<div class="ticker">
+
+<div class="ticker-inner">
+
+
+<div class="ticker-item">
+<span>01</span>
+CONFLICT ANALYSIS
+</div>
+
+<div class="ticker-item">
+<span>02</span>
+DEFENCE & SECURITY
+</div>
+
+<div class="ticker-item">
+<span>03</span>
+GEOPOLITICS
+</div>
+
+<div class="ticker-item">
+<span>04</span>
+OSINT
+</div>
+
+<div class="ticker-item">
+<span>05</span>
+CANADIAN NATIONAL SECURITY
+</div>
+
+<div class="ticker-item">
+<span>06</span>
+STRATEGIC ANALYSIS
+</div>
+
+
+
+<div class="ticker-item">
+<span>01</span>
+CONFLICT ANALYSIS
+</div>
+
+<div class="ticker-item">
+<span>02</span>
+DEFENCE & SECURITY
+</div>
+
+<div class="ticker-item">
+<span>03</span>
+GEOPOLITICS
+</div>
+
+<div class="ticker-item">
+<span>04</span>
+OSINT
+</div>
+
+<div class="ticker-item">
+<span>05</span>
+CANADIAN NATIONAL SECURITY
+</div>
+
+<div class="ticker-item">
+<span>06</span>
+STRATEGIC ANALYSIS
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MISSION
+========================================================= -->
+
+<section class="section" id="mission">
+
+<div class="container">
+
+<div class="mission-grid">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+01 / Mission
+</div>
+
+
+<div class="mission-statement">
+
+LISA exists to make
+<strong>complex security issues</strong>
+understandable, accessible and useful.
+
+</div>
+
+
+<p class="mission-text">
+
+We examine modern conflict, military strategy,
+defence policy, emerging technologies,
+intelligence and geopolitical developments
+through an independent Canadian lens.
+
+</p>
+
+</div>
+
+
+
+<div class="principles fade-up">
+
+
+<div class="principle">
+
+<div class="principle-number">
+01
+</div>
+
+<div>
+
+<h4>
+Independent
+</h4>
+
+<p>
+Analysis developed independently from governments,
+political parties and institutional interests.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="principle">
+
+<div class="principle-number">
+02
+</div>
+
+<div>
+
+<h4>
+Evidence-Based
+</h4>
+
+<p>
+Claims are grounded in observable evidence,
+credible sources and transparent methodology.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="principle">
+
+<div class="principle-number">
+03
+</div>
+
+<div>
+
+<h4>
+Canadian Perspective
+</h4>
+
+<p>
+Global security developments are examined through
+the interests and responsibilities of Canada.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESEARCH
+========================================================= -->
+
+<section class="section" id="research">
+
+<div class="container">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+02 / Research
+</div>
+
+<h2 class="section-title">
+Areas of analysis.
+</h2>
+
+<p class="section-description">
+LISA examines the security environment across
+multiple interconnected domains.
+</p>
+
+</div>
+
+
+
+<div class="research-grid">
+
+
+<!-- RESEARCH 01 -->
+
+<div class="research-card fade-up">
+
+<div class="research-number">
+01
+</div>
+
+<h3>
+Conflict & Warfare
+</h3>
+
+<p>
+Military operations, force development,
+battlefield adaptation, strategy and the
+evolution of modern warfare.
+</p>
+
+</div>
+
+
+
+<!-- RESEARCH 02 -->
+
+<div class="research-card fade-up">
+
+<div class="research-number">
+02
+</div>
+
+<h3>
+Defence & Military Affairs
+</h3>
+
+<p>
+Canadian defence policy, military capabilities,
+procurement, readiness and force structure.
+</p>
+
+</div>
+
+
+
+<!-- RESEARCH 03 -->
+
+<div class="research-card fade-up">
+
+<div class="research-number">
+03
+</div>
+
+<h3>
+Geopolitics
+</h3>
+
+<p>
+Strategic competition, alliances, international
+power dynamics and geopolitical risk.
+</p>
+
+</div>
+
+
+
+<!-- RESEARCH 04 -->
+
+<div class="research-card fade-up">
+
+<div class="research-number">
+04
+</div>
+
+<h3>
+National Security
+</h3>
+
+<p>
+Threats and challenges affecting Canada's
+security, sovereignty and strategic interests.
+</p>
+
+</div>
+
+
+
+<!-- RESEARCH 05 -->
+
+<div class="research-card fade-up">
+
+<div class="research-number">
+05
+</div>
+
+<h3>
+Emerging Technology
+</h3>
+
+<p>
+Drones, electronic warfare, artificial intelligence,
+precision weapons and technological change
+on the battlefield.
+</p>
+
+</div>
+
+
+
+<!-- RESEARCH 06 -->
+
+<div class="research-card fade-up">
+
+<div class="research-number">
+06
+</div>
+
+<h3>
+Intelligence & OSINT
+</h3>
+
+<p>
+Open-source intelligence, geolocation,
+satellite imagery, data analysis and
+information verification.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     UKRAINE TERRITORIAL CONTROL
+========================================================= -->
+
+<section class="section territory-section" id="territory">
+
+<div class="container">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+Conflict Monitor / Ukraine
+</div>
+
+<h2 class="section-title">
+Territorial control.
+</h2>
+
+<p class="section-description">
+A snapshot of territorial control in Ukraine,
+with changes tracked against the previous
+reporting period.
+</p>
+
+</div>
+
+
+
+<div class="territory-grid">
+
+<div class="territory-card territory-card-primary fade-up">
+<div class="territory-card-label">UKRAINIAN CONTROL</div>
+<div class="territory-card-title">Controlled</div>
+<div><span class="territory-card-number">75,345</span> <span class="territory-card-unit">km²</span></div>
+<div class="territory-card-divider"></div>
+<div class="territory-snapshot-heading">Snapshot as of Sept. 8, 2026</div>
+<div class="territory-snapshot-grid">
+<div class="territory-snapshot-stat"><div class="territory-snapshot-number">73,079 km²</div><div class="territory-snapshot-label">Net territory captured by Russia since February 24, 2022</div></div>
+<div class="territory-snapshot-stat"><div class="territory-snapshot-number">≈45,951 km²</div><div class="territory-snapshot-label">Net territory recovered from Russia's peak territorial footprint</div></div>
+<div class="territory-snapshot-stat"><div class="territory-snapshot-number">+36 km²</div><div class="territory-snapshot-label">Russian net territorial gain, Aug. 11–Sept. 8, 2026</div></div>
+</div>
+<div class="territory-source territory-source-link">SOURCE: <a href="https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-sept-9-2026" target="_blank" rel="noopener noreferrer">RUSSIA MATTERS / SEPT. 9, 2026 REPORT CARD ↗</a></div>
+</div>
+
+</div>
+
+<div class="territory-source">TERRITORIAL CONTROL FIGURES ARE BASED ON OPEN-SOURCE GEOSPATIAL ASSESSMENTS. CONTROLLED TERRITORY / 01 SEPTEMBER 2026. SNAPSHOT / 08 SEPTEMBER 2026. NET RUSSIAN GAIN / 11 AUGUST–08 SEPTEMBER 2026.</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURED PROJECTS
+========================================================= -->
+
+<section class="section projects" id="projects">
+
+<div class="container">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+03 / Featured Projects
+</div>
+
+<h2 class="section-title">
+Research beyond the headlines.
+</h2>
+
+<p class="section-description">
+Selected projects examining the strategic,
+technological and geopolitical dimensions
+of modern security.
+</p>
+
+</div>
+
+
+
+<div class="project-grid">
+
+
+<!-- PROJECT 1 -->
+
+<article class="project fade-up">
+
+<div class="project-meta">
+
+<span>
+PROJECT / 001
+</span>
+
+<span>
+CANADA
+</span>
+
+</div>
+
+
+<div>
+
+<h3>
+Why Ukraine Matters to Canada
+</h3>
+
+<p>
+Examining what the war in Ukraine means
+for Canada's military, defence policy,
+NATO commitments, Arctic security,
+economy and future national security.
+</p>
+
+</div>
+
+
+<div class="project-link">
+COMING SOON
+</div>
+
+</article>
+
+
+
+<!-- PROJECT 2 -->
+
+<article class="project fade-up">
+
+<div class="project-meta">
+
+<span>
+PROJECT / 002
+</span>
+
+<span>
+OSINT
+</span>
+
+</div>
+
+
+<div>
+
+<h3>
+Ukraine Conflict Intelligence
+</h3>
+
+<p>
+Open-source analysis of battlefield
+developments, territorial control,
+military capabilities and strategic
+adaptation.
+</p>
+
+</div>
+
+
+<a
+href="https://www.lisaorg.ca/ukraine-aug2026"
+target="_blank"
+rel="noopener noreferrer"
+class="project-link">
+
+VIEW PROJECT →
+
+</a>
+
+</article>
+
+
+
+<!-- PROJECT 3 -->
+
+<article class="project fade-up">
+
+<div class="project-meta">
+
+<span>
+PROJECT / 003
+</span>
+
+<span>
+DEFENCE
+</span>
+
+</div>
+
+
+<div>
+
+<h3>
+Canada's Defence Future
+</h3>
+
+<p>
+Research examining Canadian military
+readiness, procurement, industrial
+capacity and the changing character
+of warfare.
+</p>
+
+</div>
+
+
+<div class="project-link">
+RELEASING 09/10/2026
+</div>
+
+</article>
+
+
+
+<!-- PROJECT 4 -->
+
+<article class="project fade-up">
+
+<div class="project-meta">
+
+<span>
+PROJECT / 004
+</span>
+
+<span>
+FIELD RESEARCH
+</span>
+
+</div>
+
+
+<div>
+
+<h3>
+Voices from Ukraine
+</h3>
+
+<p>
+Firsthand perspectives from Ukrainians
+and members of the Ukrainian diaspora
+documenting the human and strategic
+dimensions of the war.
+</p>
+
+</div>
+
+
+<a
+href="https://www.lisaorg.ca/ukraine-voice"
+target="_blank"
+rel="noopener noreferrer"
+class="project-link">
+
+INTERVIEWS / NOW ACCEPTING →
+
+</a>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     METHODOLOGY
+========================================================= -->
+
+<section class="section" id="methodology">
+
+<div class="container">
+
+<div class="osint-grid">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+04 / Methodology
+</div>
+
+
+<h2 class="section-title">
+Analysis built on evidence.
+</h2>
+
+
+<p class="section-description">
+
+LISA applies an open-source research methodology
+designed to distinguish verified information,
+analytical assessment and uncertainty.
+
+</p>
+
+
+<div class="method-list">
+
+
+<div class="method">
+
+<div class="method-number">
+01
+</div>
+
+<div>
+
+<h4>
+Collection
+</h4>
+
+<p>
+Gathering information from publicly available
+and credible sources.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="method">
+
+<div class="method-number">
+02
+</div>
+
+<div>
+
+<h4>
+Verification
+</h4>
+
+<p>
+Cross-referencing information and evaluating
+the reliability of available evidence.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="method">
+
+<div class="method-number">
+03
+</div>
+
+<div>
+
+<h4>
+Analysis
+</h4>
+
+<p>
+Identifying patterns, relationships,
+capabilities, constraints and strategic
+implications.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="method">
+
+<div class="method-number">
+04
+</div>
+
+<div>
+
+<h4>
+Assessment
+</h4>
+
+<p>
+Presenting findings with clear distinctions
+between established facts, analysis and
+uncertainty.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="analysis-panel fade-up">
+
+
+<div class="analysis-header">
+
+<div>
+
+<div class="analysis-label">
+LISA ANALYTICAL FRAMEWORK
+</div>
+
+<div class="analysis-subtitle">
+Open-source research methodology
+</div>
+
+</div>
+
+<div class="analysis-status">
+STANDARD
+</div>
+
+</div>
+
+
+<div class="analysis-divider">
+</div>
+
+
+
+<div class="analysis-row">
+
+<div class="analysis-index">
+01
+</div>
+
+<div class="analysis-content">
+
+<h4>
+Evidence
+</h4>
+
+<p>
+What is known, observed or independently
+documented?
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="analysis-row">
+
+<div class="analysis-index">
+02
+</div>
+
+<div class="analysis-content">
+
+<h4>
+Context
+</h4>
+
+<p>
+What circumstances, historical factors or
+strategic conditions shape the issue?
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="analysis-row">
+
+<div class="analysis-index">
+03
+</div>
+
+<div class="analysis-content">
+
+<h4>
+Assessment
+</h4>
+
+<p>
+What conclusions can reasonably be drawn
+from the available evidence?
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="analysis-row">
+
+<div class="analysis-index">
+04
+</div>
+
+<div class="analysis-content">
+
+<h4>
+Uncertainty
+</h4>
+
+<p>
+What remains unknown, contested or subject
+to change?
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="analysis-footer">
+
+<span>
+SOURCE-BASED
+</span>
+
+<span>
+TRANSPARENT
+</span>
+
+<span>
+INDEPENDENT
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESEARCHERS
+========================================================= -->
+
+<section class="section researchers" id="researchers">
+
+<div class="container">
+
+
+<div class="fade-up">
+
+<div class="eyebrow">
+05 / Researchers
+</div>
+
+<h2 class="section-title">
+The people behind the analysis.
+</h2>
+
+<p class="section-description">
+
+LISA's research is conducted by a small team of
+researchers focused on understanding conflict,
+security and geopolitical developments through
+open-source evidence and independent analysis.
+
+</p>
+
+</div>
+
+
+
+<div class="researchers-grid">
+
+
+<!-- =====================================================
+     AUSTIN BURGESS
+===================================================== -->
+
+<div class="researcher fade-up">
+
+<img
+class="researcher-photo"
+src="https://static.wixstatic.com/media/680b13_daf6ea5c83064195bbbefbe0ebaa0c4e~mv2.jpg/v1/fill/w_456,h_456,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/BURGESS.jpg"
+alt="Austin Burgess"
+loading="lazy"
+>
+
+
+<div class="researcher-info">
+
+<h3 class="researcher-name">
+Austin Burgess
+</h3>
+
+<div class="researcher-role">
+Chief Researcher · Ukraine
+</div>
+
+
+<div class="researcher-bio">
+
+<p>
+Austin Burgess is the Founder and Chief Analyst
+of the Latitude Institute for Security Analysis
+(LISA). After studying at Medicine Hat College,
+he gained professional experience in the private
+investigations field, specializing in research,
+analysis, and information gathering.
+</p>
+
+
+<p>
+Austin founded LISA following his work as a
+researcher focused on the Russo-Ukrainian War.
+After achieving his Understanding Modern Warfare
+certificate from King's College London, he gained
+experience examining psychological warfare,
+disinformation, financial dimensions of the conflict,
+and front-line logistics. This deepened his interest
+in the intersection of conflict, intelligence, and
+national security, ultimately shaping the foundation
+of LISA.
+</p>
+
+
+<p>
+His research focuses primarily on the
+Russo-Ukrainian War, with particular interests
+in military strategy, intelligence, information
+warfare, front-line logistics, and the broader
+geopolitical implications of the conflict.
+</p>
+
+</div>
+
+
+<div class="researcher-focus">
+
+PRIMARY FOCUS:
+MILITARY STRATEGY · INTELLIGENCE · INFORMATION WARFARE ·
+FRONT-LINE LOGISTICS · GEOPOLITICS
+
+</div>
+
+
+<a
+href="mailto:austin@lisaorg.ca"
+class="researcher-contact">
+
+austin@lisaorg.ca
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CORINA SOLÉ
+===================================================== -->
+
+<div class="researcher fade-up">
+
+<img
+class="researcher-photo"
+src="https://static.wixstatic.com/media/c837a6_599cdf059bbc4fb283530a0ac74c66a9~mv2.jpg/v1/fill/w_460,h_460,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fashion_Gemini%203%20(Nano%20Banana%20Pro)_2026-06-07_13-25-45.jpg"
+alt="Corina Solé"
+loading="lazy"
+>
+
+
+<div class="researcher-info">
+
+<h3 class="researcher-name">
+Corina Solé
+</h3>
+
+<div class="researcher-role">
+Chief Researcher · Middle East
+</div>
+
+
+<div class="researcher-bio">
+
+<p>
+Corina is LISA's primary researcher covering
+conflicts and security developments across the
+Middle East. She holds a Certificate in Peace
+Studies from the University of Saskatchewan and
+applies an interdisciplinary approach to
+understanding the causes, evolution, and future
+trajectories of modern conflicts.
+</p>
+
+
+<p>
+Her primary area of focus is U.S. intervention
+and strategic involvement in Iran, while her broader
+research encompasses a range of lesser-known
+conflicts and security issues that have significant
+implications for North American, and especially
+Canadian interests.
+</p>
+
+
+<p>
+Through her research, Corina seeks not only to
+understand the historical forces that shape conflict,
+but also to identify emerging trends and assess how
+they may influence the future of global security.
+</p>
+
+</div>
+
+
+<div class="researcher-focus">
+
+PRIMARY FOCUS:
+MIDDLE EAST · IRAN · CONFLICT ANALYSIS ·
+U.S. STRATEGIC INVOLVEMENT · CANADIAN SECURITY
+
+</div>
+
+
+<a
+href="mailto:corina@lisaorg.ca"
+class="researcher-contact">
+
+corina@lisaorg.ca
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta" id="contact">
+
+<div class="container fade-up">
+
+
+<div class="eyebrow">
+Latitude Institute for Security Analysis
+</div>
+
+
+<h2>
+SECURITY DESERVES<br>
+SERIOUS ANALYSIS.
+</h2>
+
+
+<a
+href="mailto:austin@lisaorg.ca"
+class="button button-primary">
+
+Contact LISA
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+<div>
+
+<!-- Clicking LISA returns to absolute top -->
+
+<a href="#top" class="logo-text">
+LISA
+</a>
+
+<p class="footer-description">
+
+Latitude Institute for Security Analysis.
+Independent Canadian research and analysis
+on conflict, defence, geopolitics and
+national security.
+
+</p>
+
+</div>
+
+
+
+<div class="footer-links">
+
+<!-- These now jump to the TOP of each section -->
+
+<a href="#mission">
+Mission
+</a>
+
+<a href="#research">
+Research
+</a>
+
+<a href="#projects">
+Projects
+</a>
+
+<a href="#methodology">
+Methodology
+</a>
+
+<a href="#researchers">
+Researchers
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 LISA
+</span>
+
+
+<!-- LISA / ANALYTICAL NOTE -->
+
+<div class="footer-links">
+
+<a href="#top">
+LISA
+</a>
+
+<a href="#top">
+ANALYTICAL NOTE
+</a>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const fadeElements =
+    document.querySelectorAll(".fade-up");
+
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+fadeElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+
+/* =========================================================
+   TOP-OF-PAGE LINKS
+========================================================= */
+
+/*
+   Any link pointing to #top will scroll to the
+   absolute beginning of the page.
+*/
+
+document.querySelectorAll(
+    'a[href="#top"]'
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   SECTION NAVIGATION
+========================================================= */
+
+/*
+   Footer and navigation section links normally jump
+   directly to the element's anchor.
+
+   Because LISA uses a fixed 76px header, this script
+   subtracts the header height and an additional 20px
+   of spacing so the TOP of the section sits visibly
+   beneath the navigation bar.
+*/
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
+
+    const targetId =
+        link.getAttribute("href");
+
+
+    if (
+        targetId === "#top" ||
+        targetId === "#"
+    ) {
+        return;
+    }
+
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            const target =
+                document.querySelector(
+                    targetId
+                );
+
+
+            if (!target) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            const header =
+                document.querySelector(
+                    "header"
+                );
+
+
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 76;
+
+
+            const targetPosition =
+                target.getBoundingClientRect().top
+                +
+                window.pageYOffset
+                -
+                headerHeight
+                -
+                20;
+
+
+            window.scrollTo({
+
+                top:
+                    Math.max(
+                        0,
+                        targetPosition
+                    ),
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   NAVIGATION BACKGROUND
+========================================================= */
+
+const header =
+    document.querySelector(
+        "header"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (
+            window.scrollY > 40
+        ) {
+
+            header.style.background =
+                "rgba(5,8,13,0.92)";
+
+        }
+
+        else {
+
+            header.style.background =
+                "rgba(5,8,13,0.72)";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
