@@ -1,0 +1,1876 @@
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Operation Vivaldi: What Ukraine’s Counteroffensive Reveals | LISA</title>
+
+<meta name="description"
+content="An analysis of Operation Vivaldi, Ukraine’s counteroffensive in northern Donetsk, and what the operation reveals about operational security, electronic warfare, unmanned systems, logistics and the information battle.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+:root {
+
+    --bg: #05080d;
+    --bg-secondary: #080d14;
+    --panel: #0b1119;
+    --panel-light: #0e151f;
+
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.14);
+
+    --text: #e7edf5;
+    --text-soft: #c5ced9;
+    --muted: #8793a4;
+    --muted-light: #aeb8c7;
+
+    --accent: #3c8cff;
+    --accent-soft: rgba(60,140,255,0.10);
+    --accent-border: rgba(60,140,255,0.28);
+
+    --positive: #62c792;
+    --negative: #d87979;
+
+    --max-width: 1200px;
+    --article-width: 860px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+}
+
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.20;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    z-index: -2;
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    top: -300px;
+    right: -300px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(38,107,210,0.11),
+            transparent 68%
+        );
+
+    pointer-events: none;
+
+    z-index: -3;
+}
+
+
+::selection {
+
+    background: var(--accent);
+
+    color: white;
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   SITE HEADER
+========================================================= */
+
+.site-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(5,8,13,0.82);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.nav {
+
+    width:
+        min(
+            var(--max-width),
+            calc(100% - 48px)
+        );
+
+    height: 72px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo-mark {
+
+    width: 32px;
+    height: 32px;
+
+    border:
+        1px solid
+        var(--accent);
+
+    display: grid;
+
+    place-items: center;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 12px;
+
+    color: var(--accent);
+
+    position: relative;
+}
+
+
+.logo-mark::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.28);
+}
+
+
+.logo-text {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    font-size: 14px;
+}
+
+
+.logo-sub {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 7px;
+
+    color: var(--muted);
+
+    letter-spacing: 0.10em;
+
+    margin-top: -2px;
+}
+
+
+.back-link {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.08em;
+
+    color: var(--muted);
+
+    transition:
+        0.25s ease;
+}
+
+
+.back-link:hover {
+
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   ARTICLE WRAPPER
+========================================================= */
+
+.article-shell {
+
+    width:
+        min(
+            var(--article-width),
+            calc(100% - 48px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        90px 0 120px;
+}
+
+
+/* =========================================================
+   ARTICLE HEADER
+========================================================= */
+
+.article-header {
+
+    padding-bottom: 42px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.eyebrow {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    margin-bottom: 20px;
+}
+
+
+.article-title {
+
+    font-size:
+        clamp(
+            43px,
+            6vw,
+            70px
+        );
+
+    line-height: 1.02;
+
+    letter-spacing:
+        -0.06em;
+
+    font-weight: 800;
+
+    color: var(--text);
+
+    max-width: 850px;
+}
+
+
+.article-subtitle {
+
+    margin-top: 25px;
+
+    max-width: 760px;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    color: var(--muted-light);
+}
+
+
+.article-meta {
+
+    display: block;
+
+    margin-top: 22px;
+
+    padding-top: 13px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.04em;
+
+    color: var(--muted);
+
+    white-space: nowrap;
+}
+
+
+.article-meta .author {
+
+    color: var(--text);
+
+    font-weight: 600;
+}
+
+
+.meta-divider {
+
+    color:
+        #46515f;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.article-intro {
+
+    margin-top: 10px;
+
+    padding:
+        30px 0 35px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.article-intro p {
+
+    font-size: 20px;
+
+    line-height: 1.78;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   ARTICLE BODY
+========================================================= */
+
+.article-body {
+
+    padding-top: 55px;
+}
+
+
+.article-section {
+
+    margin-bottom: 82px;
+}
+
+
+.section-marker {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 13px;
+}
+
+
+.section-number {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--accent);
+}
+
+
+.section-line {
+
+    height: 1px;
+
+    width: 38px;
+
+    background:
+        var(--accent-border);
+}
+
+
+.article-section h2 {
+
+    font-size:
+        clamp(
+            29px,
+            4vw,
+            42px
+        );
+
+    line-height: 1.12;
+
+    letter-spacing:
+        -0.045em;
+
+    font-weight: 700;
+
+    color:
+        var(--text);
+
+    margin-bottom: 29px;
+}
+
+
+.article-section p {
+
+    font-size: 16px;
+
+    line-height: 1.88;
+
+    color:
+        var(--text-soft);
+
+    margin-bottom: 25px;
+}
+
+
+.article-section p:last-child {
+
+    margin-bottom: 0;
+}
+
+
+.article-section a {
+
+    color:
+        var(--accent);
+
+    text-decoration:
+        underline;
+
+    text-decoration-thickness:
+        1px;
+
+    text-underline-offset:
+        3px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.article-section a:hover {
+
+    color: white;
+}
+
+
+.article-section strong {
+
+    color:
+        var(--text);
+
+    font-weight:
+        600;
+}
+
+
+.article-section em {
+
+    color:
+        var(--text-soft);
+}
+
+
+/* =========================================================
+   QUOTE / ANALYTICAL CALLOUT
+========================================================= */
+
+.article-quote {
+
+    margin:
+        42px 0;
+
+    padding:
+        26px 30px;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        3px solid
+        var(--accent);
+
+    position:
+        relative;
+}
+
+
+.article-quote::before {
+
+    content:
+        "KEY TAKEAWAY";
+
+    position:
+        absolute;
+
+    top:
+        -8px;
+
+    left:
+        20px;
+
+    padding:
+        0 8px;
+
+    background:
+        var(--bg);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.13em;
+
+    color:
+        var(--accent);
+}
+
+
+.article-quote p {
+
+    margin:
+        0;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.7;
+
+    color:
+        var(--text);
+
+    font-style:
+        italic;
+}
+
+
+/* =========================================================
+   ARTICLE FOOTER
+========================================================= */
+
+.article-footer {
+
+    margin-top:
+        20px;
+
+    padding-top:
+        30px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+.footer-label {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--accent);
+
+    margin-bottom:
+        10px;
+}
+
+
+.article-footer p {
+
+    font-size:
+        12px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   PAGE FOOTER
+========================================================= */
+
+.site-footer {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    padding:
+        35px 0;
+}
+
+
+.site-footer-inner {
+
+    width:
+        min(
+            var(--max-width),
+            calc(100% - 48px)
+        );
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.08em;
+
+    color:
+        #536071;
+}
+
+
+.site-footer-inner strong {
+
+    color:
+        var(--muted-light);
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   READING PROGRESS
+========================================================= */
+
+.progress-bar {
+
+    position:
+        fixed;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    height:
+        2px;
+
+    width:
+        0%;
+
+    background:
+        var(--accent);
+
+    z-index:
+        2000;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .nav {
+
+        width:
+            calc(100% - 30px);
+
+        height:
+            65px;
+    }
+
+
+    .back-link {
+
+        font-size:
+            8px;
+    }
+
+
+    .article-shell {
+
+        width:
+            calc(100% - 34px);
+
+        padding:
+            60px 0 80px;
+    }
+
+
+    .article-title {
+
+        font-size:
+            43px;
+
+        line-height:
+            1.04;
+    }
+
+
+    .article-subtitle {
+
+        font-size:
+            15px;
+    }
+
+
+    .article-meta {
+
+        font-size:
+            9px;
+
+        white-space:
+            normal;
+
+        line-height:
+            1.8;
+    }
+
+
+    .article-intro {
+
+        margin-top:
+            10px;
+
+        padding:
+            25px 0 30px;
+    }
+
+
+    .article-intro p {
+
+        font-size:
+            18px;
+
+        line-height:
+            1.75;
+    }
+
+
+    .article-body {
+
+        padding-top:
+            42px;
+    }
+
+
+    .article-section {
+
+        margin-bottom:
+            65px;
+    }
+
+
+    .article-section h2 {
+
+        font-size:
+            30px;
+
+        margin-bottom:
+            23px;
+    }
+
+
+    .article-section p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.82;
+    }
+
+
+    .article-quote {
+
+        margin:
+            35px 0;
+
+        padding:
+            24px 22px;
+    }
+
+
+    .article-quote p {
+
+        font-size:
+            16px;
+    }
+
+
+    .site-footer-inner {
+
+        width:
+            calc(100% - 34px);
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     READING PROGRESS
+========================================================= -->
+
+<div class="progress-bar" id="progressBar"></div>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+<div class="nav">
+
+
+<a href="https://www.lisaorg.ca/" class="logo">
+
+<div class="logo-mark">
+L
+</div>
+
+<div>
+
+<div class="logo-text">
+LISA
+</div>
+
+<div class="logo-sub">
+LATITUDE INSTITUTE FOR SECURITY ANALYSIS
+</div>
+
+</div>
+
+</a>
+
+
+<a
+href="https://www.lisaorg.ca/"
+class="back-link">
+
+← BACK TO LISA
+
+</a>
+
+
+</div>
+
+</header>
+
+
+
+<!-- =========================================================
+     ARTICLE
+========================================================= -->
+
+<main class="article-shell">
+
+
+<!-- =========================================================
+     ARTICLE HEADER
+========================================================= -->
+
+<header class="article-header">
+
+
+<div class="eyebrow">
+LISA / UKRAINE CONFLICT ANALYSIS
+</div>
+
+
+<h1 class="article-title">
+
+Operation Vivaldi: What Ukraine’s Counteroffensive Reveals
+
+</h1>
+
+
+<p class="article-subtitle">
+
+An analysis of Ukraine’s Operation Vivaldi in northern Donetsk and what the counteroffensive reveals about operational security, electronic warfare, unmanned systems, logistics and the information battle.
+
+</p>
+
+
+<div class="article-meta">
+
+<strong>Austin Burgess</strong> · Chief Analyst – Ukraine, LISA · Sept. 27, 2026 · 12 min read
+
+</div>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<div class="article-intro">
+
+<p>
+
+In northern Donetsk, Ukraine’s 3rd Army Corps has launched and publicly acknowledged <a
+href="https://www.atalayar.com/en/articulo/politics/what-is-operation-vivaldi-ukraine-breaches-russian-lines-and-neutralises-jet-powered-drones/20260921140000229430.html"
+target="_blank"
+rel="noopener noreferrer">
+Operation Vivaldi
+</a>,
+
+a counteroffensive that has so far resulted in roughly 50 square kilometres of territory being retaken from Russian forces across its first two phases. Behind those numbers is a broader story about how Ukraine is attempting to fight back against Russia’s 2026 offensive.
+
+</p>
+
+</div>
+
+
+
+<!-- =========================================================
+     ARTICLE BODY
+========================================================= -->
+
+<article class="article-body">
+
+
+<!-- =====================================================
+     SECTION 01
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+01
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+What Is Operation Vivaldi?
+</h2>
+
+
+<p>
+
+Operation Vivaldi is a Ukrainian counteroffensive in northern Donetsk Oblast, one of the regions at the centre of Russia’s war against Ukraine since 2014. After a decade of fighting, Russia still has not conquered the oblast.
+
+</p>
+
+
+<p>
+
+As of February 2022 the Russian Armed Forces and the forces under Russia's control already held <a
+href="https://www.thefivecoatconsultinggroup.com/the-coronavirus-crisis/ukraine-context-d53"
+target="_blank"
+rel="noopener noreferrer">
+32%
+</a>
+
+of the territory in Donetsk Oblast and by 2026 that number had risen to <a
+href="https://www.pravda.com.ua/eng/news/2026/02/06/8019773/"
+target="_blank"
+rel="noopener noreferrer">
+78%.
+</a>
+
+</p>
+
+
+<p>
+
+Donetsk is no longer a pure defensive fight: Ukrainian forces are counter-attacking, taking back territory, and disrupting Russian lines even as the Russians continue their own offensive. Instead of simply defending against Russian advances, Ukrainian forces are attempting to reclaim ground and disrupt Russian positions in an area where Moscow is still trying to advance.
+
+</p>
+
+
+<p>
+
+Vivaldi is one of <a
+href="https://en.wikipedia.org/wiki/2026_Ukrainian_counteroffensive"
+target="_blank"
+rel="noopener noreferrer">
+several
+</a>
+
+counteroffensive operations launched by Ukrainian forces in 2026, a year in which some Ukrainian and Western analysts have argued that the battlefield balance is beginning to shift.
+
+</p>
+
+
+<p>
+
+Vivaldi’s counteroffensive is unique in the operational security / information silence. The counteroffensive began without any public announcement. By the time Andrii Biletskyi, commander of the 3rd Army Corps, <a
+href="https://www.kyivpost.com/post/84556"
+target="_blank"
+rel="noopener noreferrer">
+confirmed
+</a>
+
+the first phase on 15 September, Ukrainian troops had already cleared roughly 75 square kilometres of Russian positions and taken back over 10 square kilometres of territory, among them the settlement of Serednie.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+Vivaldi represents a Ukrainian attempt to push the front line backward in an area where Russia is still trying to advance. The first phase was already underway before Ukraine publicly acknowledged the operation.
+
+</p>
+
+</blockquote>
+
+
+<p>
+
+Vivaldi is particularly notable because battlefield transparency has become a defining feature of the war. <a
+href="https://t.me/landforcesofukraine"
+target="_blank"
+rel="noopener noreferrer">
+Ukraine
+</a>
+
+and <a
+href="https://t.me/s/rybar"
+target="_blank"
+rel="noopener noreferrer">
+Russia
+</a>
+
+routinely publish drone footage, geolocations, claims of advances and battlefield updates. OSINT groups such as DeepState and LiveUAmap have also become important sources for tracking changes on the front.
+
+</p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 02
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+02
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+The Offensive Ukraine Kept Quiet
+</h2>
+
+
+<p>
+
+Commercial satellite imagery, Telegram channels, military bloggers, battlefield footage and dedicated OSINT mapping projects have created an environment where major movements can sometimes be identified before either side officially acknowledges them. Every destroyed vehicle can become a geolocation, every drone video can reveal a position. Furthermore, a series of small changes on a battlefield map can eventually expose a larger movement.
+
+</p>
+
+
+<p>
+
+Vivaldi appears to have taken a different approach. The <a
+href="https://t.me/ab3army/2520"
+target="_blank"
+rel="noopener noreferrer">
+3rd Army Corps
+</a>
+
+deliberately maintained what it described as “information silence” while the first phase was underway. Rather than announcing the counteroffensive as Ukrainian forces began moving, the corps waited until its forces had already cleared Russian infiltration positions and established control over territory. When Biletskyi announced the operation on September 15, the battlefield had already changed.
+
+</p>
+
+
+<p>
+
+For Ukraine, this shows that information can decide what happens next on this battlefield: the difference is between knowing that something is happening and knowing exactly what it is.
+
+</p>
+
+
+<p>
+
+If Russian commanders figure out that Ukrainian forces are getting ready for a larger push in one sector, they can reinforce the positions under threat by moving their artillery, bringing up reserves, or putting more drones over the area; when the bigger picture stays fuzzy, it’s much harder for them to work out whether the attacks coming at them are just local probes or the start of something bigger.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+Vivaldi shows that operational secrecy can still create an advantage on a battlefield saturated with surveillance. The movement of Ukrainian forces was visible only after the larger operation had already begun to take shape.
+
+</p>
+
+</blockquote>
+
+
+<p>
+
+Secrecy only gets an offensive, or in this case, a counter offensive, so far. On a battlefield where Russian UAVs provide nearly constant reconnaissance, Ukrainian forces needed to degrade that surveillance network enough to maneuver, assault and consolidate their gains. This is where Vivaldi's drone and electronic warfare campaign becomes important.
+
+</p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 03
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+03
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+How Ukraine Opened the Battlefield
+</h2>
+
+
+<p>
+
+Before Ukraine could move across the battlefield, it first had to make the battlefield harder for Russian reconnaissance teams to see. The 3rd Army Corps says its electronic warfare units disrupted more than <a
+href="https://united24media.com/war-in-ukraine/ukraines-3rd-army-corps-shares-combat-footage-from-operation-vivaldi-counteroffensive-22662"
+target="_blank"
+rel="noopener noreferrer">
+20,000 Russian
+</a>
+
+drone missions. Although that figure doesn’t mean 20,000 drones were destroyed, EW systems detected and interfered with Russian UAV operations while passing information to other elements of the force, including air defence.
+
+</p>
+
+
+<p>
+
+Vivaldi shows why electronic warfare has become so important to modern offensive operations. By disrupting Russian reconnaissance, Ukraine could interfere with the flow of information between Russian units observing the battlefield and the forces responding to what they saw. This produces less reliable information, delayed decisions and shorter windows for Russian forces to react. For Ukrainian troops attempting to move through contested territory, even a temporary advantage in that information battle can create the space needed to advance.
+
+</p>
+
+
+<p>
+
+Ukraine's advantage in the information battle still leaves one fundamental problem: someone eventually has to enter the territory.
+
+</p>
+
+
+<p>
+
+Vivaldi shows Ukraine attempting to solve part of that problem with machines: Heavy drones have been used to carry unmanned ground vehicles deep behind Russian positions, while ground robots are increasingly being used for assault, mine clearance, resupply and casualty evacuation.
+
+</p>
+
+
+<p>
+
+The Ukraine forces continue to emphasise that they have an objective of keeping soldiers out of some of the most dangerous parts of the battlefield for as long as possible.
+
+</p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 04
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+04
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+Robots Go to War
+</h2>
+
+
+<p>
+
+The most unusual development reported during Vivaldi may have come from the combination of two unmanned systems that normally operate separately: an aerial drone and a ground robot.
+
+</p>
+
+
+<p>
+
+During the operation’s second phase, Ukrainian forces <a
+href="https://t.me/ab3army/7495"
+target="_blank"
+rel="noopener noreferrer">
+reported
+</a>
+
+using heavy bomber drones to carry unmanned ground vehicles more than 10 kilometres behind Russian lines. Once released, the ground vehicles could operate on the surface without putting a Ukrainian soldier inside the vehicle. The corps described the tactic as a first-of-its-kind operation, although earlier experiments involving heavy drones carrying UGVs had already taken place.
+
+</p>
+
+
+<p>
+
+Ground robots can be vulnerable to mines, artillery, FPV drones and adverse terrain before it ever reaches its objective destination; by carrying it through the air, it bypasses some of those obstacles and allows Ukraine to place an unmanned vehicle directly into the area where it is needed.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+Vivaldi appears to be combining electronic warfare, aerial drones and ground robots into the same offensive sequence: disrupt Russian surveillance, create an opening, move an unmanned system into the battlespace, and reduce the exposure of Ukrainian personnel.
+
+</p>
+
+</blockquote>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 05
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+05
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+Killing the System, Not Just the Soldier
+</h2>
+
+
+<p>
+
+Taking territory is only one part of an offensive. Holding it requires disrupting the network that keeps the opposing force supplied and connected.
+
+</p>
+
+
+<p>
+
+Ukraine’s Unmanned Systems Units conducted <a
+href="https://militarnyi.com/en/news/operation-vivaldi-drone-strikes-force-russian-forces-to-use-longer-supply-routes/"
+target="_blank"
+rel="noopener noreferrer">
+36,000 strike missions
+</a>
+
+during the operation’s first phase. They have been targeting Russian fuel depots, ammunition storage sites, command posts, and vehicles. The corps says these strikes have continued into later phases of the counteroffensive.
+
+</p>
+
+
+<p>
+
+The 3rd Army Corps also reported <a
+href="https://www.dagens.com/war/operation-vivaldi-strike-on-pipeline-forces-400-km-fuel-detour-for-russian-troops"
+target="_blank"
+rel="noopener noreferrer">
+striking a pipeline
+</a>
+
+running from Russia's Voronezh region into occupied Luhansk. According to the corps, the pipeline supplied approximately half of Russian forces’ daily diesel requirements in the region, and after it was shut down, Russian forces were reportedly forced to rely on tanker trucks.
+
+</p>
+
+
+<p>
+
+Critical Threats <a
+href="https://www.criticalthreats.org/analysis/ukraine-conflict-updates-ctp-isw"
+target="_blank"
+rel="noopener noreferrer">
+reported
+</a>
+
+that the disruption also made it harder to run the diesel generators powering Russian drones and electronic warfare systems. Those claims haven’t been independently verified.
+
+</p>
+
+
+<p>
+
+Modern armies do not fight only where soldiers meet on the front line: A reconnaissance unit spots a target, commanders decide how to respond, the order is passed down the chain, logistics move the ammunition and fuel forward, and then the vehicles and troops carry out the attack.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+Vivaldi was not just an attack on Russian positions. Ukraine targeted the network behind them, including fuel, ammunition, communications, command posts and supply routes, to make Russian forces harder to sustain.
+
+</p>
+
+</blockquote>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 06
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+06
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+The Smaller Force Attacking the Larger One
+</h2>
+
+
+<p>
+
+According to a <a
+href="https://www.youtube.com/watch?v=iauv7plhosE"
+target="_blank"
+rel="noopener noreferrer">
+member of the 3rd Army Corps
+</a>,
+
+Ukrainian forces were already operating below strength when they launched the offensive. Ukraine conducted the assault without receiving additional forces or a new mobilisation.
+
+</p>
+
+
+<p>
+
+Rather than waiting for every decision to move up the chain of command, subordinate commanders are given greater freedom to act on information from the battlefield. That system depends heavily on accurate reporting. Commanders need to know which positions are actually held, where their forces are located and when something has been lost.
+
+</p>
+
+
+<p>
+
+The result is intended to be a force that can move and react faster than a larger opponent. Vivaldi was therefore not simply a massed assault against Russian positions. The 3rd Army Corps describes it as an “avalanche”: months of preparation and shaping followed by a concentrated offensive whose scale was deliberately concealed until Ukrainian forces were already moving.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+The 3rd Army Corps says one Ukrainian corps successfully attacked Russian forces spanning three army echelons without receiving additional forces for the operation.
+
+</p>
+
+</blockquote>
+
+
+<p>
+
+A smaller force cannot afford to move blindly, and commanders cannot decentralise decisions if they do not know what is happening at the front, but Vivaldi creates a second information problem: how do we know what actually happened?
+
+</p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 07
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+07
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+The Information Problem
+</h2>
+
+
+<p>
+
+The answer to how we know what actually happened is complicated.
+
+</p>
+
+
+<p>
+
+Ukraine deliberately kept the operation quiet while its forces were advancing. Russia has its own reasons to obscure battlefield losses, withdrawals and positions.
+
+</p>
+
+
+<p>
+
+Russian military bloggers sometimes <a
+href="https://www.usip.org/publications/2023/08/how-russias-military-bloggers-shape-course-putins-war"
+target="_blank"
+rel="noopener noreferrer">
+report
+</a>
+
+things that clash with the official Russian line. Ukrainian officials and units put out their own versions of events, and history shows that each side seems to have bias toward their own advances. Independent open source analysts add another layer by using geolocated footage, satellite images and local ground observations to check what can actually be confirmed.
+
+</p>
+
+
+<p>
+
+Ukrainian claims that a settlement has been liberated is not the same as independently verified territorial control, especially by non-biased military researchers. Likewise, a Russian statement that an assault was repelled is not proof that Ukrainian troops failed to advance.
+
+</p>
+
+
+<p>
+
+Ukraine kept this operation deliberately quiet which caused outside observers to have very little to go on while it was still unfolding. Battlefield mapping projects such as <a
+href="https://deepstatemap.live/#6/49.4383200/32.0526800"
+target="_blank"
+rel="noopener noreferrer">
+DeepState
+</a>,
+
+satellite imagery analysts and organisations such as the <a
+href="https://understandingwar.org/analysis/russia-ukraine/"
+target="_blank"
+rel="noopener noreferrer">
+ISW
+</a>
+
+could only build their assessments from the evidence available to them. In an operation where Ukraine was deliberately limiting what it disclosed, that evidence was necessarily incomplete.
+
+</p>
+
+
+<p>
+
+The result is an unusual situation: information about the operation is arriving after the operation itself.
+
+</p>
+
+
+<p>
+
+The same operational security that helped Ukraine preserve surprise also makes Vivaldi harder to reconstruct. The less Ukraine reveals while an operation is underway, the less information Russia has to respond to; but, it also means outside observers have less information with which to independently assess events as they happen. A satellite image can show that a position changed. A military statement can reveal what one side wants the public to know. None, by itself, explains the entire operation.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+Vivaldi is difficult to reconstruct in real time because the same secrecy that limited Russia’s ability to anticipate the operation also limited the evidence available to outside observers.
+
+</p>
+
+</blockquote>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 08
+===================================================== -->
+
+<section class="article-section">
+
+
+<div class="section-marker">
+
+<span class="section-number">
+08
+</span>
+
+<span class="section-line">
+</span>
+
+</div>
+
+
+<h2>
+What Vivaldi Reveals
+</h2>
+
+
+<p>
+
+Vivaldi is still unfolding, and its final results are not yet known. Russia may respond with further offensive operations aimed at retaking territory lost during the counteroffensive, but enough of the operation is visible to identify a change in how Ukraine is attempting to fight for ground.
+
+</p>
+
+
+<p>
+
+Vivaldi has combined capabilities that are often discussed separately: operational security to preserve surprise, electronic warfare to disrupt Russian reconnaissance, unmanned systems to reduce exposure to Ukrainian personnel, and strikes against the logistics supporting Russian positions.
+
+</p>
+
+
+<p>
+
+None of these capabilities wins territory on its own. Infantry still has to clear positions, hold ground and respond to Russian counterattacks. But Vivaldi shows an attempt to connect these capabilities into a single battlefield system, using technology and preparation to create opportunities for a force facing a manpower disadvantage. The operation does not demonstrate that Ukraine has solved its manpower problem, nor does the territory captured so far determine the eventual outcome of Vivaldi.
+
+</p>
+
+
+<p>
+
+Russia retains the ability to reinforce, counterattack and contest Ukrainian gains.
+
+</p>
+
+
+<p>
+
+What Vivaldi does provide is an example of Ukraine attempting to make a smaller force harder to detect, harder to target and more capable of generating effects beyond the immediate frontline.
+
+</p>
+
+
+<blockquote class="article-quote">
+
+<p>
+
+Vivaldi does not show that Ukraine has overcome its manpower disadvantage. It shows how Ukraine is attempting to offset that disadvantage by combining secrecy, electronic warfare, unmanned systems and long-range strikes into a single operation.
+
+</p>
+
+</blockquote>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ARTICLE FOOTER
+========================================================= -->
+
+<footer class="article-footer">
+
+<div class="footer-label">
+LISA / ANALYTICAL NOTE
+</div>
+
+<p>
+
+This article reflects information and assessments available
+during the stated reporting period. Developments in an active
+conflict can change rapidly, and subsequent reporting may alter
+or supersede individual assessments.
+
+</p>
+
+</footer>
+
+
+</article>
+
+</main>
+
+
+
+<!-- =========================================================
+     SITE FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+<div class="site-footer-inner">
+
+<span>
+<strong>LISA</strong> — Latitude Institute for Security Analysis
+</span>
+
+<span>
+INDEPENDENT · EVIDENCE-BASED · CANADIAN
+</span>
+
+</div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+const progressBar =
+    document.getElementById("progressBar");
+
+
+window.addEventListener("scroll", () => {
+
+    const scrollTop =
+        window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight
+        - window.innerHeight;
+
+    const progress =
+        documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    progressBar.style.width =
+        progress + "%";
+
+});
+
+
+</script>
+
+
+</body>
+</html>
