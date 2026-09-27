@@ -488,6 +488,190 @@ nav {
 }
 
 
+/* MOBILE MENU BUTTON */
+
+.mobile-menu-button {
+
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    border:
+        1px solid
+        var(--border-bright);
+
+    background:
+        transparent;
+
+    color:
+        var(--muted-light);
+
+    cursor:
+        pointer;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        18px;
+
+    transition:
+        0.25s ease;
+}
+
+
+.mobile-menu-button:hover {
+
+    border-color:
+        var(--accent);
+
+    color:
+        white;
+
+    background:
+        var(--accent-soft);
+}
+
+
+.mobile-menu {
+
+    display: none;
+
+    position: absolute;
+
+    top: 76px;
+
+    left: 0;
+
+    width: 100%;
+
+    background:
+        rgba(5,8,13,0.97);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    padding:
+        10px 20px 18px;
+
+    backdrop-filter:
+        blur(18px);
+}
+
+
+.mobile-menu.open {
+
+    display: block;
+}
+
+
+.mobile-menu > a,
+.mobile-menu-toggle {
+
+    display: flex;
+
+    width: 100%;
+
+    padding:
+        14px 8px;
+
+    color:
+        var(--muted-light);
+
+    font-size:
+        14px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.05);
+
+    background:
+        transparent;
+
+    border-left:
+        none;
+
+    border-right:
+        none;
+
+    border-top:
+        none;
+
+    font-family:
+        "Inter", sans-serif;
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+}
+
+
+.mobile-menu > a:hover,
+.mobile-menu-toggle:hover {
+
+    color:
+        white;
+}
+
+
+.mobile-menu-toggle {
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+}
+
+
+.mobile-research-menu {
+
+    display:
+        none;
+
+    padding:
+        0 0 5px 15px;
+}
+
+
+.mobile-research-menu.open {
+
+    display:
+        block;
+}
+
+
+.mobile-research-menu a {
+
+    display:
+        block;
+
+    padding:
+        11px 8px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+}
+
+
+.mobile-research-menu a:hover {
+
+    color:
+        white;
+}
+
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -2176,6 +2360,12 @@ footer {
     }
 
 
+    .mobile-menu-button {
+
+        display: flex;
+    }
+
+
     .hero {
 
         min-height: auto;
@@ -2436,7 +2626,73 @@ Contact
 
 </div>
 
+
+<!-- MOBILE MENU BUTTON -->
+
+<button
+class="mobile-menu-button"
+id="mobileMenuButton"
+aria-label="Open navigation menu"
+aria-expanded="false">
+
+☰
+
+</button>
+
+
 </nav>
+
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="#mission">
+Mission
+</a>
+
+
+<button
+class="mobile-menu-toggle"
+id="mobileResearchToggle"
+aria-expanded="false">
+
+<span>Research</span>
+
+<span>▾</span>
+
+</button>
+
+
+<div class="mobile-research-menu" id="mobileResearchMenu">
+
+<a href="ukraine.html">
+Ukraine
+</a>
+
+</div>
+
+
+<a href="#projects">
+Projects
+</a>
+
+
+<a href="#methodology">
+Methodology
+</a>
+
+
+<a href="#researchers">
+Researchers
+</a>
+
+
+<a href="#contact">
+Contact
+</a>
+
+</div>
 
 </div>
 
@@ -2947,22 +3203,93 @@ reporting period.
 <div class="territory-grid">
 
 <div class="territory-card territory-card-primary fade-up">
-<div class="territory-card-label">UKRAINIAN CONTROL</div>
-<div class="territory-card-title">Controlled</div>
-<div><span class="territory-card-number">75,345</span> <span class="territory-card-unit">km²</span></div>
+
+<div class="territory-card-label">
+UKRAINIAN CONTROL
+</div>
+
+<div class="territory-card-title">
+Controlled
+</div>
+
+<div>
+<span class="territory-card-number">75,345</span>
+<span class="territory-card-unit">km²</span>
+</div>
+
 <div class="territory-card-divider"></div>
-<div class="territory-snapshot-heading">Snapshot as of Sept. 8, 2026</div>
+
+<div class="territory-snapshot-heading">
+Snapshot as of Sept. 23, 2026
+</div>
+
 <div class="territory-snapshot-grid">
-<div class="territory-snapshot-stat"><div class="territory-snapshot-number">73,079 km²</div><div class="territory-snapshot-label">Net territory captured by Russia since February 24, 2022</div></div>
-<div class="territory-snapshot-stat"><div class="territory-snapshot-number">≈45,951 km²</div><div class="territory-snapshot-label">Net territory recovered from Russia's peak territorial footprint</div></div>
-<div class="territory-snapshot-stat"><div class="territory-snapshot-number">+36 km²</div><div class="territory-snapshot-label">Russian net territorial gain, Aug. 11–Sept. 8, 2026</div></div>
+
+<div class="territory-snapshot-stat">
+
+<div class="territory-snapshot-number">
+73,079 km²
 </div>
-<div class="territory-source territory-source-link">SOURCE: <a href="https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-sept-9-2026" target="_blank" rel="noopener noreferrer">RUSSIA MATTERS / SEPT. 9, 2026 REPORT CARD ↗</a></div>
+
+<div class="territory-snapshot-label">
+Net territory captured by Russia since February 24, 2022
 </div>
 
 </div>
 
-<div class="territory-source">TERRITORIAL CONTROL FIGURES ARE BASED ON OPEN-SOURCE GEOSPATIAL ASSESSMENTS. CONTROLLED TERRITORY / 01 SEPTEMBER 2026. SNAPSHOT / 08 SEPTEMBER 2026. NET RUSSIAN GAIN / 11 AUGUST–08 SEPTEMBER 2026.</div>
+
+<div class="territory-snapshot-stat">
+
+<div class="territory-snapshot-number">
+≈45,500 km²
+</div>
+
+<div class="territory-snapshot-label">
+Net territory recovered from Russia's peak territorial footprint
+</div>
+
+</div>
+
+
+<div class="territory-snapshot-stat">
+
+<div class="territory-snapshot-number">
+−8 sq mi
+</div>
+
+<div class="territory-snapshot-label">
+Russian net territorial loss, Sept. 14–21, 2026
+</div>
+
+</div>
+
+</div>
+
+
+<div class="territory-source territory-source-link">
+
+SOURCE:
+<a
+href="https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-sept-23-2026"
+target="_blank"
+rel="noopener noreferrer">
+
+RUSSIA MATTERS / SEPT. 23, 2026 REPORT CARD ↗
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="territory-source">
+
+TERRITORIAL CONTROL FIGURES ARE BASED ON OPEN-SOURCE GEOSPATIAL ASSESSMENTS. SNAPSHOT / 23 SEPTEMBER 2026. DEEPSTATE WEEKLY CHANGE / 14–21 SEPTEMBER 2026.
+
+</div>
 
 </div>
 
@@ -3013,7 +3340,7 @@ PROJECT / 001
 </span>
 
 <span>
-CANADA
+UKRAINE
 </span>
 
 </div>
@@ -3022,22 +3349,26 @@ CANADA
 <div>
 
 <h3>
-Why Ukraine Matters to Canada
+Operation Vivaldi: What Ukraine’s Counteroffensive Reveals
 </h3>
 
 <p>
-Examining what the war in Ukraine means
-for Canada's military, defence policy,
-NATO commitments, Arctic security,
-economy and future national security.
+Analysis of Ukraine's Operation Vivaldi,
+its territorial gains in northern Donetsk,
+and what the counteroffensive reveals
+about modern battlefield adaptation.
 </p>
 
 </div>
 
 
-<div class="project-link">
-COMING SOON
-</div>
+<a
+href="/articles/vivaldi"
+class="project-link">
+
+VIEW PROJECT →
+
+</a>
 
 </article>
 
@@ -3063,23 +3394,21 @@ OSINT
 <div>
 
 <h3>
-Ukraine Conflict Intelligence
+What Is Actually Happening in Ukraine? The August 2026 Update
 </h3>
 
 <p>
-Open-source analysis of battlefield
-developments, territorial control,
-military capabilities and strategic
-adaptation.
+Open-source analysis of Russia's summer
+offensive, Ukraine's deep-strike campaign,
+territorial changes and the evolving
+strategic environment.
 </p>
 
 </div>
 
 
 <a
-href="https://www.lisaorg.ca/ukraine-aug2026"
-target="_blank"
-rel="noopener noreferrer"
+href="/articles/ukraine-aug-2026"
 class="project-link">
 
 VIEW PROJECT →
@@ -3984,6 +4313,150 @@ document.querySelectorAll(
 
 
 /* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenuButton =
+    document.getElementById(
+        "mobileMenuButton"
+    );
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+const mobileResearchToggle =
+    document.getElementById(
+        "mobileResearchToggle"
+    );
+
+const mobileResearchMenu =
+    document.getElementById(
+        "mobileResearchMenu"
+    );
+
+
+/*
+   Open / close the main mobile menu.
+*/
+
+mobileMenuButton.addEventListener(
+    "click",
+    function() {
+
+        const isOpen =
+            mobileMenu.classList.toggle(
+                "open"
+            );
+
+        mobileMenuButton.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+        mobileMenuButton.textContent =
+            isOpen ? "✕" : "☰";
+
+    }
+);
+
+
+/*
+   Open / close Research inside the mobile menu.
+*/
+
+mobileResearchToggle.addEventListener(
+    "click",
+    function() {
+
+        const isOpen =
+            mobileResearchMenu.classList.toggle(
+                "open"
+            );
+
+        mobileResearchToggle.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    }
+);
+
+
+/*
+   Close the mobile menu after selecting
+   a normal section link.
+*/
+
+mobileMenu.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        function() {
+
+            mobileMenu.classList.remove(
+                "open"
+            );
+
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            mobileMenuButton.textContent =
+                "☰";
+
+        }
+    );
+
+});
+
+
+/*
+   Close the mobile menu if the user clicks
+   the Ukraine Research link.
+*/
+
+mobileResearchMenu.querySelectorAll(
+    "a"
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        function() {
+
+            mobileMenu.classList.remove(
+                "open"
+            );
+
+            mobileResearchMenu.classList.remove(
+                "open"
+            );
+
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            mobileResearchToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            mobileMenuButton.textContent =
+                "☰";
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
    NAVIGATION BACKGROUND
 ========================================================= */
 
@@ -4016,6 +4489,11 @@ window.addEventListener(
     }
 );
 
+</script>
+
+
+</body>
+</html>
 </script>
 
 
