@@ -1,0 +1,13 @@
+# Latitude Institute for Security Analysis (LISA)
+
+> Independent Canadian research on conflict, defence, geopolitics and national security.
+
+## Website
+- [Homepage](https://www.lisaorg.ca/)
+- [Ukraine analysis](https://www.lisaorg.ca/ukraine.html)
+
+## Research
+- [Operation Vivaldi](https://www.lisaorg.ca/articles/vivaldi.html)
+- [Ukraine: August 2026 update](https://www.lisaorg.ca/articles/ukraine-aug-2026.html)
+
+This file is optional and does not guarantee AI indexing or citation.
