@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Changing Character of War: Technology in Ukraine | LISA</title>
+<meta name="description" content="An analysis of how drone warfare, adaptation cycles, unmanned systems, logistics and external dependencies are changing the character of war in Ukraine.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+
+    --bg: #05080d;
+    --bg-secondary: #080d14;
+    --panel: #0b1119;
+    --panel-light: #0e151f;
+
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.14);
+
+    --text: #e7edf5;
+    --text-soft: #c5ced9;
+    --muted: #8793a4;
+    --muted-light: #aeb8c7;
+
+    --accent: #3c8cff;
+    --accent-soft: rgba(60,140,255,0.10);
+    --accent-border: rgba(60,140,255,0.28);
+
+    --positive: #62c792;
+    --negative: #d87979;
+
+    --max-width: 1200px;
+    --article-width: 860px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+}
+
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.20;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    z-index: -2;
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    top: -300px;
+    right: -300px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(38,107,210,0.11),
+            transparent 68%
+        );
+
+    pointer-events: none;
+
+    z-index: -3;
+}
+
+
+::selection {
+
+    background: var(--accent);
+
+    color: white;
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   SITE HEADER
+========================================================= */
+
+.site-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(5,8,13,0.82);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.nav {
+
+    width:
+        min(
+            var(--max-width),
+            calc(100% - 48px)
+        );
+
+    height: 72px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo-mark {
+
+    width: 32px;
+    height: 32px;
+
+    border:
+        1px solid
+        var(--accent);
+
+    display: grid;
+
+    place-items: center;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 12px;
+
+    color: var(--accent);
+
+    position: relative;
+}
+
+
+.logo-mark::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        rgba(60,140,255,0.28);
+}
+
+
+.logo-text {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    font-size: 14px;
+}
+
+
+.logo-sub {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 7px;
+
+    color: var(--muted);
+
+    letter-spacing: 0.10em;
+
+    margin-top: -2px;
+}
+
+
+.back-link {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.08em;
+
+    color: var(--muted);
+
+    transition:
+        0.25s ease;
+}
+
+
+.back-link:hover {
+
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   ARTICLE WRAPPER
+========================================================= */
+
+.article-shell {
+
+    width:
+        min(
+            var(--article-width),
+            calc(100% - 48px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        90px 0 120px;
+}
+
+
+/* =========================================================
+   ARTICLE HEADER
+========================================================= */
+
+.article-header {
+
+    padding-bottom: 42px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.eyebrow {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    margin-bottom: 20px;
+}
+
+
+.article-title {
+
+    font-size:
+        clamp(
+            43px,
+            6vw,
+            70px
+        );
+
+    line-height: 1.02;
+
+    letter-spacing:
+        -0.06em;
+
+    font-weight: 800;
+
+    color: var(--text);
+
+    max-width: 850px;
+}
+
+
+.article-subtitle {
+
+    margin-top: 25px;
+
+    max-width: 760px;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    color: var(--muted-light);
+}
+
+
+.article-meta {
+
+    display: block;
+
+    margin-top: 22px;
+
+    padding-top: 13px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.04em;
+
+    color: var(--muted);
+
+    white-space: nowrap;
+}
+
+
+.article-meta .author {
+
+    color: var(--text);
+
+    font-weight: 600;
+}
+
+.article-meta.article-byline {
+
+    margin-top: 10px;
+
+    padding-top: 0;
+
+    border-top: 0;
+}
+
+
+.meta-divider {
+
+    color:
+        #46515f;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.article-intro {
+
+    margin-top: 10px;
+
+    padding:
+        30px 0 35px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+.article-intro p {
+
+    font-size: 20px;
+
+    line-height: 1.78;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   ARTICLE BODY
+========================================================= */
+
+.article-body {
+
+    padding-top: 55px;
+}
+
+
+.article-section {
+
+    margin-bottom: 82px;
+}
+
+
+.section-marker {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 13px;
+}
+
+
+.section-number {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--accent);
+}
+
+
+.section-line {
+
+    height: 1px;
+
+    width: 38px;
+
+    background:
+        var(--accent-border);
+}
+
+
+.article-section h2 {
+
+    font-size:
+        clamp(
+            29px,
+            4vw,
+            42px
+        );
+
+    line-height: 1.12;
+
+    letter-spacing:
+        -0.045em;
+
+    font-weight: 700;
+
+    color:
+        var(--text);
+
+    margin-bottom: 29px;
+}
+
+
+.article-section p {
+
+    font-size: 16px;
+
+    line-height: 1.88;
+
+    color:
+        var(--text-soft);
+
+    margin-bottom: 25px;
+}
+
+
+.article-section p:last-child {
+
+    margin-bottom: 0;
+}
+
+
+.article-section a {
+
+    color:
+        var(--accent);
+
+    text-decoration:
+        underline;
+
+    text-decoration-thickness:
+        1px;
+
+    text-underline-offset:
+        3px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.article-section a:hover {
+
+    color: white;
+}
+
+
+.article-section strong {
+
+    color:
+        var(--text);
+
+    font-weight:
+        600;
+}
+
+
+.article-section em {
+
+    color:
+        var(--text-soft);
+}
+
+
+/* =========================================================
+   QUOTE / ANALYTICAL CALLOUT
+========================================================= */
+
+.article-quote {
+
+    margin:
+        42px 0;
+
+    padding:
+        26px 30px;
+
+    background:
+        var(--panel);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        3px solid
+        var(--accent);
+
+    position:
+        relative;
+}
+
+
+.article-quote::before {
+
+    content:
+        "KEY TAKEAWAY";
+
+    position:
+        absolute;
+
+    top:
+        -8px;
+
+    left:
+        20px;
+
+    padding:
+        0 8px;
+
+    background:
+        var(--bg);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.13em;
+
+    color:
+        var(--accent);
+}
+
+
+.article-quote p {
+
+    margin:
+        0;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.7;
+
+    color:
+        var(--text);
+
+    font-style:
+        italic;
+}
+
+
+/* =========================================================
+   ARTICLE FOOTER
+========================================================= */
+
+.article-footer {
+
+    margin-top:
+        20px;
+
+    padding-top:
+        30px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+.footer-label {
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--accent);
+
+    margin-bottom:
+        10px;
+}
+
+
+.article-footer p {
+
+    font-size:
+        12px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   PAGE FOOTER
+========================================================= */
+
+.site-footer {
+
+    border-top:
+        1px solid
+        var(--border);
+
+    padding:
+        35px 0;
+}
+
+
+.site-footer-inner {
+
+    width:
+        min(
+            var(--max-width),
+            calc(100% - 48px)
+        );
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.08em;
+
+    color:
+        #536071;
+}
+
+
+.site-footer-inner strong {
+
+    color:
+        var(--muted-light);
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   READING PROGRESS
+========================================================= */
+
+.progress-bar {
+
+    position:
+        fixed;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    height:
+        2px;
+
+    width:
+        0%;
+
+    background:
+        var(--accent);
+
+    z-index:
+        2000;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .nav {
+
+        width:
+            calc(100% - 30px);
+
+        height:
+            65px;
+    }
+
+
+    .back-link {
+
+        font-size:
+            8px;
+    }
+
+
+    .article-shell {
+
+        width:
+            calc(100% - 34px);
+
+        padding:
+            60px 0 80px;
+    }
+
+
+    .article-title {
+
+        font-size:
+            43px;
+
+        line-height:
+            1.04;
+    }
+
+
+    .article-subtitle {
+
+        font-size:
+            15px;
+    }
+
+
+    .article-meta {
+
+        font-size:
+            9px;
+
+        white-space:
+            normal;
+
+        line-height:
+            1.8;
+    }
+
+
+    .article-intro {
+
+        margin-top:
+            10px;
+
+        padding:
+            25px 0 30px;
+    }
+
+
+    .article-intro p {
+
+        font-size:
+            18px;
+
+        line-height:
+            1.75;
+    }
+
+
+    .article-body {
+
+        padding-top:
+            42px;
+    }
+
+
+    .article-section {
+
+        margin-bottom:
+            65px;
+    }
+
+
+    .article-section h2 {
+
+        font-size:
+            30px;
+
+        margin-bottom:
+            23px;
+    }
+
+
+    .article-section p {
+
+        font-size:
+            16px;
+
+        line-height:
+            1.82;
+    }
+
+
+    .article-quote {
+
+        margin:
+            35px 0;
+
+        padding:
+            24px 22px;
+    }
+
+
+    .article-quote p {
+
+        font-size:
+            16px;
+    }
+
+
+    .site-footer-inner {
+
+        width:
+            calc(100% - 34px);
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+    }
+
+}
+
+
+
+/* Evidence table and source-list additions */
+.evidence-table-wrap { width:100%; overflow-x:auto; margin:28px 0 12px; border:1px solid var(--border); border-radius:8px; background:var(--panel); }
+.evidence-table { width:100%; border-collapse:collapse; min-width:650px; text-align:left; }
+.evidence-table th { padding:15px 16px; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.09em; text-transform:uppercase; background:var(--panel-light); border-bottom:1px solid var(--border-bright); }
+.evidence-table td { padding:15px 16px; color:var(--text-soft); font-size:14px; line-height:1.65; vertical-align:top; border-bottom:1px solid var(--border); }
+.evidence-table tr:last-child td { border-bottom:0; }
+.evidence-table td:first-child { color:var(--text); font-weight:600; min-width:220px; }
+.evidence-table td:last-child { color:var(--muted-light); min-width:150px; }
+.sources-section { margin-top:52px; }
+.sources-note { color:var(--muted); font-size:13px; margin-bottom:20px; }
+.source-item { padding:12px 0; border-bottom:1px solid var(--border); font-size:13px !important; overflow-wrap:anywhere; }
+.source-item a { color:var(--accent); }
+.article-section a { color:var(--accent); text-decoration:underline; text-decoration-color:rgba(60,140,255,.35); text-underline-offset:3px; }
+.article-section a:hover { text-decoration-color:var(--accent); }
+@media (max-width:700px) { .evidence-table td,.evidence-table th { padding:12px; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<header class="site-header"><div class="nav">
+<a href="https://www.lisaorg.ca/" class="logo"><div class="logo-mark">L</div><div><div class="logo-text">LISA</div><div class="logo-sub">LATITUDE INSTITUTE FOR SECURITY ANALYSIS</div></div></a>
+<a href="https://www.lisaorg.ca/" class="back-link">← BACK TO LISA</a>
+</div></header>
+<main class="article-shell">
+<header class="article-header">
+<div class="eyebrow">LISA / UKRAINE CONFLICT ANALYSIS</div>
+<h1 class="article-title">The Changing Character of War: Technology in Ukraine</h1>
+<p class="article-subtitle">The Six-Week War: Why the Decisive Innovation in Ukraine Is Not a Weapon but a Loop</p>
+<div class="article-meta article-byline"><span class="author">Austin Burgess</span> <span class="meta-divider">·</span> Chief Analyst – Ukraine, LISA <span class="meta-divider">·</span> November 13, 2026 <span class="meta-divider">·</span> 22 min read</div>
+</header>
+<div class="article-intro"><p>Research assessment, 17 October 2026. This subject moves weekly. The evidence ratings near the end say how much weight each major claim can bear.</p></div>
+<article class="article-body">
+<section class="article-section">
+<div class="section-marker"><span class="section-number">01</span><span class="section-line"></span></div>
+<h2>A Kilometre in Four Hours</h2><p>In Ukraine, near the frontlines, a group of soldiers recently needed four hours to cover a single kilometre. Each time a drone passed overhead they froze and hid before moving again when the drone was gone. The detail comes from a brigade spokesman speaking to NPR this month, and it summarises modern war better than any inventory of weapons. Night does not help, because the drones carry thermal cameras.</p><p>The ground those soldiers were crossing is the kill zone: a belt roughly ten to twenty miles (15-30 km) deep on each side of a front line more than 700 miles (1126 km) long. The line has barely moved in four years, and most of the killing happens inside the belt. Rob Lee of the Foreign Policy Research Institute calls it a product of drone warfare itself, and NPR reports that Lee and other analysts put drones’ share of all casualties at around 80 percent. That figure is less solid than it sounds, and we will come back to it.</p><p>This assessment asks one question: what, exactly, did the drones change? The fashionable answers are that they made war cheap, that they restored the dominance of the defence, and that they have opened the age of robot armies. Each is partly true and each misleads.</p><p>Technology in Ukraine has not gotten rid of the old logic of war: mass, logistics, attrition. It has compressed it. It turned the front into a zone that punishes anyone who must move through it, and it moved the decisive contest from the platform to the loop: how fast a side detects a countermeasure, redesigns, builds and fields the fix, and how many links in that chain it actually controls. A side that depends on someone else’s switch, whether a satellite network or a Chinese magnet, does not fully own its edge.</p><p>Both armies have learned this. They have learned it in different ways, and neither has yet proved its way is the better one.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">02</span><span class="section-line"></span></div>
+<h2>The Six-Week War</h2><p>Drone specialists told Military Times in March that both sides’ drone technology goes stale in about six weeks, but that should be treated as a rule of thumb, not a measurement. The pattern behind it is well documented.</p><p>Fiber Optic Drones provide a great example - as jamming made radio-controlled FPV drones unreliable, Russia fielded FPVs trailing a hair-thin glass cable in spring 2024 and scaled them during the fight for Kursk from August 2024, according to the Atlantic Council.</p><p>Ukraine followed within months.</p><p>The cable defeats jammers, but it makes the drone heavier and slower, and Samuel Bendett, expert for CSIS, notes that some can only be stopped by physical means, including shotguns. Each answer created the next problem.</p><p>The clearest live example is in the air with drones. Since 2022 Russia has launched Iranian-designed Shahed (Geran) drones at Ukrainian cities. Ukraine built an economical defence out of mobile fire teams and cheap interceptor drones. According to reporting that traces back to The Economist, Ukraine downed a record 1,704 Shahed-type drones in January 2026, around 70 percent of them by interceptors, and Ukraine’s commander-in-chief said interceptors accounted for more than 70 percent of Shahed kills over Kyiv in February. Defense News reports that interceptors now stop roughly 90 percent of the older propeller-driven models. Those are Ukrainian military figures, but they are consistent across sources and with the scale of Ukrainian interceptor production.</p><p>Russia’s reply was to go fast. Jet-powered Gerans were used heavily from July, when their numbers jumped fivefold in a month. The Geran-4 cruises at 350 to 500 km/h and the missile-shaped Geran-5 is faster still, so most Ukrainian interceptors cannot catch them from behind. Ukraine’s Air Force says jets already make up about 40 percent of Russia’s drone launches and expects up to 80 percent. Interception rates against them were very low at first, then passed 30 percent, then, according to a German drone-maker’s executive, exceeded 50 percent on recent nights. The Air Force claimed 77 percent on one night this week. Meanwhile, the first Ukrainian jet interceptor entered service on 21 August, fourteen companies are flight-testing others, and the deputy Air Force commander does not expect them at scale before the end of November. Last week, former defence minister Mykhailo Fedorov said a new interceptor built in about a month had downed two Geran-5s over Kyiv, a claim that is plausible but so far rests on his word.</p><p>The Russian side is not standing still on effects either. On October 5, Ukrainian military intelligence said a new Geran-4 variant navigates by magnetometer and optical matching and carries a warhead designed to cut pylons and bridge structures. Officials say Kyiv’s South Bridge was hit at least five times on 1 and 2 October.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">03</span><span class="section-line"></span></div>
+<h2>Two Ways to Build an Adaptation Machine</h2><p>Ukraine’s model is decentralised and market-like. Units earn points for verified results recorded in the Delta battlefield system, then spend them on the Brave1 Market for FPV drones, electronic-warfare kit, bombers and ground robots. Fedorov, who built the system as defence minister, argued that it lets the ministry see verified results and spread effective practice quickly.</p><p>By mid-May, according to Euromaidan Press, units had bought 1,028 ground robotic systems worth about $11.7 million through the marketplace. Ukraine has also made drones a distinct service, the Unmanned Systems Forces.</p><p>Russia’s model is state-centred. The Rubikon centre, created by the defence ministry in August 2024, began by trying to replicate the volunteer drone groups that Russia’s own milbloggers call the people’s military-industrial complex. FPRI describes its detachments as a qualitative improvement on conventional units, with many more drones and a much greater capacity to innovate, hunting Ukrainian drone teams and logistics well behind the front. A Russian Telegram channel’s review of Rubikon’s own statistics, cited by Jamestown, found more than half its targets were Ukrainian drones or the infrastructure that supports them, such as antennas and radars. Russia’s wider Unmanned Systems Forces are still being built, and Defence Minister Belousov has admitted the build-out is slow.</p><p>This is where claims need care. Ukraine’s 3rd Army Corps says that during Operation Vivaldi it inflicted such heavy losses on Rubikon that Russia pulled the unit from the Lyman/Borova axis. That is a Ukrainian corps statement and I found no independent confirmation. Ukraine’s drone-forces commander, Robert Brovdi, says Russia’s drone personnel grew from 86,000 to 114,000 in the first four months of the year, on the way to a 168,000 target. That is also a Ukrainian claim, though it matches Russian announcements of expansion. Ukraine’s army chief says Russia plans 7.3 million FPV drones in 2026, again a figure from Kyiv’s side. Treat all three as direction, not data.</p><p>What can be said fairly is that each model has a characteristic strength. Ukraine’s is speed. Russia’s is scale, and CSIS’s Kate Bondar told the Kyiv Independent that this is Ukraine’s biggest worry. Brovdi concedes the point: Russia cannot command its drone force remotely and centrally, he says, but raising the command level and pouring in budget will still raise the density of assets at the front, even if part of the money is stolen. Neither model is proven superior. One year of front-line data favours speed. It is one year.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">04</span><span class="section-line"></span></div>
+<h2>The Front Is Closing on the Attacker</h2><p>The strongest evidence that drones changed the war is not a video. It is the rate of Russian advance.</p><p>DeepState, the Ukrainian mapping project, recorded Russian gains of 450 to 550 square kilometres a month at the 2025 peak, falling to 160 in April and 27 in July 2026. A Russian-side tracker that counts any area where Russian troops are spotted also shows a steep fall. The Institute for the Study of War (ISW) says the rate of advance in the first third of 2026 averaged 2.9 square kilometres a day, against 9.76 a year earlier, and it estimates a net Russian gain of only about 145 square kilometres from January to September. President Putin has claimed some 6,500 square kilometres and 310 settlements. For September, ISW calculates that Russia seized about 176 square kilometres but lost about 256; Finland’s Black Bird Group, using different methods, estimated a larger net Russian loss of around 190. Methods differ, but the direction is not in dispute across them.</p><p>What caused it? The kill zone, certainly. But also Ukrainian counterattacks (Vivaldi alone claims 176 square kilometres, and ISW adjusts its figures for it), the February Starlink cut-off discussed below, and, in earlier months, winter and Russian exhaustion. I would not attribute the slowdown to drones alone. I would say drones are why Ukraine can hold a very long line with relatively few infantry, a point NPR’s reporting stresses, and why assaulting through the kill zone has become ruinously expensive.</p><p>Also resist the opposite error. Ukraine has not won the drone war. Russia fired 167 missiles and drones on the night of 14 October alone, 77 of them jets, and a main Kyiv power plant was struck. The kill zone has made the front harder to cross for both armies. It has not made Russia unable to hurt Ukraine.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">05</span><span class="section-line"></span></div>
+<h2>Robots Do the Boring Work First</h2><p>The most strategically important ground robots may be the least cinematic: they carry water.</p><p>Ukraine’s Ministry of Defence, using data from Delta, reports that logistics and evacuation missions by ground vehicles rose from 7,511 in January to 25,143 in August, about 112,000 so far this year, with more than 22,000 vehicles contracted. In the Lyman sector, Kyiv Independent reporting found a 66th Brigade team of 20 operators handling most of a tank battalion’s logistics, 100 to 150 missions a month, with vehicles that carry about half a tonne and keep rolling after hitting a mine. A job that used to put a driver in the kill zone now puts a screen in a dugout. This is the reverse of the four-hour kilometre. These figures are official, but they count missions, not outcomes or failure rates, and Russian FPV pilots now hunt ground robots specifically, since killing one can sever a brigade’s supply route.</p><p>The combat use is newer and less proven. In Operation Vivaldi the 3rd Army Corps says heavy bomber drones carried assault robots more than ten kilometres behind Russian lines, in what it calls the first combat air-drop of ground vehicles, with infantry following. That is a corps claim, supported by video the corps released and by journalists’ accounts of robots operating in the sector. Independent experts quoted by CNBC call the offensive significant but not a decisive breakthrough. It reversed a stretch of Russian gains around Lyman and showed a template: electronic warfare and air defence blind the enemy’s drones, heavy drones deliver robots, robots go first, people follow. Whether the template survives contact with a Russian adaptation cycle is the question for the winter.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">06</span><span class="section-line"></span></div>
+<h2>Reach: The War Behind the Front</h2><p>The kill zone froze the tactical map. The strategic effect of the same technology has gone the other way, towards range.</p><p>The International Energy Agency says a Russian refinery has been hit on average once every three days in 2026, that only five major refineries remained untouched by late August, and it has cut its forecast for Russian refinery throughput to about 4 million barrels a day, against 5.3 to 5.6 million a day in 2020–2025 according to Bloomberg figures. The Omsk refinery, some 2,500 kilometres from Ukraine, was hit in July. The Centre for Research on Energy and Clean Air says Novorossiysk loadings fell 58 percent in August and stopped for nine consecutive days. Ukraine’s defence ministry claims 51 percent of Russian refining capacity is disabled, which is a belligerent’s figure; the independent evidence supports serious, persistent damage without confirming that number.</p><p>At sea, uncrewed boats pushed the Black Sea Fleet back to Novorossiysk, having sunk or damaged roughly a dozen Russian warships since 2022 according to Defense News, and in 2026 they have turned to tankers. Ukraine’s navy claims the world’s first naval battle between two uncrewed boats, which is unverified. Estonian intelligence, cited by Newsweek, warns that Russia is building attack-boat units of its own.</p><p>Be sceptical of the legend of Operation Spiderweb, the June 2025 truck-launched drone strike on Russian bomber bases. Kyiv first claimed 41 aircraft. US officials told Reuters about 20 were hit and 10 or 11 destroyed, and The Insider’s most credible estimate is 12 to 14 strategic bombers knocked out at least temporarily. It remains a remarkable operation, but a West Point legal analysis notes it was flown by one pilot per drone, a feat of coordination, not of machine autonomy. Russian bomber raids on Ukraine continued afterwards from bases moved farther east.</p><p>Strategic reach also exposes the political limits of the technology. On 10 October President Trump told Ukraine to stop striking refineries, and the next day he announced an energy ceasefire that Moscow had not confirmed and Russia’s attacks on Ukraine’s grid continued after it. Zelensky said Ukraine would stop hitting refineries if Russia stopped hitting power plants. A drone war has produced something new: each side holds the other’s energy system hostage with cheap machines, and the negotiation is about who lets go first.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">07</span><span class="section-line"></span></div>
+<h2>What the Machines Decide</h2><p>“AI drones” is the most hype-prone phrase in the field, so be precise about what is actually fielded.</p><p>Verified and widespread on both sides: onboard machine vision that locks onto a target a human has chosen and guides the drone for the final stretch, which keeps it on target when jamming cuts the link. One such Ukrainian module guides the last 500 metres, and Russia has added similar seekers to some Gerans. Also fielded: AI-aimed machine-gun turrets in Ukrainian air defence, per Defense News.</p><p>Probable but less certain: CSIS’s analysis of Ukrainian technical examinations of intercepted Russian V2U drones concludes that the drone likely lacks the links needed for operator control and carries enough computing to select targets itself, with group behaviour that suggests swarm-like coordination. That is serious evidence but it rests on a small number of recovered airframes and Ukrainian technical analysis.</p><p>Still unproven at scale: true swarms, and autonomy beyond terminal guidance. Where machine decisions replace human ones, the legal accountability gap grows, which is why the West Point analysis and SIPRI voices stress that commanders remain responsible. The honest position is that autonomy arrived the way most things in this war arrive: as a patch for electronic warfare, not as a doctrine.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">08</span><span class="section-line"></span></div>
+<h2>Who Holds the Switch</h2><p>The most consequential technological decisions of 2026 were not weapons. They were access rules.</p><p>In early February, after Kyiv showed SpaceX evidence that Russian forces were putting Starlink terminals on long-range drones, SpaceX activated a whitelist so that only registered terminals work inside Ukraine. Russian units lost a communications channel and a guidance link for their longer-range strikes. Analysts quoted by the Moscow Times said Russians reverted to older, more jammable systems, and Russian bloggers complained. Al Jazeera’s experts cautioned that the effect was likely short-term and not war-changing, and the claim that it flipped hundreds of square kilometres is overstated. There is no clean counterfactual.</p><p>Then, on 14 October, Ukrainian officials said Starshield, the military version of Starlink, had been throttled for terminals moving above about 160 km/h, which hurts drones, vehicles and large resupply drones. Service was reported restored the next day, though Ukraine’s defence ministry said a speed limit remained. Elon Musk said the limits on Starshield are decided by the US military and ultimately the president; the White House denied involvement. Who ordered it is unestablished. What it shows is not in doubt: the edge that cut Russia’s drones off in February can be turned on Ukraine by the same hand.</p><p>China is the second switch. Magnets, motors, chips, thermal sensors and battery cells in Ukrainian drones still largely come from China, according to a dozen Ukrainian makers cited by AP. Vyriy, one maker, relied on China for nearly 90 percent of components three years ago and has cut that sharply. Claims of fully China-free assembly exist but are early. Russia faces the same dependence. A war of cheap machines is a war of supply chains, and the strongest weapon may be a licence.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">09</span><span class="section-line"></span></div>
+<h2>What Travels</h2><p>What Ukraine learned is already travelling. After the Iran war began, Ukraine sent teams to five Middle Eastern states to help intercept Iranian-designed Shaheds, according to Reuters, and Zelensky argued that the Gulf’s costly Patriot missiles were being burned on drones that cost a fraction as much. A Ukrainian interceptor costs a few thousand dollars, which settles the economics, although not the question of whether cheap interceptors catch faster threats.</p><p>What probably does not travel is the whole package. Ukraine fights a land war on a fixed front against a neighbour with a huge army, long supply lines, and a defence ministry that did not plan for this. It has a mature electronics hobby economy, an advanced digital state and, until this week, a dependable satellite lifeline. Those facts shape what transfers. My view, and it is an inference rather than a finding, is that the transferable lesson is institutional: build the loop, not the drone.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">10</span><span class="section-line"></span></div>
+<h2>How Much to Believe</h2><div class="evidence-table-wrap"><table class="evidence-table"><thead><tr><th>Claim</th><th>Basis</th><th>Confidence</th></tr></thead><tbody><tr><td>A drone-saturated kill zone exists and the front barely moves</td><td>NPR, ISW, DeepState, field reporting</td><td>High</td></tr><tr><td>Drones cause 70–90% of casualties</td><td>Mostly Ukrainian officials and analysts; no audited data. UN monitors back drones as the leading cause of civilian harm near the front, not the military figure</td><td>Direction high, number low</td></tr><tr><td>Russian territorial gains collapsed in 2026</td><td>DeepState, ISW, Black Bird; methods differ</td><td>High on trend, medium on size</td></tr><tr><td>Interceptors made most Shahed kills in early 2026</td><td>Ukrainian military figures reported by The Economist and others</td><td>Medium-high for propeller drones; low for jets</td></tr><tr><td>Ground-robot missions reached about 25,000 a month</td><td>Ukrainian MoD, from Delta</td><td>High on direction; counts missions, not results</td></tr><tr><td>Vivaldi: 176 km², Rubikon withdrawn, robot air-drop</td><td>3rd Army Corps claims, partly corroborated by ISW data and journalists</td><td>Medium</td></tr><tr><td>Refining capacity 51% disabled</td><td>Ukrainian MoD claim; IEA and Bloomberg show deep damage</td><td>Damage high, figure low</td></tr><tr><td>V2U is fully autonomous</td><td>CSIS analysis of intercepted drones</td><td>Medium</td></tr><tr><td>Starlink cut-off crippled Russian drone operations</td><td>Analysts and Russian bloggers; no clean counterfactual</td><td>Medium</td></tr><tr><td>Russia plans 7.3M FPVs; drone personnel 114,000</td><td>Ukrainian commanders</td><td>Low-medium</td></tr></tbody></table></div></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">11</span><span class="section-line"></span></div>
+<h2>What Would Prove This Argument Wrong</h2><p>Four things. First, if jet-powered strike drones saturate Ukrainian defences before jet interceptors scale, the loop will have been won by the side that went to speed, and range would matter more than adaptation. Second, if Russia’s centralised model matures, its scale could outrun Ukraine’s speed. Third, if the satellite or Chinese-supply switches are thrown against Ukraine for long enough, adaptation without supply is a hobby. Fourth, if Vivaldi turns out to be a one-off, because Russian forces in that sector were stretched, then robot offensives are a story about one sector, not a doctrine.</p></section>
+<section class="article-section">
+<div class="section-marker"><span class="section-number">12</span><span class="section-line"></span></div>
+<h2>The Verdict</h2><blockquote class="article-quote"><p>The soldiers who needed four hours to move a kilometre are the real subject. Technology made that kilometre deadly for both armies, and it also made it possible for a smaller army to hold it. It did not make the war clean, short or cheap. What it made decisive is the ability to change faster than the enemy changes, using machines you can afford to lose, from a supply chain you actually control. In 2026 Ukraine is ahead at the front, Russia is catching up in scale, and both sides are discovering that the most dangerous dependency in a machine war is the one that sits outside the machine.</p></blockquote></section><section class="article-section sources-section"><div class="section-marker"><span class="section-number">13</span><span class="section-line"></span></div><h2>Sources</h2><p class="sources-note">All accessed 17 October 2026. Figures attributed to governments, militaries or manufacturers are claims unless a source states otherwise.</p><p class="source-item">NPR, kill zone report, 5 Oct 2026: <a href="https://www.npr.org/2026/10/05/nx-s1-5925803/drones-buzz-overhead-troops-hunker-underground-in-ukraines-hellish-kill-zone" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Defense News, jet-drone interceptors, 14 Oct 2026: <a href="https://www.defensenews.com/global/2026/10/14/ukraine-races-to-field-faster-interceptors-as-russia-hammers-its-energy-grid/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Defense News, interceptor economics, 5 Mar 2026: <a href="https://www.defensenews.com/global/europe/2026/03/05/novel-interceptor-drones-bend-air-defense-economics-in-ukraines-favor/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Military Times, Ukraine’s interceptors, 11 Mar 2026: <a href="https://www.militarytimes.com/news/pentagon-congress/2026/03/11/these-are-ukraines-1000-interceptor-drones-the-pentagon-wants-to-buy/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Euromaidan Press, new interceptor, 12 Oct 2026: <a href="https://euromaidanpress.com/2026/10/12/built-by-ukraines-ex-defense-minister-and-unit-that-wrecked-12-billion-of-russian-gear-new-interceptor-downs-two-jet-drones-over-kyiv/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Atlantic Council, fibre-optic drones: <a href="https://www.atlanticcouncil.org/blogs/ukrainealert/fiber-optics-drones-have-emerged-as-critical-kit-for-both-russia-and-ukraine/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">CSIS, Bendett interview: <a href="https://www.csis.org/analysis/russia-ukraine-drone-war-innovation-frontlines-and-beyond" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">FPRI, Inside Rubicon, Jun 2026: <a href="https://www.fpri.org/article/2026/06/inside-rubicon-the-structure-of-russias-elite-drone-center/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">FPRI, Russia’s Drone Line Experiment, Apr 2026: <a href="https://www.fpri.org/article/2026/04/russias-drone-line-experiment/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Jamestown, Rubicon and centralisation: <a href="https://jamestown.org/rubicon-reveals-limits-of-russias-drone-centralization/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Kyiv Independent, Brovdi interview on Russian drone forces, 14 May 2026: <a href="https://kyivindependent.com/russias-expanding-drone-forces-passes-100-000-personnel-copies-ukrainian-example-magyar-says/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Kyiv Post, Syrskyi on Russian FPV plans, 8 May 2026: <a href="https://www.kyivpost.com/post/75714" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Kyiv Independent, Operation Vivaldi field report, 8 Oct 2026: <a href="https://kyivindependent.com/inside-operation-vivaldi-how-ukraine-uses-drones-robots-to-liberate-territory-in-donetsk-oblast/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">CNBC, Vivaldi analysis, 4 Oct 2026: <a href="https://www.cnbc.com/2026/10/04/russia-ukraine-war-putin-zelenskyy-donbas-lyman.html" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">UNITED24 Media, robot air-drop, Sept 2026: <a href="https://united24media.com/war-in-ukraine/ukraines-operation-vivaldi-debuts-first-ever-attack-with-bomber-drones-deploying-ground-robots-video-22852" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">UNITED24 Media on ISW, 1 Oct 2026: <a href="https://united24media.com/war-in-ukraine/russias-offensive-goes-backward-as-ukraine-regains-nearly-300-square-kilometers-since-march-23055" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">UNITED24 Media on Putin’s territorial claim: <a href="https://united24media.com/war-in-ukraine/putin-claims-6500-square-kilometres-seized-in-ukraine-the-reality-is-45-times-smaller-23547" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Euromaidan Press on DeepState data, 10 Aug 2026: <a href="https://euromaidanpress.com/2026/08/10/russias-advance-in-ukraine-slows-as-casualties-per-square-kilometer-rise-3-5-fold-radio-svoboda-reports/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Al Jazeera on ISW, 8 May 2026: <a href="https://www.aljazeera.com/news/2026/5/8/ukraine-may-have-turned-tide-of-russian-territorial-gains-says-think-tank" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Kyiv Post on Black Bird Group: <a href="https://www.kyivpost.com/post/86375" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Ukraine MoD, ground-robot missions, 7 Sep 2026: <a href="https://mod.gov.ua/en/news/robots-at-work-defence-forces-of-ukraine-more-than-triple-their-use-of-ug-vs" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">The Defense Post, ground robots, 25 Aug 2026: <a href="https://thedefensepost.com/2026/08/25/ukraine-ground-robots-missions/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Euromaidan Press, e-points and marketplace, 9 Jul 2026: <a href="https://euromaidanpress.com/2026/07/09/ukraine-wants-robots-doing-100-of-frontline-logistics-in-june-they-ran-nearly-17000-supply-and-evacuation-runs/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">UNITED24 Media, ground robots as targets: <a href="https://united24media.com/war-in-ukraine/ukraines-ground-robots-just-passed-25000-missions-a-month-as-front-line-logistics-go-unmanned-22395" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">IEA, Russian refining under attack: <a href="https://www.iea.org/commentaries/russian-refining-sector-struggles-amid-intensifying-ukrainian-attacks" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Moscow Times, citing Bloomberg, refining at 24-year low, 3 Aug 2026: <a href="https://www.themoscowtimes.com/2026/08/03/russian-oil-refining-falls-to-24-year-low-after-ukrainian-drone-strikes-bloomberg-a93404" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">AP via PBS, Ukraine’s 51% claim, 5 Oct 2026: <a href="https://www.pbs.org/newshour/world/ukraine-claims-its-strikes-have-taken-out-more-than-half-of-russias-oil-refining-capacity" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">CREA, August 2026 export analysis: <a href="https://energyandcleanair.org/august-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Defense News, Sea Baby, 1 Jul 2026: <a href="https://www.defensenews.com/global/europe/2026/07/01/ukraine-is-launching-strike-drones-from-everything-including-black-sea-robo-boats/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Jerusalem Post, naval drone-on-drone claim, 14 Sep 2026: <a href="https://www.jpost.com/defense-and-tech/article-908542" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">bne IntelliNews, Spiderweb damage, 5 Jun 2025: <a href="https://www.intellinews.com/ukraine-s-operation-spiderweb-destroyed-fewer-russian-bombers-than-claimed-384627" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">The Insider, Spiderweb aftermath: <a href="https://theins.press/en/politics/284957" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Lieber Institute, West Point, drone swarms, 24 Jul 2026: <a href="https://lieber.westpoint.edu/whose-decision-was-it-drone-swarms-accountability-gap-ukraine/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">CSIS, Russia’s drone autonomy ecosystem: <a href="https://www.csis.org/analysis/how-russia-building-sovereign-drone-ecosystem-ai-driven-autonomy" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">The Conversation, autonomous drones, Sep 2026: <a href="https://theconversation.com/russia-ukraine-war-is-accelerating-the-dangerous-race-toward-fully-autonomous-drones-290877" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Moscow Times, Starlink shutdown, 10 Mar 2026: <a href="https://www.themoscowtimes.com/2026/03/10/1-month-in-how-has-starlink-shutdown-impacted-russias-war-effort-a92144" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Al Jazeera, Starlink cut-off, 10 Feb 2026: <a href="https://aljazeera.com/news/2026/2/10/how-does-the-cutoff-of-starlink-terminals-affect-russias-moves-in-ukraine" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Meduza, Starshield restriction, 15 Oct 2026: <a href="https://meduza.io/en/feature/2026/10/15/ukrainian-troops-lost-starlink-access-for-a-day-elon-musk-and-the-trump-white-house-both-deny-responsibility" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Ukrainska Pravda citing Axios, 15 Oct 2026: <a href="https://www.pravda.com.ua/eng/news/2026/10/15/8058071/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">AP via ABC News, Chinese components, 14 Oct 2026: <a href="https://abcnews.com/International/wireStory/secret-vulnerability-ukraines-drone-arsenal-chinese-technology-137247698" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Reuters via Yahoo, Ukrainian teams in the Middle East, 20 Mar 2026: <a href="https://www.yahoo.com/news/articles/ukraine-deploys-units-intercept-targets-112913863.html" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Ukrainska Pravda, energy ceasefire, 12 Oct 2026: <a href="https://www.pravda.com.ua/eng/news/2026/10/12/8057592/" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Al Jazeera, energy ceasefire, 11 Oct 2026: <a href="https://www.aljazeera.com/amp/news/2026/10/11/trump-says-ukraine-russia-agree-to-energy-ceasefire-2" target="_blank" rel="noopener noreferrer">Open source</a></p><p class="source-item">Gigafact, fact-check on drone casualty share, Jun 2026: <a href="https://gigafact.org/?p=16251" target="_blank" rel="noopener noreferrer">Open source</a></p></section>
+<footer class="article-footer"><div class="footer-label">LISA / ANALYTICAL NOTE</div><p>This article reflects information and assessments available during the stated reporting period. Developments in an active conflict can change rapidly, and subsequent reporting may alter or supersede individual assessments. Claims attributed to governments, militaries or manufacturers are identified as such in the text.</p></footer>
+</article></main>
+<footer class="site-footer"><div class="site-footer-inner"><span><strong>LISA</strong> — Latitude Institute for Security Analysis</span><span>INDEPENDENT · EVIDENCE-BASED · CANADIAN</span></div></footer>
+<script>
+const progressBar = document.getElementById("progressBar");
+window.addEventListener("scroll", () => {
+ const scrollTop = window.scrollY;
+ const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const progress = documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0;
+ progressBar.style.width = progress + "%";
+});
+</script>
+</body></html>
