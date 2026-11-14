@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/Favicon.png">
-   
+
 <title>LISA — Latitude Institute for Security Analysis</title>
 
 <meta name="description"
@@ -26,26 +26,19 @@ rel="stylesheet">
 ========================================================= */
 
 :root {
-
     --bg: #05080d;
     --bg-secondary: #080d14;
     --panel: #0b1119;
-
     --border: rgba(255,255,255,0.08);
     --border-bright: rgba(255,255,255,0.14);
-
     --text: #e7edf5;
     --muted: #8793a4;
     --muted-light: #aeb8c7;
-
     --accent: #3c8cff;
     --accent-soft: rgba(60,140,255,0.12);
-
     --positive: #62c792;
     --negative: #d87979;
-
     --max-width: 1200px;
-
 }
 
 
@@ -59,75 +52,40 @@ rel="stylesheet">
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 96px;
 }
 
-
 body {
-
     background: var(--bg);
-
     color: var(--text);
-
     font-family: "Inter", sans-serif;
-
     line-height: 1.6;
-
     overflow-x: hidden;
 }
 
-
 body::before {
-
     content: "";
-
     position: fixed;
-
     inset: 0;
-
     pointer-events: none;
-
     opacity: 0.22;
-
     background-image:
-
-        linear-gradient(
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        );
-
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
     background-size: 50px 50px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 85%
-        );
-
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
     z-index: -2;
 }
-
 
 a {
     color: inherit;
     text-decoration: none;
 }
 
-
 ::selection {
-
     background: var(--accent);
-
     color: white;
 }
 
@@ -137,77 +95,41 @@ a {
 ========================================================= */
 
 .container {
-
-    width:
-        min(
-            var(--max-width),
-            calc(100% - 48px)
-        );
-
+    width: min(var(--max-width), calc(100% - 48px));
     margin: auto;
 }
-
 
 .mono {
     font-family: "JetBrains Mono", monospace;
 }
 
-
 .eyebrow {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 11px;
-
     letter-spacing: 0.16em;
-
     text-transform: uppercase;
-
     color: var(--accent);
 }
 
-
 .section {
-
     padding: 120px 0;
-
     position: relative;
-
     scroll-margin-top: 96px;
 }
 
-
 .section-title {
-
-    font-size:
-        clamp(
-            34px,
-            5vw,
-            55px
-        );
-
+    font-size: clamp(34px, 5vw, 55px);
     line-height: 1.05;
-
     letter-spacing: -0.045em;
-
     margin-top: 14px;
-
     max-width: 760px;
 }
 
-
 .section-description {
-
     color: var(--muted);
-
     max-width: 650px;
-
     margin-top: 22px;
-
     font-size: 16px;
-
     line-height: 1.75;
 }
 
@@ -217,17 +139,11 @@ a {
 ========================================================= */
 
 #top {
-
     position: absolute;
-
     top: 0;
-
     left: 0;
-
     width: 1px;
-
     height: 1px;
-
 }
 
 
@@ -236,48 +152,26 @@ a {
 ========================================================= */
 
 header {
-
     position: fixed;
-
     top: 0;
-
     width: 100%;
-
     z-index: 1000;
-
-    background:
-        rgba(5,8,13,0.72);
-
-    backdrop-filter:
-        blur(18px);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,0.05);
-
-    transition:
-        background 0.3s ease;
+    background: rgba(5,8,13,0.72);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.3s ease;
 }
 
-
 nav {
-
     height: 76px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
-
 .logo {
-
     display: flex;
-
     align-items: center;
-
     gap: 13px;
 }
 
@@ -288,115 +182,62 @@ nav {
     text-decoration: none;
 }
 
-
 .logo-mark {
-
     width: 34px;
-
     height: 34px;
-
-    border:
-        1px solid
-        var(--accent);
-
+    border: 1px solid var(--accent);
     display: grid;
-
     place-items: center;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 13px;
-
     color: var(--accent);
-
     position: relative;
 }
 
-
 .logo-mark::before {
-
     content: "";
-
     position: absolute;
-
     inset: 5px;
-
-    border:
-        1px solid
-        rgba(60,140,255,0.3);
+    border: 1px solid rgba(60,140,255,0.3);
 }
 
-
 .logo-text {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-weight: 600;
-
     letter-spacing: 0.08em;
 }
 
-
 .logo-sub {
-
     font-size: 8px;
-
     color: var(--muted);
-
     letter-spacing: 0.11em;
-
     margin-top: -2px;
 }
 
-
 .nav-links {
-
     display: flex;
-
     align-items: center;
-
     gap: 32px;
 }
 
-
 .nav-links a {
-
     font-size: 13px;
-
     color: var(--muted-light);
-
     transition: 0.25s ease;
 }
 
-
 .nav-links a:hover {
-
     color: white;
 }
 
-
 .nav-button {
-
-    border:
-        1px solid
-        var(--border-bright);
-
-    padding:
-        9px 16px;
+    border: 1px solid var(--border-bright);
+    padding: 9px 16px;
 }
 
-
 .nav-button:hover {
-
-    border-color:
-        var(--accent) !important;
-
-    background:
-        var(--accent-soft);
+    border-color: var(--accent) !important;
+    background: var(--accent-soft);
 }
 
 
@@ -423,7 +264,6 @@ nav {
     display: flex;
     align-items: center;
     gap: 5px;
-
     color: var(--muted-light);
     font-family: "Inter", sans-serif;
     font-size: 13px;
@@ -449,22 +289,15 @@ nav {
     top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%) translateY(-5px);
-
     width: 150px;
     padding: 6px;
-
     background: var(--panel);
     border: 1px solid var(--border-bright);
     box-shadow: 0 15px 40px rgba(0,0,0,0.35);
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        visibility 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
 .nav-dropdown:hover .nav-dropdown-menu {
@@ -492,184 +325,86 @@ nav {
 /* MOBILE MENU BUTTON */
 
 .mobile-menu-button {
-
     display: none;
-
     width: 42px;
-
     height: 42px;
-
-    border:
-        1px solid
-        var(--border-bright);
-
-    background:
-        transparent;
-
-    color:
-        var(--muted-light);
-
-    cursor:
-        pointer;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    font-size:
-        18px;
-
-    transition:
-        0.25s ease;
+    border: 1px solid var(--border-bright);
+    background: transparent;
+    color: var(--muted-light);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: 0.25s ease;
 }
-
 
 .mobile-menu-button:hover {
-
-    border-color:
-        var(--accent);
-
-    color:
-        white;
-
-    background:
-        var(--accent-soft);
+    border-color: var(--accent);
+    color: white;
+    background: var(--accent-soft);
 }
-
 
 .mobile-menu {
-
     display: none;
-
     position: absolute;
-
     top: 76px;
-
     left: 0;
-
     width: 100%;
-
-    background:
-        rgba(5,8,13,0.97);
-
-    border-bottom:
-        1px solid
-        var(--border);
-
-    padding:
-        10px 20px 18px;
-
-    backdrop-filter:
-        blur(18px);
+    background: rgba(5,8,13,0.97);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px 18px;
+    backdrop-filter: blur(18px);
 }
 
-
 .mobile-menu.open {
-
     display: block;
 }
 
-
 .mobile-menu > a,
 .mobile-menu-toggle {
-
     display: flex;
-
     width: 100%;
-
-    padding:
-        14px 8px;
-
-    color:
-        var(--muted-light);
-
-    font-size:
-        14px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,0.05);
-
-    background:
-        transparent;
-
-    border-left:
-        none;
-
-    border-right:
-        none;
-
-    border-top:
-        none;
-
-    font-family:
-        "Inter", sans-serif;
-
-    text-align:
-        left;
-
-    cursor:
-        pointer;
+    padding: 14px 8px;
+    color: var(--muted-light);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    cursor: pointer;
 }
-
 
 .mobile-menu > a:hover,
 .mobile-menu-toggle:hover {
-
-    color:
-        white;
+    color: white;
 }
-
 
 .mobile-menu-toggle {
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
+    justify-content: space-between;
+    align-items: center;
 }
-
 
 .mobile-research-menu {
-
-    display:
-        none;
-
-    padding:
-        0 0 5px 15px;
+    display: none;
+    padding: 0 0 5px 15px;
 }
-
 
 .mobile-research-menu.open {
-
-    display:
-        block;
+    display: block;
 }
-
 
 .mobile-research-menu a {
-
-    display:
-        block;
-
-    padding:
-        11px 8px;
-
-    color:
-        var(--muted);
-
-    font-size:
-        13px;
+    display: block;
+    padding: 11px 8px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
-
 .mobile-research-menu a:hover {
-
-    color:
-        white;
+    color: white;
 }
 
 
@@ -678,157 +413,81 @@ nav {
 ========================================================= */
 
 .hero {
-
     min-height: 100vh;
-
     display: flex;
-
     align-items: center;
-
     position: relative;
-
     overflow: hidden;
-
     padding-top: 76px;
 }
 
-
 .hero::after {
-
     content: "";
-
     position: absolute;
-
     width: 800px;
-
     height: 800px;
-
     right: -400px;
-
     top: 50%;
-
-    transform:
-        translateY(-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(38,107,210,0.16),
-            transparent 65%
-        );
-
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(38,107,210,0.16), transparent 65%);
     pointer-events: none;
 }
 
-
 .hero-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1.25fr 0.75fr;
-
+    grid-template-columns: 1.25fr 0.75fr;
     gap: 80px;
-
     align-items: center;
 }
 
-
 .hero-title {
-
-    font-size:
-        clamp(
-            52px,
-            7vw,
-            92px
-        );
-
+    font-size: clamp(52px, 7vw, 92px);
     line-height: 0.98;
-
-    letter-spacing:
-        -0.065em;
-
-    margin:
-        22px 0 28px;
-
+    letter-spacing: -0.065em;
+    margin: 22px 0 28px;
     max-width: 900px;
 }
 
-
 .hero-title span {
-
     color: var(--accent);
 }
 
-
 .hero-description {
-
     max-width: 620px;
-
     font-size: 19px;
-
     color: var(--muted-light);
-
     line-height: 1.7;
 }
 
-
 .hero-actions {
-
     display: flex;
-
     gap: 14px;
-
     margin-top: 38px;
-
     flex-wrap: wrap;
 }
 
-
 .button {
-
-    padding:
-        13px 21px;
-
-    border:
-        1px solid
-        var(--border-bright);
-
+    padding: 13px 21px;
+    border: 1px solid var(--border-bright);
     font-size: 13px;
-
     font-weight: 500;
-
-    transition:
-        0.25s ease;
+    transition: 0.25s ease;
 }
 
-
 .button-primary {
-
     background: #e7edf5;
-
     color: #05080d;
-
     border-color: #e7edf5;
 }
 
-
 .button-primary:hover {
-
-    transform:
-        translateY(-2px);
-
+    transform: translateY(-2px);
     background: white;
 }
 
-
 .button-secondary:hover {
-
-    border-color:
-        var(--accent);
-
-    background:
-        var(--accent-soft);
+    border-color: var(--accent);
+    background: var(--accent-soft);
 }
 
 
@@ -837,131 +496,69 @@ nav {
 ========================================================= */
 
 .hero-visual {
-
     position: relative;
-
     height: 390px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 }
 
-
 .hero-circle {
-
     width: 310px;
-
     height: 310px;
-
-    border:
-        1px solid
-        rgba(60,140,255,0.20);
-
+    border: 1px solid rgba(60,140,255,0.20);
     border-radius: 50%;
-
     position: relative;
-
-    animation:
-        slowRotate 35s linear infinite;
+    animation: slowRotate 35s linear infinite;
 }
-
 
 .hero-circle::before {
-
     content: "";
-
     position: absolute;
-
     inset: 32px;
-
-    border:
-        1px solid
-        rgba(60,140,255,0.14);
-
+    border: 1px solid rgba(60,140,255,0.14);
     border-radius: 50%;
 }
-
 
 .hero-circle::after {
-
     content: "";
-
     position: absolute;
-
     inset: 78px;
-
-    border:
-        1px solid
-        rgba(60,140,255,0.12);
-
+    border: 1px solid rgba(60,140,255,0.12);
     border-radius: 50%;
 }
 
-
 .hero-crosshair {
-
     position: absolute;
-
     width: 100%;
-
     height: 1px;
-
-    background:
-        rgba(60,140,255,0.15);
-
+    background: rgba(60,140,255,0.15);
     top: 50%;
 }
 
-
 .hero-crosshair.vertical {
-
     width: 1px;
-
     height: 100%;
-
     left: 50%;
-
     top: 0;
 }
 
-
 .hero-center {
-
     position: absolute;
-
     width: 10px;
-
     height: 10px;
-
     border-radius: 50%;
-
-    background:
-        var(--accent);
-
-    box-shadow:
-        0 0 25px
-        rgba(60,140,255,0.65);
+    background: var(--accent);
+    box-shadow: 0 0 25px rgba(60,140,255,0.65);
 }
-
 
 .hero-coordinate {
-
     position: absolute;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 9px;
-
     color: #4e5b6c;
-
     letter-spacing: 0.08em;
 }
-
 
 .coordinate-top {
     top: 35px;
@@ -969,87 +566,43 @@ nav {
     transform: translateX(-50%);
 }
 
-
 .coordinate-bottom {
     bottom: 35px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-
 .coordinate-left {
     left: 15px;
     top: 50%;
-    transform:
-        translateY(-50%)
-        rotate(-90deg);
+    transform: translateY(-50%) rotate(-90deg);
 }
-
 
 .coordinate-right {
     right: 15px;
     top: 50%;
-    transform:
-        translateY(-50%)
-        rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
 }
-
 
 .hero-scan {
-
     position: absolute;
-
     width: 145px;
-
     height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--accent),
-            transparent
-        );
-
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
     top: 50%;
-
     left: 50%;
-
-    transform-origin:
-        left center;
-
-    animation:
-        scan 6s linear infinite;
+    transform-origin: left center;
+    animation: scan 6s linear infinite;
 }
-
 
 @keyframes slowRotate {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-
 @keyframes scan {
-
-    from {
-        transform:
-            rotate(0deg)
-            translateX(0);
-    }
-
-    to {
-        transform:
-            rotate(360deg)
-            translateX(0);
-    }
-
+    from { transform: rotate(0deg) translateX(0); }
+    to { transform: rotate(360deg) translateX(0); }
 }
 
 
@@ -1058,73 +611,35 @@ nav {
 ========================================================= */
 
 .ticker {
-
-    border-top:
-        1px solid
-        var(--border);
-
-    border-bottom:
-        1px solid
-        var(--border);
-
-    background:
-        rgba(255,255,255,0.015);
-
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.015);
     overflow: hidden;
 }
 
-
 .ticker-inner {
-
     display: flex;
-
     width: max-content;
-
     white-space: nowrap;
-
-    animation:
-        ticker 28s linear infinite;
+    animation: ticker 28s linear infinite;
 }
-
 
 .ticker-item {
-
-    padding:
-        17px 35px;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    padding: 17px 35px;
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
     color: var(--muted);
-
-    letter-spacing:
-        0.1em;
+    letter-spacing: 0.1em;
 }
 
-
 .ticker-item span {
-
-    color:
-        var(--accent);
-
+    color: var(--accent);
     margin-right: 10px;
 }
 
-
 @keyframes ticker {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform:
-            translateX(-50%);
-    }
-
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 
@@ -1133,117 +648,62 @@ nav {
 ========================================================= */
 
 .mission-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 90px;
-
     align-items: center;
 }
 
-
 .mission-statement {
-
-    font-size:
-        clamp(
-            27px,
-            3vw,
-            39px
-        );
-
+    font-size: clamp(27px, 3vw, 39px);
     line-height: 1.25;
-
-    letter-spacing:
-        -0.03em;
+    letter-spacing: -0.03em;
 }
 
-
 .mission-statement strong {
-
     color: white;
-
     font-weight: 500;
 }
 
-
 .mission-text {
-
     color: var(--muted);
-
     margin-top: 24px;
-
     max-width: 600px;
 }
 
-
 .principles {
-
     display: grid;
-
     gap: 12px;
 }
 
-
 .principle {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel);
-
+    border: 1px solid var(--border);
+    background: var(--panel);
     padding: 21px;
-
     display: flex;
-
     gap: 17px;
-
     align-items: flex-start;
-
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
-
 
 .principle:hover {
-
-    transform:
-        translateX(5px);
-
-    border-color:
-        rgba(60,140,255,0.35);
+    transform: translateX(5px);
+    border-color: rgba(60,140,255,0.35);
 }
 
-
 .principle-number {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
-    color:
-        var(--accent);
-
+    font-family: "JetBrains Mono", monospace;
+    color: var(--accent);
     font-size: 11px;
 }
 
-
 .principle h4 {
-
     font-size: 14px;
-
     margin-bottom: 5px;
 }
 
-
 .principle p {
-
     color: var(--muted);
-
     font-size: 12px;
 }
 
@@ -1253,81 +713,42 @@ nav {
 ========================================================= */
 
 .research-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns: repeat(3,1fr);
     gap: 15px;
-
     margin-top: 55px;
 }
 
-
 .research-card {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel);
-
+    border: 1px solid var(--border);
+    background: var(--panel);
     padding: 29px;
-
     min-height: 240px;
-
     position: relative;
-
     overflow: hidden;
-
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
-
 
 .research-card:hover {
-
-    border-color:
-        rgba(60,140,255,0.4);
-
-    transform:
-        translateY(-5px);
+    border-color: rgba(60,140,255,0.4);
+    transform: translateY(-5px);
 }
-
 
 .research-number {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
-    color:
-        var(--accent);
+    color: var(--accent);
 }
-
 
 .research-card h3 {
-
     margin-top: 50px;
-
     font-size: 20px;
-
-    letter-spacing:
-        -0.02em;
+    letter-spacing: -0.02em;
 }
 
-
 .research-card p {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     font-size: 13px;
-
     margin-top: 12px;
 }
 
@@ -1337,220 +758,105 @@ nav {
 ========================================================= */
 
 .territory-section {
-
-    background:
-        radial-gradient(
-            circle at 80% 50%,
-            rgba(28,73,136,0.10),
-            transparent 35%
-        );
+    background: radial-gradient(circle at 80% 50%, rgba(28,73,136,0.10), transparent 35%);
 }
 
-
 .territory-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-end;
-
     gap: 30px;
 }
 
-
 .territory-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
-
     margin-top: 55px;
 }
-
 
 .territory-card {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel);
-
+    border: 1px solid var(--border);
+    background: var(--panel);
     padding: 35px;
-
     min-height: 330px;
-
     position: relative;
-
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
-
 
 .territory-card:hover {
-
-    border-color:
-        rgba(60,140,255,0.35);
+    border-color: rgba(60,140,255,0.35);
 }
-
 
 .territory-card-label {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
-    letter-spacing:
-        0.12em;
-
-    color:
-        var(--accent);
+    letter-spacing: 0.12em;
+    color: var(--accent);
 }
-
 
 .territory-card-title {
-
     margin-top: 55px;
-
-    font-size:
-        clamp(
-            28px,
-            4vw,
-            42px
-        );
-
-    letter-spacing:
-        -0.04em;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.04em;
 }
 
-
 .territory-card-number {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
-    font-size:
-        clamp(
-            48px,
-            6vw,
-            76px
-        );
-
-    letter-spacing:
-        -0.07em;
-
+    font-family: "JetBrains Mono", monospace;
+    font-size: clamp(48px, 6vw, 76px);
+    letter-spacing: -0.07em;
     line-height: 1;
-
     margin-top: 8px;
 }
 
-
 .territory-card-unit {
-
-    color:
-        var(--muted);
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    color: var(--muted);
+    font-family: "JetBrains Mono", monospace;
     font-size: 12px;
-
     margin-left: 4px;
 }
 
-
 .territory-card-divider {
-
     height: 1px;
-
-    background:
-        var(--border);
-
-    margin:
-        35px 0 18px;
+    background: var(--border);
+    margin: 35px 0 18px;
 }
-
 
 .territory-card-bottom {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
-
 
 .snapshot {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 9px;
-
-    color:
-        #5f6b7b;
+    color: #5f6b7b;
 }
-
 
 .change {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 7px;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
-    padding:
-        6px 9px;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.07);
+    padding: 6px 9px;
+    border: 1px solid rgba(255,255,255,0.07);
 }
-
 
 .change.increase {
-
-    color:
-        var(--positive);
-
-    background:
-        rgba(98,199,146,0.06);
+    color: var(--positive);
+    background: rgba(98,199,146,0.06);
 }
-
 
 .change.neutral {
-
-    color:
-        var(--muted);
-
-    background:
-        rgba(255,255,255,0.02);
+    color: var(--muted);
+    background: rgba(255,255,255,0.02);
 }
-
 
 .change-arrow {
-
     font-size: 12px;
 }
-
 
 .territory-card-primary,
 .territory-card-secondary {
@@ -1616,17 +922,10 @@ nav {
 }
 
 .territory-source {
-
     margin-top: 18px;
-
     font-size: 10px;
-
-    color:
-        #4f5b6b;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
+    color: #4f5b6b;
+    font-family: "JetBrains Mono", monospace;
 }
 
 
@@ -1635,116 +934,61 @@ nav {
 ========================================================= */
 
 .projects {
-
-    background:
-        #070b11;
+    background: #070b11;
 }
 
-
 .project-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns: repeat(2,1fr);
     gap: 16px;
-
     margin-top: 55px;
 }
 
-
 .project {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel);
-
+    border: 1px solid var(--border);
+    background: var(--panel);
     padding: 30px;
-
     min-height: 270px;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: space-between;
-
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
-
 
 .project:hover {
-
-    border-color:
-        rgba(60,140,255,0.35);
+    border-color: rgba(60,140,255,0.35);
 }
-
 
 .project-meta {
-
     display: flex;
-
     justify-content: space-between;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
-    color:
-        var(--muted);
+    color: var(--muted);
 }
 
-
 .project h3 {
-
     font-size: 25px;
-
     max-width: 500px;
-
     line-height: 1.2;
 }
 
-
 .project p {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     font-size: 13px;
-
     max-width: 550px;
-
     margin-top: 12px;
 }
 
-
 .project-link {
-
     margin-top: 25px;
-
-    color:
-        var(--accent);
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
     font-size: 11px;
-
-    letter-spacing:
-        0.04em;
+    letter-spacing: 0.04em;
 }
 
-
 .project-link:hover {
-
     color: white;
 }
 
@@ -1754,68 +998,37 @@ nav {
 ========================================================= */
 
 .osint-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 70px;
-
     align-items: center;
 }
 
-
 .method-list {
-
     margin-top: 35px;
-
-    border-top:
-        1px solid
-        var(--border);
+    border-top: 1px solid var(--border);
 }
-
 
 .method {
-
     display: flex;
-
     gap: 20px;
-
     padding: 20px 0;
-
-    border-bottom:
-        1px solid
-        var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
-
 .method-number {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
-    color:
-        var(--accent);
-
+    font-family: "JetBrains Mono", monospace;
+    color: var(--accent);
     font-size: 11px;
 }
 
-
 .method h4 {
-
     font-size: 14px;
 }
 
-
 .method p {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     font-size: 12px;
-
     margin-top: 3px;
 }
 
@@ -1825,169 +1038,83 @@ nav {
 ========================================================= */
 
 .analysis-panel {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel);
-
+    border: 1px solid var(--border);
+    background: var(--panel);
     padding: 32px;
-
     position: relative;
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.25);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
 }
 
-
 .analysis-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
-
     gap: 20px;
 }
 
-
 .analysis-label {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 11px;
-
-    letter-spacing:
-        0.12em;
-
-    color:
-        #d5dce6;
+    letter-spacing: 0.12em;
+    color: #d5dce6;
 }
 
-
 .analysis-subtitle {
-
     font-size: 11px;
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     margin-top: 5px;
 }
 
-
 .analysis-status {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 9px;
-
-    color:
-        var(--accent);
-
-    border:
-        1px solid
-        rgba(60,140,255,0.25);
-
-    padding:
-        6px 9px;
+    color: var(--accent);
+    border: 1px solid rgba(60,140,255,0.25);
+    padding: 6px 9px;
 }
-
 
 .analysis-divider {
-
     height: 1px;
-
-    background:
-        var(--border);
-
-    margin:
-        27px 0 5px;
+    background: var(--border);
+    margin: 27px 0 5px;
 }
-
 
 .analysis-row {
-
     display: grid;
-
-    grid-template-columns:
-        45px 1fr;
-
+    grid-template-columns: 45px 1fr;
     gap: 10px;
-
     padding: 22px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,0.055);
+    border-bottom: 1px solid rgba(255,255,255,0.055);
 }
 
-
 .analysis-index {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
-    color:
-        var(--accent);
-
+    color: var(--accent);
     padding-top: 2px;
 }
 
-
 .analysis-content h4 {
-
     font-size: 14px;
-
     font-weight: 500;
 }
 
-
 .analysis-content p {
-
     font-size: 12px;
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     margin-top: 5px;
-
     max-width: 450px;
 }
 
-
 .analysis-footer {
-
     display: flex;
-
     justify-content: space-between;
-
     gap: 15px;
-
     padding-top: 22px;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 8px;
-
-    letter-spacing:
-        0.08em;
-
-    color:
-        #596575;
+    letter-spacing: 0.08em;
+    color: #596575;
 }
 
 
@@ -1996,201 +1123,100 @@ nav {
 ========================================================= */
 
 .researchers {
-
-    background:
-        #060a10;
-
-    border-top:
-        1px solid
-        var(--border);
-
-    border-bottom:
-        1px solid
-        var(--border);
+    background: #060a10;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
-
 .researchers-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-
     margin-top: 55px;
 }
 
-
 .researcher {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel);
-
+    border: 1px solid var(--border);
+    background: var(--panel);
     padding: 32px;
-
     display: grid;
-
-    grid-template-columns:
-        135px 1fr;
-
+    grid-template-columns: 135px 1fr;
     gap: 30px;
-
     align-items: start;
-
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 }
-
 
 .researcher:hover {
-
-    border-color:
-        rgba(60,140,255,0.35);
-
-    transform:
-        translateY(-4px);
+    border-color: rgba(60,140,255,0.35);
+    transform: translateY(-4px);
 }
-
 
 .researcher-photo {
-
     width: 135px;
-
     height: 135px;
-
     object-fit: cover;
-
     border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(60,140,255,0.25);
-
-    filter:
-        grayscale(15%);
+    border: 1px solid rgba(60,140,255,0.25);
+    filter: grayscale(15%);
 }
 
-
 .researcher-info {
-
     min-width: 0;
 }
 
-
 .researcher-name {
-
     font-size: 23px;
-
-    letter-spacing:
-        -0.025em;
-
+    letter-spacing: -0.025em;
     line-height: 1.15;
 }
 
-
 .researcher-role {
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 9px;
-
-    letter-spacing:
-        0.1em;
-
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-
-    color:
-        var(--accent);
-
+    color: var(--accent);
     margin-top: 8px;
 }
 
-
 .researcher-bio {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     font-size: 12px;
-
     line-height: 1.75;
-
     margin-top: 18px;
 }
 
-
 .researcher-bio p {
-
     margin-bottom: 16px;
 }
 
-
 .researcher-bio p:last-child {
-
     margin-bottom: 0;
 }
 
-
 .researcher-focus {
-
     margin-top: 20px;
-
     padding-top: 15px;
-
-    border-top:
-        1px solid
-        var(--border);
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    border-top: 1px solid var(--border);
+    font-family: "JetBrains Mono", monospace;
     font-size: 9px;
-
     line-height: 1.6;
-
-    color:
-        #687587;
-
+    color: #687587;
     text-transform: uppercase;
-
-    letter-spacing:
-        0.04em;
+    letter-spacing: 0.04em;
 }
-
 
 .researcher-contact {
-
     margin-top: 18px;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     display: inline-block;
-
-    transition:
-        0.25s ease;
+    transition: 0.25s ease;
 }
 
-
 .researcher-contact:hover {
-
-    color:
-        var(--accent);
+    color: var(--accent);
 }
 
 
@@ -2199,34 +1225,15 @@ nav {
 ========================================================= */
 
 .cta {
-
-    border-top:
-        1px solid
-        var(--border);
-
-    border-bottom:
-        1px solid
-        var(--border);
-
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     text-align: center;
-
-    padding:
-        100px 20px;
+    padding: 100px 20px;
 }
 
-
 .cta h2 {
-
-    font-size:
-        clamp(
-            36px,
-            5vw,
-            65px
-        );
-
-    letter-spacing:
-        -0.05em;
-
+    font-size: clamp(36px, 5vw, 65px);
+    letter-spacing: -0.05em;
     margin-bottom: 30px;
 }
 
@@ -2236,80 +1243,42 @@ nav {
 ========================================================= */
 
 footer {
-
-    padding:
-        45px 0;
+    padding: 45px 0;
 }
-
 
 .footer-grid {
-
     display: flex;
-
-    justify-content:
-        space-between;
-
+    justify-content: space-between;
     gap: 30px;
-
-    align-items:
-        flex-start;
+    align-items: flex-start;
 }
 
-
 .footer-description {
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     max-width: 400px;
-
     font-size: 12px;
-
     margin-top: 12px;
 }
 
-
 .footer-links {
-
     display: flex;
-
     gap: 25px;
-
     font-size: 12px;
-
-    color:
-        var(--muted);
+    color: var(--muted);
 }
 
-
 .footer-links a:hover {
-
     color: white;
 }
 
-
 .footer-bottom {
-
-    border-top:
-        1px solid
-        var(--border);
-
+    border-top: 1px solid var(--border);
     margin-top: 35px;
-
     padding-top: 20px;
-
     display: flex;
-
-    justify-content:
-        space-between;
-
-    color:
-        #4d5867;
-
-    font-family:
-        "JetBrains Mono",
-        monospace;
-
+    justify-content: space-between;
+    color: #4d5867;
+    font-family: "JetBrains Mono", monospace;
     font-size: 9px;
 }
 
@@ -2319,24 +1288,14 @@ footer {
 ========================================================= */
 
 .fade-up {
-
     opacity: 0;
-
-    transform:
-        translateY(25px);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
 .fade-up.visible {
-
     opacity: 1;
-
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
@@ -2347,115 +1306,70 @@ footer {
 @media (max-width: 850px) {
 
     .container {
-
-        width:
-            min(
-                100% - 30px,
-                var(--max-width)
-            );
+        width: min(100% - 30px, var(--max-width));
     }
-
 
     .nav-links {
         display: none;
     }
 
-
     .mobile-menu-button {
-
         display: flex;
     }
 
-
     .hero {
-
         min-height: auto;
-
         padding-top: 150px;
-
         padding-bottom: 100px;
     }
-
 
     .hero-grid,
     .mission-grid,
     .territory-grid,
     .osint-grid {
-
         grid-template-columns: 1fr;
-
         gap: 50px;
     }
 
-
     .hero-title {
-
-        font-size:
-            clamp(
-                47px,
-                13vw,
-                75px
-            );
+        font-size: clamp(47px, 13vw, 75px);
     }
 
-
     .hero-visual {
-
         height: 330px;
     }
 
-
     .research-grid {
-
         grid-template-columns: 1fr;
     }
-
 
     .project-grid {
-
         grid-template-columns: 1fr;
     }
-
 
     .researchers-grid {
-
         grid-template-columns: 1fr;
     }
 
-
     .researcher {
-
-        grid-template-columns:
-            100px 1fr;
-
+        grid-template-columns: 100px 1fr;
         gap: 22px;
-
         padding: 25px;
     }
 
-
     .researcher-photo {
-
         width: 100px;
-
         height: 100px;
     }
 
-
     .section {
-
-        padding:
-            85px 0;
+        padding: 85px 0;
     }
-
 
     .footer-grid,
     .footer-bottom {
-
-        flex-direction:
-            column;
+        flex-direction: column;
     }
-
 }
 
 
@@ -2471,64 +1385,37 @@ footer {
     }
 
     .analysis-header {
-
-        flex-direction:
-            column;
+        flex-direction: column;
     }
 
-
     .analysis-footer {
-
-        flex-direction:
-            column;
-
+        flex-direction: column;
         gap: 8px;
     }
 
-
     .territory-card {
-
-        min-height:
-            300px;
-
-        padding:
-            27px;
+        min-height: 300px;
+        padding: 27px;
     }
 
-
     .territory-card-bottom {
-
-        align-items:
-            flex-start;
-
-        flex-direction:
-            column;
-
+        align-items: flex-start;
+        flex-direction: column;
         gap: 15px;
     }
 
-
     .researcher {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
-
     .researcher-photo {
-
         width: 105px;
-
         height: 105px;
     }
 
-
     .footer-links {
-
         flex-wrap: wrap;
-
         gap: 15px 22px;
     }
 
@@ -2549,7 +1436,6 @@ footer {
 <div id="top"></div>
 
 
-
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
@@ -2559,9 +1445,6 @@ footer {
 <div class="container">
 
 <nav>
-
-
-<!-- Clicking the LISA logo returns to the absolute top -->
 
 <a href="#top" class="logo">
 
@@ -2589,8 +1472,6 @@ LATITUDE INSTITUTE FOR SECURITY ANALYSIS
 <a href="#mission">
 Mission
 </a>
-
-<!-- RESEARCH DROPDOWN -->
 
 <div class="nav-dropdown">
 
@@ -2628,8 +1509,6 @@ Contact
 </div>
 
 
-<!-- MOBILE MENU BUTTON -->
-
 <button
 class="mobile-menu-button"
 id="mobileMenuButton"
@@ -2640,18 +1519,14 @@ aria-expanded="false">
 
 </button>
 
-
 </nav>
 
-
-<!-- MOBILE MENU -->
 
 <div class="mobile-menu" id="mobileMenu">
 
 <a href="#mission">
 Mission
 </a>
-
 
 <button
 class="mobile-menu-toggle"
@@ -2678,16 +1553,13 @@ Ukraine
 Projects
 </a>
 
-
 <a href="#methodology">
 Methodology
 </a>
 
-
 <a href="#researchers">
 Researchers
 </a>
-
 
 <a href="#contact">
 Contact
@@ -2698,7 +1570,6 @@ Contact
 </div>
 
 </header>
-
 
 
 <!-- =========================================================
@@ -2805,7 +1676,6 @@ LISA
 </section>
 
 
-
 <!-- =========================================================
      FEATURED PROJECTS
 ========================================================= -->
@@ -2837,8 +1707,6 @@ of modern security.
 
 <div class="project-grid">
 
-
-<!-- PROJECT 1 -->
 
 <article class="project fade-up">
 
@@ -2883,8 +1751,6 @@ VIEW PROJECT →
 
 
 
-<!-- PROJECT 2 -->
-
 <article class="project fade-up">
 
 <div class="project-meta">
@@ -2928,8 +1794,6 @@ VIEW PROJECT →
 
 
 
-<!-- PROJECT 3 -->
-
 <article class="project fade-up">
 
 <div class="project-meta">
@@ -2969,8 +1833,6 @@ VIEW ARTICLE →
 </article>
 
 
-
-<!-- PROJECT 4 -->
 
 <article class="project fade-up">
 
@@ -3022,9 +1884,6 @@ INTERVIEWS / NOW ACCEPTING →
 </div>
 
 </section>
-
-
-
 
 
 <!-- =========================================================
@@ -3102,7 +1961,6 @@ STRATEGIC ANALYSIS
 </div>
 
 </div>
-
 
 
 <!-- =========================================================
@@ -3225,7 +2083,6 @@ the interests and responsibilities of Canada.
 </section>
 
 
-
 <!-- =========================================================
      RESEARCH
 ========================================================= -->
@@ -3257,8 +2114,6 @@ multiple interconnected domains.
 <div class="research-grid">
 
 
-<!-- RESEARCH 01 -->
-
 <div class="research-card fade-up">
 
 <div class="research-number">
@@ -3279,8 +2134,6 @@ evolution of modern warfare.
 
 
 
-<!-- RESEARCH 02 -->
-
 <div class="research-card fade-up">
 
 <div class="research-number">
@@ -3299,8 +2152,6 @@ procurement, readiness and force structure.
 </div>
 
 
-
-<!-- RESEARCH 03 -->
 
 <div class="research-card fade-up">
 
@@ -3321,8 +2172,6 @@ power dynamics and geopolitical risk.
 
 
 
-<!-- RESEARCH 04 -->
-
 <div class="research-card fade-up">
 
 <div class="research-number">
@@ -3341,8 +2190,6 @@ security, sovereignty and strategic interests.
 </div>
 
 
-
-<!-- RESEARCH 05 -->
 
 <div class="research-card fade-up">
 
@@ -3363,8 +2210,6 @@ on the battlefield.
 </div>
 
 
-
-<!-- RESEARCH 06 -->
 
 <div class="research-card fade-up">
 
@@ -3390,7 +2235,6 @@ information verification.
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -3674,7 +2518,6 @@ INDEPENDENT
 </section>
 
 
-
 <!-- =========================================================
      RESEARCHERS
 ========================================================= -->
@@ -3718,7 +2561,7 @@ open-source evidence and independent analysis.
 
 <img
 class="researcher-photo"
-src="https://static.wixstatic.com/media/680b13_daf6ea5c83064195bbbefbe0ebaa0c4e~mv2.jpg/v1/fill/w_456,h_456,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/BURGESS.jpg"
+src="/images/austin-burgess.png"
 alt="Austin Burgess"
 loading="lazy"
 >
@@ -3803,7 +2646,7 @@ austin@lisaorg.ca
 
 <img
 class="researcher-photo"
-src="https://static.wixstatic.com/media/c837a6_599cdf059bbc4fb283530a0ac74c66a9~mv2.jpg/v1/fill/w_460,h_460,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fashion_Gemini%203%20(Nano%20Banana%20Pro)_2026-06-07_13-25-45.jpg"
+src="/images/corina-sole.png"
 alt="Corina Solé"
 loading="lazy"
 >
@@ -3882,7 +2725,6 @@ corina@lisaorg.ca
 </section>
 
 
-
 <!-- =========================================================
      CTA
 ========================================================= -->
@@ -3917,7 +2759,6 @@ Contact LISA
 </section>
 
 
-
 <!-- =========================================================
      FOOTER
 ========================================================= -->
@@ -3931,8 +2772,6 @@ Contact LISA
 
 
 <div>
-
-<!-- Clicking LISA returns to absolute top -->
 
 <a href="#top" class="logo-text">
 LISA
@@ -3952,8 +2791,6 @@ national security.
 
 
 <div class="footer-links">
-
-<!-- These now jump to the TOP of each section -->
 
 <a href="#mission">
 Mission
@@ -3989,8 +2826,6 @@ Researchers
 </span>
 
 
-<!-- LISA / ANALYTICAL NOTE -->
-
 <div class="footer-links">
 
 <a href="#top">
@@ -4010,7 +2845,6 @@ ANALYTICAL NOTE
 </div>
 
 </footer>
-
 
 
 <!-- =========================================================
@@ -4067,15 +2901,9 @@ fadeElements.forEach(element => {
 });
 
 
-
 /* =========================================================
    TOP-OF-PAGE LINKS
 ========================================================= */
-
-/*
-   Any link pointing to #top will scroll to the
-   absolute beginning of the page.
-*/
 
 document.querySelectorAll(
     'a[href="#top"]'
@@ -4101,20 +2929,9 @@ document.querySelectorAll(
 });
 
 
-
 /* =========================================================
    SECTION NAVIGATION
 ========================================================= */
-
-/*
-   Footer and navigation section links normally jump
-   directly to the element's anchor.
-
-   Because LISA uses a fixed 76px header, this script
-   subtracts the header height and an additional 20px
-   of spacing so the TOP of the section sits visibly
-   beneath the navigation bar.
-*/
 
 document.querySelectorAll(
     'a[href^="#"]'
@@ -4190,7 +3007,6 @@ document.querySelectorAll(
 });
 
 
-
 /* =========================================================
    MOBILE MENU
 ========================================================= */
@@ -4216,10 +3032,6 @@ const mobileResearchMenu =
     );
 
 
-/*
-   Open / close the main mobile menu.
-*/
-
 mobileMenuButton.addEventListener(
     "click",
     function() {
@@ -4241,10 +3053,6 @@ mobileMenuButton.addEventListener(
 );
 
 
-/*
-   Open / close Research inside the mobile menu.
-*/
-
 mobileResearchToggle.addEventListener(
     "click",
     function() {
@@ -4262,11 +3070,6 @@ mobileResearchToggle.addEventListener(
     }
 );
 
-
-/*
-   Close the mobile menu after selecting
-   a normal section link.
-*/
 
 mobileMenu.querySelectorAll(
     'a[href^="#"]'
@@ -4293,11 +3096,6 @@ mobileMenu.querySelectorAll(
 
 });
 
-
-/*
-   Close the mobile menu if the user clicks
-   the Ukraine Research link.
-*/
 
 mobileResearchMenu.querySelectorAll(
     "a"
@@ -4334,7 +3132,6 @@ mobileResearchMenu.querySelectorAll(
 });
 
 
-
 /* =========================================================
    NAVIGATION BACKGROUND
 ========================================================= */
@@ -4369,12 +3166,6 @@ window.addEventListener(
 );
 
 </script>
-
-
-</body>
-</html>
-</script>
-
 
 </body>
 </html>
