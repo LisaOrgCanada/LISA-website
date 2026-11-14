@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,8 @@
   <meta name="description" content="Austin Burgess is the Founder of the Latitude Institute for Security Analysis. Read his research and analysis on the Russo-Ukrainian War, military strategy, intelligence and modern conflict.">
   <meta name="author" content="Austin Burgess">
   <title>Austin Burgess | LISA</title>
+
+  <link rel="icon" type="image/png" href="/Favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -395,8 +396,7 @@
       color: #3d4a5a;
     }
 
-    /* CSS-DRAWN ARTICLE ARROW
-       Avoids Unicode arrow characters that may render as emoji on iOS. */
+    /* CSS-DRAWN ARTICLE ARROW */
 
     .publication-arrow {
       width: 18px;
@@ -513,6 +513,32 @@
 
     .contact-button:hover {
       background: #2677e7;
+    }
+
+    /* UKRAINE PARTICIPATION NOTE */
+
+    .ukraine-note {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,13,20,0.55);
+    }
+
+    .ukraine-note p {
+      color: #788698;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .ukraine-note a {
+      color: #aabbd0;
+      text-decoration: underline;
+      text-decoration-color: rgba(60,140,255,0.5);
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .ukraine-note a:hover {
+      color: var(--accent);
     }
 
     /* FOOTER */
@@ -782,9 +808,9 @@
   </header>
 
 
-  <!-- HERO -->
   <main>
 
+    <!-- HERO -->
     <section class="hero">
       <div class="container">
 
@@ -811,91 +837,13 @@
     </section>
 
 
-    <!-- BIOGRAPHY -->
-    <section id="biography">
-      <div class="container">
-
-        <div class="section-heading fade-up">
-          <div>
-            <div class="section-number">01 / Researcher</div>
-            <h2>Background & Research.</h2>
-          </div>
-
-          <p class="section-intro">
-            Research focused on understanding the operational, technological and geopolitical dimensions of modern conflict.
-          </p>
-        </div>
-
-        <div class="profile-grid">
-
-          <div class="biography fade-up">
-
-            <p>
-              Austin Burgess is the Founder and Chief Analyst of the Latitude Institute for Security Analysis (LISA). He studied at Medicine Hat College and has professional experience in private investigations, specializing in research, analysis and information gathering.
-            </p>
-
-            <p>
-              His work on the Russo-Ukrainian War led him to pursue further study in modern warfare, including the Understanding Modern Warfare online certificate programme through King's College London. His research has examined psychological warfare, disinformation, conflict financing and front-line logistics.
-            </p>
-
-            <p>
-              His primary research interests include military strategy, intelligence, information warfare and the wider geopolitical implications of armed conflict.
-            </p>
-
-          </div>
-
-          <aside class="details-panel fade-up">
-
-            <div class="details-title">RESEARCHER DETAILS</div>
-
-            <div class="detail-row">
-              <span>Position</span>
-              <strong>Founder & Chief Analyst</strong>
-            </div>
-
-            <div class="detail-row">
-              <span>Research Portfolio</span>
-              <strong>Ukraine / Eastern Europe</strong>
-            </div>
-
-            <div class="detail-row">
-              <span>Organization</span>
-              <strong>Latitude Institute for Security Analysis</strong>
-            </div>
-
-            <div class="detail-row">
-              <span>Education</span>
-
-              <strong>
-                <div class="education-entry">
-                  Open Studies, Medicine Hat College
-                </div>
-
-                <div class="education-entry">
-                  Understanding Modern Warfare, King's College London (Online)
-                </div>
-              </strong>
-            </div>
-
-            <div class="detail-row">
-              <span>Contact</span>
-              <strong><a href="mailto:austin@lisaorg.ca">austin@lisaorg.ca</a></strong>
-            </div>
-
-          </aside>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- PUBLICATIONS -->
+    <!-- PUBLICATIONS: FIRST MAIN SECTION -->
     <section id="publications">
       <div class="container">
 
         <div class="section-heading fade-up">
           <div>
-            <div class="section-number">02 / Publications</div>
+            <div class="section-number">01 / Publications</div>
             <h2>Research & Analysis.</h2>
           </div>
 
@@ -1001,7 +949,7 @@
 
         <div class="section-heading fade-up">
           <div>
-            <div class="section-number">03 / Research Areas</div>
+            <div class="section-number">02 / Research Areas</div>
             <h2>Areas of Analysis.</h2>
           </div>
 
@@ -1053,6 +1001,84 @@
     </section>
 
 
+    <!-- BIOGRAPHY: MOVED NEAR THE BOTTOM -->
+    <section id="biography">
+      <div class="container">
+
+        <div class="section-heading fade-up">
+          <div>
+            <div class="section-number">03 / Researcher</div>
+            <h2>Background & Research.</h2>
+          </div>
+
+          <p class="section-intro">
+            Research focused on understanding the operational, technological and geopolitical dimensions of modern conflict.
+          </p>
+        </div>
+
+        <div class="profile-grid">
+
+          <div class="biography fade-up">
+
+            <p>
+              Austin Burgess is the Founder and Chief Analyst of the Latitude Institute for Security Analysis (LISA). He studied at Medicine Hat College and has professional experience in private investigations, specializing in research, analysis and information gathering.
+            </p>
+
+            <p>
+              His work on the Russo-Ukrainian War led him to pursue further study in modern warfare, including the Understanding Modern Warfare online certificate programme through King's College London. His research has examined psychological warfare, disinformation, conflict financing and front-line logistics.
+            </p>
+
+            <p>
+              His primary research interests include military strategy, intelligence, information warfare and the wider geopolitical implications of armed conflict.
+            </p>
+
+          </div>
+
+          <aside class="details-panel fade-up">
+
+            <div class="details-title">RESEARCHER DETAILS</div>
+
+            <div class="detail-row">
+              <span>Position</span>
+              <strong>Founder & Chief Analyst</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Research Portfolio</span>
+              <strong>Ukraine / Eastern Europe</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Organization</span>
+              <strong>Latitude Institute for Security Analysis</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Education</span>
+
+              <strong>
+                <div class="education-entry">
+                  Open Studies, Medicine Hat College
+                </div>
+
+                <div class="education-entry">
+                  Understanding Modern Warfare, King's College London (Online)
+                </div>
+              </strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Contact</span>
+              <strong><a href="mailto:austin@lisaorg.ca">austin@lisaorg.ca</a></strong>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+
     <!-- CONTACT -->
     <section class="contact-section" id="contact">
       <div class="container">
@@ -1073,6 +1099,17 @@
 
       </div>
     </section>
+
+
+    <!-- UKRAINE PARTICIPATION NOTE -->
+    <div class="ukraine-note">
+      <div class="container">
+        <p>
+          Austin is seeking Ukrainians willing to share their perspectives and experiences, whether civilian or professional/military. 
+          <a href="/ukraine-voice">Share your insight.</a>
+        </p>
+      </div>
+    </div>
 
   </main>
 
