@@ -98,79 +98,59 @@
       justify-content: space-between;
     }
 
-    .brand {
+    .logo {
       display: flex;
       align-items: center;
       gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.75);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.08em;
+      line-height: 1;
+    }
+
+    .logo-text {
+      color: #fff;
+      font-size: 15px;
       font-weight: 800;
       letter-spacing: 0.13em;
-      font-size: 15px;
+      line-height: 1.2;
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255,255,255,0.75);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .brand-mark span {
-      display: block;
-      height: 2px;
-      width: 14px;
-      background: #fff;
-    }
-
-    .brand-mark span:nth-child(2) {
-      width: 20px;
-      height: 3px;
-    }
-
-    .brand-name small {
-      display: block;
-      font-size: 8px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
+    .logo-sub {
       color: var(--muted);
-      margin-top: 1px;
+      font-family: var(--mono);
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      margin-top: 4px;
+      white-space: nowrap;
     }
 
-    .nav-links {
-      display: flex;
+    .back-link {
+      display: inline-flex;
       align-items: center;
-      gap: 34px;
-    }
-
-    .nav-links a {
+      gap: 8px;
       color: #aab5c4;
-      font-size: 12px;
-      font-weight: 600;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
+    .back-link:hover {
       color: #fff;
-    }
-
-    .nav-contact {
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 9px 15px;
-      border-radius: 3px;
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: 0;
-      color: #fff;
-      font-size: 24px;
-      cursor: pointer;
     }
 
     /* HERO */
@@ -237,34 +217,6 @@
       object-position: center 30%;
       border: 1px solid var(--border);
       filter: grayscale(15%);
-    }
-
-    .hero-index {
-      margin-top: 38px;
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-
-    .hero-index div {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .hero-index strong {
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      color: #dbe5f2;
-      letter-spacing: 0.06em;
-    }
-
-    .hero-index span {
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
     /* SECTION BASICS */
@@ -354,13 +306,19 @@
     }
 
     .detail-row strong {
+      display: block;
       font-size: 12px;
       font-weight: 500;
       color: #dce4ee;
+      line-height: 1.8;
     }
 
     .detail-row a {
       color: var(--accent);
+    }
+
+    .education-entry + .education-entry {
+      margin-top: 9px;
     }
 
     /* PUBLICATIONS */
@@ -437,16 +395,45 @@
       color: #3d4a5a;
     }
 
+    /* CSS-DRAWN ARTICLE ARROW
+       Avoids Unicode arrow characters that may render as emoji on iOS. */
+
     .publication-arrow {
-      color: #657386;
-      font-size: 20px;
+      width: 18px;
+      height: 18px;
       align-self: center;
+      justify-self: center;
+      position: relative;
+      color: #657386;
       transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .publication-arrow::before {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      top: 4px;
+      left: 2px;
+      border-top: 1.5px solid currentColor;
+      border-right: 1.5px solid currentColor;
+    }
+
+    .publication-arrow::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 1.5px;
+      top: 9px;
+      left: 1px;
+      background: currentColor;
+      transform: rotate(-45deg);
+      transform-origin: center;
     }
 
     .publication:hover .publication-arrow {
       color: var(--accent);
-      transform: translateX(4px);
+      transform: translate(3px, -3px);
     }
 
     /* RESEARCH AREAS */
@@ -621,10 +608,6 @@
       .specialization-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .nav-links {
-        gap: 18px;
-      }
     }
 
     @media (max-width: 620px) {
@@ -636,26 +619,23 @@
         height: 68px;
       }
 
-      .menu-toggle {
-        display: block;
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+        font-size: 21px;
       }
 
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        width: 100%;
-        padding: 20px 24px 25px;
-        background: #080d14;
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+      .logo-text {
+        font-size: 14px;
       }
 
-      .nav-links.open {
-        display: flex;
+      .logo-sub {
+        font-size: 6px;
+        letter-spacing: 0.1em;
+      }
+
+      .back-link {
+        font-size: 9px;
       }
 
       .hero {
@@ -679,10 +659,6 @@
 
       .hero-description {
         font-size: 14px;
-      }
-
-      .hero-index {
-        gap: 20px;
       }
 
       section {
@@ -727,6 +703,11 @@
         gap: 6px;
       }
 
+      .publication-arrow {
+        width: 16px;
+        height: 16px;
+      }
+
       .specialization-grid {
         grid-template-columns: 1fr;
       }
@@ -749,6 +730,21 @@
         line-height: 1.8;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 
@@ -758,27 +754,29 @@
   <header class="site-header">
     <div class="container nav">
 
-      <a href="/" class="brand" aria-label="LISA homepage">
-        <div class="brand-mark">
-          <span></span>
-          <span></span>
-          <span></span>
+      <a href="https://www.lisaorg.ca/" class="logo" aria-label="LISA homepage">
+
+        <div class="logo-mark">
+          L
         </div>
-        <div class="brand-name">
-          LISA
-          <small>LATITUDE INSTITUTE FOR SECURITY ANALYSIS</small>
+
+        <div>
+          <div class="logo-text">
+            LISA
+          </div>
+
+          <div class="logo-sub">
+            LATITUDE INSTITUTE FOR SECURITY ANALYSIS
+          </div>
         </div>
+
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-
-      <nav class="nav-links" id="navLinks">
-        <a href="/">Home</a>
-        <a href="/ukraine.html">Research</a>
-        <a href="/#projects">Projects</a>
-        <a href="/#researchers" class="active">Researchers</a>
-        <a href="/#contact" class="nav-contact">Contact</a>
-      </nav>
+      <a
+        href="https://www.lisaorg.ca/"
+        class="back-link">
+        ← BACK TO LISA
+      </a>
 
     </div>
   </header>
@@ -800,21 +798,6 @@
             <p class="hero-description">
               Austin Burgess is the Founder of LISA. His research focuses on the Russo-Ukrainian War, military strategy, intelligence and the geopolitics of modern conflict.
             </p>
-
-            <div class="hero-index">
-              <div>
-                <strong>FOUNDER</strong>
-                <span>Position</span>
-              </div>
-              <div>
-                <strong>UKRAINE</strong>
-                <span>Research Portfolio</span>
-              </div>
-              <div>
-                <strong>LISA</strong>
-                <span>Organization</span>
-              </div>
-            </div>
           </div>
 
           <img
@@ -882,17 +865,16 @@
 
             <div class="detail-row">
               <span>Education</span>
-              <strong>Medicine Hat College</strong>
-            </div>
 
-            <div class="detail-row">
-              <span>Certification</span>
-              <strong>Understanding Modern Warfare</strong>
-            </div>
+              <strong>
+                <div class="education-entry">
+                  Open Studies, Medicine Hat College
+                </div>
 
-            <div class="detail-row">
-              <span>Institution</span>
-              <strong>King's College London (Online)</strong>
+                <div class="education-entry">
+                  Understanding Modern Warfare, King's College London (Online)
+                </div>
+              </strong>
             </div>
 
             <div class="detail-row">
@@ -948,7 +930,7 @@
               </div>
             </div>
 
-            <div class="publication-arrow">↗</div>
+            <span class="publication-arrow" aria-hidden="true"></span>
 
           </a>
 
@@ -976,7 +958,7 @@
               </div>
             </div>
 
-            <div class="publication-arrow">↗</div>
+            <span class="publication-arrow" aria-hidden="true"></span>
 
           </a>
 
@@ -1004,7 +986,7 @@
               </div>
             </div>
 
-            <div class="publication-arrow">↗</div>
+            <span class="publication-arrow" aria-hidden="true"></span>
 
           </a>
 
@@ -1038,8 +1020,8 @@
 
           <div class="specialization fade-up">
             <div class="specialization-number">02</div>
-            <h3>Intelligence & OSINT</h3>
-            <p>Open-source intelligence, information collection, verification and analysis of conflict developments.</p>
+            <h3>Financial Intelligence & Oversight</h3>
+            <p>Financial investigations, defence expenditure, auditing, procurement transparency, financial networks and the accountability of institutions involved in conflict.</p>
           </div>
 
           <div class="specialization fade-up">
@@ -1084,7 +1066,7 @@
           </div>
 
           <a class="contact-button" href="mailto:austin@lisaorg.ca">
-            Contact Austin ↗
+            Contact Austin
           </a>
 
         </div>
@@ -1128,25 +1110,6 @@
 
 
   <script>
-    // Mobile navigation
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", isOpen);
-      menuToggle.textContent = isOpen ? "×" : "☰";
-    });
-
-    // Close mobile navigation after selecting a link
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
-      });
-    });
-
     // Fade-in elements on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
