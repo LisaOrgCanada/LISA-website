@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Voice Matters — LISA</title>
+
+<meta name="description" content="LISA invites members of the Ukrainian diaspora to share their experiences and perspectives through voluntary interviews.">
+
+<link rel="icon" type="image/png" href="/Favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --bg: #05080d;
+    --bg-secondary: #080d14;
+    --panel: #0b1119;
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.14);
+    --text: #e7edf5;
+    --muted: #8793a4;
+    --muted-light: #aeb8c7;
+    --accent: #3c8cff;
+    --max-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(var(--max-width), calc(100% - 48px));
+    margin: auto;
+}
+
+/* HEADER */
+
+header {
+    height: 85px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(5,8,13,0.96);
+}
+
+header .container {
+    height: 100%;
+}
+
+nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.logo-mark {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border-bright);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.logo-text {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.logo-sub {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.back-link {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    transition: color .2s;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+/* MAIN LAYOUT */
+
+.main-section {
+    padding: 85px 0 100px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 65px;
+    align-items: start;
+}
+
+/* LEFT COLUMN */
+
+.intro {
+    position: sticky;
+    top: 35px;
+}
+
+.eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(48px, 5.5vw, 72px);
+    line-height: 1.04;
+    letter-spacing: -3.5px;
+    font-weight: 700;
+}
+
+h1 span {
+    color: var(--accent);
+}
+
+.intro-description {
+    margin-top: 30px;
+    color: var(--muted-light);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.intro-description p {
+    margin-bottom: 20px;
+}
+
+.intro-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* SUPPORTING UKRAINE */
+
+.support {
+    margin-top: 55px;
+    padding-top: 27px;
+    border-top: 1px solid var(--border);
+}
+
+.support-label {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    margin-bottom: 15px;
+}
+
+.support h2 {
+    font-size: 21px;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.support p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.support-names {
+    margin-top: 22px;
+    display: grid;
+    gap: 10px;
+}
+
+.support-name {
+    display: block;
+    padding: 14px 16px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color .2s, color .2s, background .2s;
+}
+
+.support-name:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: #0d1725;
+}
+
+/* RIGHT COLUMN / FORM */
+
+.form-wrapper {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 35px;
+}
+
+.form-heading {
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+}
+
+.form-heading .eyebrow {
+    margin-bottom: 12px;
+}
+
+.form-heading h2 {
+    font-size: 26px;
+    letter-spacing: -0.8px;
+    margin-bottom: 9px;
+}
+
+.form-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+label {
+    display: block;
+    color: var(--muted-light);
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.required {
+    color: var(--accent);
+}
+
+.optional {
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    background: #070c13;
+    border: 1px solid var(--border-bright);
+    border-radius: 2px;
+    color: var(--text);
+    padding: 13px 14px;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    outline: none;
+    transition: border-color .2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #596575;
+}
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #0b1119;
+    color: var(--text);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.field-note {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 7px;
+}
+
+/* CONSENT */
+
+.consent-box {
+    padding: 17px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    margin: 30px 0 22px;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.checkbox-row input {
+    width: 15px;
+    height: 15px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    accent-color: var(--accent);
+}
+
+.checkbox-row label {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+
+/* SUBMIT */
+
+.submit-button {
+    width: 100%;
+    padding: 16px 20px;
+    background: var(--accent);
+    border: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.submit-button:hover {
+    background: #2675e8;
+}
+
+.privacy-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+    margin-top: 17px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 27px 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+footer p,
+footer a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .main-grid {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 30px;
+    }
+
+    .form-wrapper {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 52px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .main-section {
+        padding: 55px 0 70px;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .intro {
+        position: static;
+    }
+
+    h1 {
+        font-size: clamp(48px, 12vw, 65px);
+        letter-spacing: -2.5px;
+    }
+
+    .intro-description {
+        margin-top: 22px;
+    }
+
+    .support {
+        margin-top: 35px;
+    }
+
+    .form-wrapper {
+        padding: 24px 19px;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .container {
+        width: calc(100% - 32px);
+    }
+
+    header {
+        height: 72px;
+    }
+
+    .logo-mark {
+        width: 36px;
+        height: 36px;
+    }
+
+    .logo-text {
+        font-size: 13px;
+    }
+
+    .logo-sub {
+        font-size: 7px;
+    }
+
+    .back-link {
+        font-size: 9px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-heading h2 {
+        font-size: 23px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="container">
+
+        <nav>
+
+            <a href="/" class="logo">
+
+                <div class="logo-mark">L</div>
+
+                <div>
+                    <div class="logo-text">LISA</div>
+                    <div class="logo-sub">
+                        LATITUDE INSTITUTE FOR SECURITY ANALYSIS
+                    </div>
+                </div>
+
+            </a>
+
+            <a href="/" class="back-link">← BACK TO HOME</a>
+
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- MAIN CONTENT -->
+
+<main>
+
+<section class="main-section">
+
+<div class="container">
+
+<div class="main-grid">
+
+
+<!-- LEFT COLUMN -->
+
+<div class="intro">
+
+    <div class="eyebrow">
+        UKRAINE VOICE / INTERVIEW INITIATIVE
+    </div>
+
+    <h1>
+        Your Voice<br>
+        <span>Matters.</span>
+    </h1>
+
+    <div class="intro-description">
+
+        <p>
+            LISA is seeking members of the Ukrainian diaspora who are
+            willing to share their experiences, perspectives, and
+            insights through voluntary interviews.
+        </p>
+
+        <p>
+            Your voice can help provide a deeper understanding of how
+            the war in Ukraine has affected Ukrainians and their
+            communities around the world.
+        </p>
+
+        <p>
+            Interviews may be conducted remotely. Participation is
+            entirely voluntary. Submitting your information does not
+            obligate you to participate in an interview.
+        </p>
+
+    </div>
+
+
+    <!-- SUPPORTING UKRAINE -->
+
+    <div class="support">
+
+        <div class="support-label">
+            SUPPORTING UKRAINE
+        </div>
+
+        <h2>Supporting Ukraine.</h2>
+
+        <p>
+            Any money raised through this initiative will go toward
+            supporting:
+        </p>
+
+        <div class="support-names">
+
+            <a
+                href="https://car4ukraine.com/"
+                class="support-name"
+                target="_blank"
+                rel="noopener noreferrer">
+                Car for Ukraine
+            </a>
+
+            <a
+                href="https://childrenheroes.org/en/"
+                class="support-name"
+                target="_blank"
+                rel="noopener noreferrer">
+                Children of Heroes
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- RIGHT COLUMN / FORM -->
+
+<div class="form-wrapper">
+
+    <div class="form-heading">
+
+        <div class="eyebrow">
+            PARTICIPATION FORM
+        </div>
+
+        <h2>Share Your Experience.</h2>
+
+        <p>
+            Complete the form below to express your interest in
+            participating in a voluntary interview with LISA.
+        </p>
+
+    </div>
+
+
+    <!--
+    IMPORTANT:
+    Connect this form to a working submission service before publishing.
+    The action below is a placeholder.
+    -->
+
+    <form action="/submit-ukraine-voice" method="POST">
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label for="firstName">
+                    First Name <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First name"
+                    autocomplete="given-name"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="lastName">
+                    Last Name <span class="optional">OPTIONAL</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last name"
+                    autocomplete="family-name">
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="email">
+                Email Address <span class="required">*</span>
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label for="country">
+                    Current Country <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    placeholder="e.g. Canada"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="city">
+                    City <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="Your city"
+                    required>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="topic">
+                What Would You Like to Discuss?
+                <span class="required">*</span>
+            </label>
+
+            <select id="topic" name="topic" required>
+
+                <option value="" disabled selected>
+                    Select an interview topic
+                </option>
+
+                <option value="Overall thoughts on the conflict">
+                    Overall thoughts on the conflict
+                </option>
+
+                <option value="Displacement & Starting Over">
+                    Displacement &amp; Starting Over
+                </option>
+
+                <option value="Family, Separation & Staying Connected">
+                    Family, Separation &amp; Staying Connected
+                </option>
+
+                <option value="Life on the Front Lines & in Combat Areas">
+                    Life on the Front Lines &amp; in Combat Areas
+                </option>
+
+                <option value="The Information War">
+                    The Information War
+                </option>
+
+                <option value="Ukraine's Future & What Comes After">
+                    Ukraine's Future &amp; What Comes After
+                </option>
+
+                <option value="Building a New Life in Canada">
+                    Building a New Life in Canada
+                </option>
+
+                <option value="Returning to Ukraine">
+                    Returning to Ukraine
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="background">
+                Tell Us a Little About Your Experience
+                <span class="optional">OPTIONAL</span>
+            </label>
+
+            <textarea
+                id="background"
+                name="background"
+                placeholder="Share anything about your experiences or connection to Ukraine that you feel comfortable discussing."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="discussion">
+                Is There Anything Specific You Would Like to Talk About?
+                <span class="optional">OPTIONAL</span>
+            </label>
+
+            <textarea
+                id="discussion"
+                name="discussion"
+                placeholder="Any particular experiences, subjects or perspectives you would like to discuss?"
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="language">
+                Preferred Interview Language
+                <span class="required">*</span>
+            </label>
+
+            <select id="language" name="language" required>
+
+                <option value="" disabled selected>
+                    Select a language
+                </option>
+
+                <option value="English">English</option>
+
+                <option value="Ukrainian">Ukrainian</option>
+
+                <option value="Both English and Ukrainian">
+                    Both English and Ukrainian
+                </option>
+
+                <option value="Other">Other</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="availability">
+                Interview Availability
+                <span class="optional">OPTIONAL</span>
+            </label>
+
+            <select id="availability" name="availability">
+
+                <option value="">
+                    Select general availability
+                </option>
+
+                <option value="Weekdays">Weekdays</option>
+
+                <option value="Weekends">Weekends</option>
+
+                <option value="Evenings">Evenings</option>
+
+                <option value="Flexible">Flexible</option>
+
+                <option value="To be determined">
+                    To be determined
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- CONSENT -->
+
+        <div class="consent-box">
+
+            <div class="checkbox-row">
+
+                <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    value="yes"
+                    required>
+
+                <label for="consent">
+                    I understand that submitting this form does not
+                    obligate me to participate in an interview. I consent
+                    to LISA contacting me regarding potential
+                    participation. I understand that participation is
+                    entirely voluntary.
+                    <span class="required">*</span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="submit-button">
+            SUBMIT INTEREST FORM →
+        </button>
+
+        <p class="privacy-note">
+            Your information will be used to coordinate potential
+            interview participation. Please do not include sensitive
+            personal information in this form.
+        </p>
+
+    </form>
+
+</div>
+
+
+</div>
+</div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer-inner">
+
+    <p>
+        © 2026 LATITUDE INSTITUTE FOR SECURITY ANALYSIS
+    </p>
+
+    <a href="/">LISA — HOME</a>
+
+</div>
+
+</footer>
+
+</body>
+</html>
