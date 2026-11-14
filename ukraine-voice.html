@@ -396,6 +396,34 @@ textarea {
     margin-top: 17px;
 }
 
+.form-status {
+    display: none;
+    margin-top: 16px;
+    padding: 13px 15px;
+    border: 1px solid var(--border-bright);
+    background: var(--bg-secondary);
+    color: var(--muted-light);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.form-status.success {
+    display: block;
+    border-color: rgba(98,199,146,0.45);
+    color: #8ee0b2;
+}
+
+.form-status.error {
+    display: block;
+    border-color: rgba(216,121,121,0.45);
+    color: #f0a0a0;
+}
+
+.submit-button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
 /* FOOTER */
 
 footer {
@@ -658,13 +686,7 @@ footer a:hover {
     </div>
 
 
-    <!--
-    IMPORTANT:
-    Connect this form to a working submission service before publishing.
-    The action below is a placeholder.
-    -->
-
-    <form action="/submit-ukraine-voice" method="POST">
+    <form id="interviewForm">
 
         <div class="form-row">
 
@@ -931,6 +953,8 @@ footer a:hover {
             personal information in this form.
         </p>
 
+        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+
     </form>
 
 </div>
@@ -959,6 +983,64 @@ footer a:hover {
 </div>
 
 </footer>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbze6IBmKw7MFj6Ah0pFZjfK2mrbCcp5gqRw34fNMt960vX2iJQCNC-q2BlTWVuyNHJPbQ/exec";
+
+const interviewForm = document.getElementById("interviewForm");
+const formStatus = document.getElementById("formStatus");
+const submitButton = interviewForm.querySelector('button[type="submit"]');
+
+interviewForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    if (!interviewForm.reportValidity()) return;
+
+    const formData = new FormData(interviewForm);
+    const data = {
+        firstName: formData.get("firstName") || "",
+        lastName: formData.get("lastName") || "",
+        email: formData.get("email") || "",
+        country: formData.get("country") || "",
+        city: formData.get("city") || "",
+        topic: formData.get("topic") || "",
+        background: formData.get("background") || "",
+        discussion: formData.get("discussion") || "",
+        language: formData.get("language") || "",
+        availability: formData.get("availability") || "",
+        consent: formData.get("consent") ? "yes" : "no"
+    };
+
+    submitButton.disabled = true;
+    submitButton.textContent = "SUBMITTING...";
+    formStatus.className = "form-status";
+    formStatus.textContent = "";
+
+    try {
+        // text/plain avoids a browser CORS preflight. Apps Script still receives
+        // the JSON body in e.postData.contents for JSON.parse().
+        await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(data)
+        });
+
+        formStatus.className = "form-status success";
+        formStatus.textContent = "Thank you. Your interest form has been sent. LISA may contact you regarding a potential interview.";
+        interviewForm.reset();
+    } catch (error) {
+        console.error("Form submission error:", error);
+        formStatus.className = "form-status error";
+        formStatus.textContent = "We could not send your form. Please check your internet connection and try again. If the problem continues, contact LISA directly.";
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "SUBMIT INTEREST FORM →";
+    }
+});
+</script>
 
 </body>
 </html>
